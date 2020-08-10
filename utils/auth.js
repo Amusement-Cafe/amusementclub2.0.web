@@ -3,6 +3,8 @@ import Router from 'next/router'
 import nextCookie from 'next-cookies'
 import cookie from 'js-cookie'
 
+export const login = ctx => { }
+
 export const auth = ctx => {
   const { token } = nextCookie(ctx)
 
