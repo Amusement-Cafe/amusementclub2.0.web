@@ -33,11 +33,12 @@ const Layout = props => (
           'Helvetica Neue', Arial, Noto Sans, sans-serif, 'Apple Color Emoji',
           'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-        font-size: 18px;
-        font-weight: 300;
-        line-height: 25px;
+        font-size: 1rem;
+        font-weight: 400;
         letter-spacing: 1px;
         color: #fff;
+        line-height: 1.5;
+        letter-spacing: 0.00938em;
       }
 
       .container {
@@ -67,7 +68,7 @@ const Layout = props => (
       h1 {
         width: 100%;
         display: block;
-        font-size: 40px;
+        font-size: 2em;
         font-weight: 700;
         color: #2b9ab5;
         margin: 30px 0;
