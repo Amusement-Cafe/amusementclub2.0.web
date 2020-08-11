@@ -124,9 +124,9 @@ const Header = (props) => {
             <Button color="inherit">Store</Button>
           </Link>*/}
 
-          <Link href="/">
-            <Button color="inherit">Help</Button>
-          </Link>
+          <a href="https://docs.amusement.cafe/" style={{color: '#fff'}}>
+            <Button color="inherit">Documentation</Button>
+          </a>
 
           <IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">

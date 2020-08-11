@@ -1,3 +1,4 @@
+import { Divider } from '@material-ui/core' 
 
 export default class Footer extends React.Component {
   constructor(props) { super(props) }
@@ -5,18 +6,18 @@ export default class Footer extends React.Component {
   render() {
   return (
     <div className="footer">
-      <hr/>
+      <Divider />
       <div className="content">
         <div className="block">
-          <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/amusement-logo-small.png"/>
-          <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord.png"/>
-          <span>with ❤️ by NoxCaos</span>
+          <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-LogoWordmark-White.svg"/>
+          <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amusement-cafe-smalltext.png"/>
+          <span><b>support@amusement.cafe</b></span>
         </div>
         <div className="block">
           <span className="title">Get Started</span>
           <ul>
             <li><a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126016">Invite</a></li>
-            <li><a>Documentation</a></li>
+            <li><a href="https://docs.amusement.cafe/">Documentation</a></li>
             <li><a href="https://discord.gg/kqgAvdX">Bot Discord</a></li>
           </ul>
         </div>

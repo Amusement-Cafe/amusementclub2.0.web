@@ -1,10 +1,14 @@
 import Layout from '../components/layout'
 import Footer from '../components/footer'
+import { Paper } from '@material-ui/core' 
 
 const Upgrade = () => (
   <Layout>
     <div>
       <br/>
+      <Paper style={{padding: "2em", backgroundColor: "#222", color: "#fff"}}>
+        <p>Please visit our <a href="https://docs.amusement.cafe/en/upgrade">updated documentation website</a> for better version of this guide</p>
+      </Paper>
       <h1>Amusement Club Alexandrite upgrade guide</h1>
       <p>
           If you are transitioning from previous version of the bot (known as V1) please follow this guide to help you with new features and changes in functionality.

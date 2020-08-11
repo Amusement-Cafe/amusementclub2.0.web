@@ -14,6 +14,7 @@ import {
   Select,
   GridList,
   GridListTile,
+  GridListTileBar,
   Container,
   CssBaseline
 } from '@material-ui/core';
@@ -67,11 +68,33 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
     borderRadius: '1rem',
     transition: '.25s',
+  },
+
+  cardHover: {
+    cursor: 'pointer',
+    transition: '.25s',
+  },
+
+  gridTile: {
+
+  },
+
+  gridTitleBar: {
+    opacity: 0,
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+
     '&:hover' : {
-      opacity: .5,
+      opacity: 1,
       cursor: 'pointer',
       transition: '.25s',
     }
+  },
+
+  gridTitleBarHover: {
+    opacity: 1,
+    cursor: 'pointer',
+    transition: '.25s',
   }
 }));
 
@@ -92,6 +115,9 @@ const CardView = props => {
   const handleSortChange = name => event => {
     setSort(event.target.value)
   }
+
+  //const [isHover, setIsHover] = useState(false)
+  const cap = (str) => str.split(' ').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
 
   return (
     <cardview>
@@ -150,14 +176,31 @@ const CardView = props => {
       <hr/>*/}
       <GridList spacing={20} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
         {props.cards.map((x, i) => (
-          <GridListTile key={x.url}>
+          <GridListTile key={x.url} /*onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)*/>
             <img src={x.url} className={classes.card}/>
+            <GridListTileBar
+                  className={classes.gridTitleBar}
+                  title={cap(x.name.replace(/_/g, ' '))}
+                  subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+                />
+            {/*
+              this.state.hover ? (
+                <GridListTileBar
+                  className={classes.gridTitleBarHover}
+                  title={cap(x.name.replace(/_/g, ' '))}
+                  subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+                />
+              ) : (
+                <GridListTileBar
+                  className={classes.gridTitleBar}
+                  title={cap(x.name.replace(/_/g, ' '))}
+                  subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+                />
+              )
+            */}
           </GridListTile>
         ))}
       </GridList>
-      <style jsx global>{`
-
-      `}</style>
     </cardview>
   )
 }

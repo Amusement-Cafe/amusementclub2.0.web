@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     flexWrap: 'nowrap',
     justifyContent: 'space-between',
-    margin: '0 20%',
+    margin: '0 15%',
   },
 
   card: {
