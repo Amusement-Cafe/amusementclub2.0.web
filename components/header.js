@@ -112,7 +112,7 @@ const Header = (props) => {
 
           <div className={classes.grow} />
 
-          <Link href="/">
+          <Link href="/cards">
             <Button color="inherit">Cards</Button>
           </Link>
 

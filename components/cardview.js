@@ -60,6 +60,18 @@ const useStyles = makeStyles(theme => ({
   },
   addButton: {
     width: 'max-content',
+  },
+
+  card: {
+    width: '100%',
+    margin: 0,
+    borderRadius: '1rem',
+    transition: '.25s',
+    '&:hover' : {
+      opacity: .5,
+      cursor: 'pointer',
+      transition: '.25s',
+    }
   }
 }));
 
@@ -136,10 +148,10 @@ const CardView = props => {
         </FormControl>
       </Container>
       <hr/>*/}
-      <GridList spacing={10} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
+      <GridList spacing={20} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
         {props.cards.map((x, i) => (
           <GridListTile key={x.url}>
-            <img src={x.url} className='card'/>
+            <img src={x.url} className={classes.card}/>
           </GridListTile>
         ))}
       </GridList>

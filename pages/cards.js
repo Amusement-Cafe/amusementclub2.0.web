@@ -1,9 +1,9 @@
-import React from 'react'
-import Router from 'next/router'
 import fetch from 'isomorphic-unfetch'
 import Layout from '../components/layout'
 import CardView from '../components/cardview'
 import getHost from '../utils/get-host'
+import Footer from '../components/footer'
+import { makeStyles } from '@material-ui/core/styles'
 
 const Cards = props => {
   const cards = props.cards.filter(x => x)
@@ -12,25 +12,7 @@ const Cards = props => {
       <Layout>
         <h1>{props.type === 'claim'? "Your claimed cards:" : ""}</h1>
         <CardView cards={cards} cols={props.cols} />
-
-        <style jsx>{`
-          h1 {
-            margin-bottom: 2rem;
-          }
-
-          .container .card {
-            width: 100%;
-            margin: 0;
-            border-radius: 1rem;
-            transition: .25s;
-          }
-
-          .container .card:hover {
-            opacity: .25;
-            cursor: pointer;
-            transition: .25s;
-          }
-        `}</style>
+        <Footer/>
       </Layout>
   )
 }

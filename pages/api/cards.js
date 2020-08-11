@@ -1,6 +1,7 @@
 
 import withMongo from '../../middlewares/withMongo';
 import withData from '../../middlewares/withData';
+import _ from "lodash"
 
 const handler = async (req, res) => {
   const data = await req.headers.data
@@ -12,7 +13,8 @@ const handler = async (req, res) => {
     return res.status(200).json({ cards, cols })
     
   } catch (error) {
-    return res.status(200).json({ cards: req.cards, cols: req.collections })
+    const cards = _.sampleSize(req.cards.filter(x => x.level < 4), 32).sort((a, b) => b.level - a. level)
+    return res.status(200).json({ cards, cols: req.collections })
   }
 }
 

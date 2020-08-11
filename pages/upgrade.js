@@ -3,9 +3,9 @@ import Footer from '../components/footer'
 
 const Upgrade = () => (
   <Layout>
-    <div className="container">
-      <br/><br/>
-      <h1>Amusement Club upgrade guide</h1>
+    <div>
+      <br/>
+      <h1>Amusement Club Alexandrite upgrade guide</h1>
       <p>
           If you are transitioning from previous version of the bot (known as V1) please follow this guide to help you with new features and changes in functionality.
       </p>
@@ -18,7 +18,7 @@ const Upgrade = () => (
       <h2>Heroes</h2>
       <p>You will have to get a new hero. Switching is free.</p>
       <p>Your old hero level will become your personal level.</p>
-      <p>You can now submit your own hero of choice with <code>->hero submit [MAL link]</code> if you are <b>level 25</b>. This will put your hero submission into a review queue to be accepted. Submissions will cost <code>512 * (2 ** user.herosubmits)</code> meaning the more you submit the more they will cost. (Exponential cost)</p>
+      <p>You can now submit your own hero of choice with <code>->hero submit [anilist link]</code> if you are <b>level 25</b>. This will put your hero submission into a review queue to be accepted. Submissions will cost <code>512 * (2 ** user.herosubmits)</code> meaning the more you submit the more they will cost. (Exponential cost)</p>
       <p>Heroes have two slots on them, these are for passive effect cards you can get recipes for in the <b>store.</b></p>
       <p>Instead of a 50 star requirement for getting a hero, you'll now need to be <b>level 10</b>.</p>
 
@@ -189,8 +189,6 @@ const Upgrade = () => (
 
       <h2>Got questions?</h2>
       <p>Head over to the <a href="https://discord.gg/XKXp666" style={{color: "#eb2196"}}>#support channel of bot's Discord</a></p>
-
-      <div style={{height: "50px"}}/>
     </div>
     <Footer/>
   </Layout>
