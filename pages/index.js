@@ -1,129 +1,100 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
-import Icon from '@material-ui/core/Icon'
-import Avatar from '@material-ui/core/Avatar'
 import Layout from '../components/layout'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import getHost from '../utils/get-host'
 
-const styles = {
+import { 
+  Button,
+  Icon,
+  Avatar
+} from '@material-ui/core'
+
+const useStyles = makeStyles(theme => ({
   button: {
-    'display': 'block',
-    'background-color': '#222',
-    'font-size': '25px',
-    'font-weight': 600,
-    'padding': '15px',
-    'color': '#fff',
-    'margin': '50px auto',
-    'left': 0,
-    'right': 0,
-    '&:hover': {
-      'background-color': '#444',
+    display: 'flex',
+    padding: '15px',
+    color: '#fff',
+    margin: '50px auto',
+    left: 0,
+    right: 0,
+  },
+
+  buttonspan: {
+    fontWeight: 600,
+    fontSize: '1.5rem',
+    verticalAlign: 'top',
+    marginLeft: '20px',
+    background: 'radial-gradient(#eb2196, #0d4acf, #2b9ab5)',
+    backgroundSize: '500% 500%',
+    backgroundClip: 'text',
+    textFillColor: 'transparent',
+    animation: `$shine 60s linear infinite`,
+  },
+
+  '@keyframes shine': {
+    'to': {
+      backgroundPosition: '800% 800%',
     }
   },
 
-  buttonimg: {
-    'vertical-align': 'bottom',
-    'margin-right': '15px',
-  },
-
-  'buttonspan': {
-    'display': 'block',
-    'vertical-align': 'top',
-    'background': 'radial-gradient(#eb2196, #0d4acf, #2b9ab5)',
-    'background-size': '500% 500%',
-    'background-clip': 'text',
-    'text-fill-color': 'transparent',
-    '-webkit-background-clip': 'text',
-    '-webkit-text-fill-color': 'transparent',
-    'animation': 'shine 45s linear infinite',
-  },
-
   avatar: {
-    'margin': 'auto',
-    'left': 0,
-    'right': 0,
-    'height': '100px',
-    'width': '100px',
+    margin: 'auto',
+    left: 0,
+    right: 0,
+    height: '100px',
+    width: '100px',
   },
-}
+
+  h2: {
+    color: '#fff',
+  },
+
+  cardContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-between',
+    margin: '0 15%',
+  },
+
+  card: {
+    width: '30%',
+    transition: '0.3s',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      transition: '0.3s',
+    }
+  }
+
+}))
 
 const Home = props => {
   const cards = props.cards.filter(x => x)
-  const { classes } = props;
+  const classes = useStyles();
 
   return (
     <Layout>
-      <div className="container">
-        <div className="cardContainer">
-          <img src={cards[0].url} className='card'/>
-          <img src={cards[1].url} className='card'/>
-          <img src={cards[2].url} className='card'/>
-        </div>
-
-        <div style={{height: '50px'}}></div>
-        <Avatar className={props.classes.avatar} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/alexandritepfp.jpg"/>
-
-        <h1 style={{'textAlign': 'center'}}>Amusement Club: Global Gacha for Discord</h1>
-        <h3 style={{'textAlign': 'center'}}>Claim and create cards, build your guild, choose your hero character craft various effects and trade on auctions. 
-          All your progress is transferred between Discord servers</h3>
-
-        
-        <Button variant="contained" className={props.classes.button}>
-          <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
-            {/*<Icon className={props.classes.buttonimg}><img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/></Icon>*/}
-            <span className='buttonspan'>Add to Discord</span>
-          </a>
-        </Button>
-        
+      <div className={classes.cardContainer}>
+        <img src={cards[0].url} className={classes.card}/>
+        <img src={cards[1].url} className={classes.card}/>
+        <img src={cards[2].url} className={classes.card}/>
       </div>
-        
-    <style jsx>{`
 
-      .back {
-        
-      }
+      <div style={{height: '50px'}}></div>
+      <Avatar className={classes.avatar} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/alexandritepfp.jpg"/>
 
-      .container {
-        width: 100%;
-        margin: auto;
-        color: #fff;
-      }
+      <h1 style={{'textAlign': 'center'}}>Amusement Club: Global Gacha for Discord</h1>
+      <h3 style={{'textAlign': 'center'}}>Claim and create cards, build your guild, choose your hero character craft various effects and trade on auctions. 
+        All your progress is transferred between Discord servers</h3>
 
-      .cardContainer {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        margin: 0 20%;
-      }
-
-      .cardContainer .card {
-        width: 30%;
-      }
-
-      h2 {
-        color: #fff;
-      }
-
-      .buttonspan {
-        display: block;
-        vertical-align: top;
-        background: radial-gradient(#eb2196, #0d4acf, #2b9ab5); 
-        background-size: 800% 800%;
-        background-clip: text;
-        text-fill-color: transparent;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shine 60s alternate infinite;
-      }
-
-        @keyframes shine {
-          to {
-            background-position: 800% 800%;
-          }
-        }
-      `}</style>
+      
+      <Button color="primary" variant="outlined" className={classes.button} startIcon={
+          <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
+        }>
+        <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
+          <span className={classes.buttonspan}>Add to Discord</span>
+        </a>
+      </Button>
     </Layout>
   )
 }
@@ -148,4 +119,4 @@ Home.getInitialProps = async ctx => {
   }
 }
 
-export default withStyles(styles)(Home)
+export default Home

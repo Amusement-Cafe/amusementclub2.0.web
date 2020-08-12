@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/theme';
 import Router from 'next/router';
-import NProgress from 'nprogress'; //nprogress module
-import '../styles/nprogress.css'; //styles of nprogress
+import NProgress from 'nprogress';
+import '../styles/nprogress.css';
 
 Router.events.on('routeChangeStart', () => NProgress.start()); 
 Router.events.on('routeChangeComplete', () => NProgress.done()); 
@@ -24,13 +25,28 @@ export default function MyApp(props) {
     }
   }, []);
 
+  const palletType = "dark";
+  const mainPrimaryColor = '#2b9ab5';
+  const mainSecondaryColor = '#eb2196';
+  const darkTheme = createMuiTheme({
+    palette: {
+      type: palletType,
+      primary: {
+        main: mainPrimaryColor
+      },
+      secondary: {
+        main: mainSecondaryColor
+      }
+    }
+  });
+
   return (
     <React.Fragment>
       <Head>
         <title>Amusement Club</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkTheme}>
         <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>

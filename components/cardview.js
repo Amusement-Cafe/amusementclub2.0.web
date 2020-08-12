@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import FormHelperText from '@material-ui/core/FormHelperText'
 import SortIcon from '@material-ui/icons/Sort'
+import CardDialog from './carddialog'
 
 import { 
   MenuItem, 
@@ -14,6 +15,7 @@ import {
   Select,
   GridList,
   GridListTile,
+  GridListTileBar,
   Container,
   CssBaseline
 } from '@material-ui/core';
@@ -60,6 +62,40 @@ const useStyles = makeStyles(theme => ({
   },
   addButton: {
     width: 'max-content',
+  },
+
+  card: {
+    width: '100%',
+    margin: 0,
+    borderRadius: '1rem',
+    transition: '.25s',
+  },
+
+  cardHover: {
+    cursor: 'pointer',
+    transition: '.25s',
+  },
+
+  gridTile: {
+
+  },
+
+  gridTitleBar: {
+    opacity: 0,
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+
+    '&:hover' : {
+      opacity: 1,
+      cursor: 'pointer',
+      transition: '.25s',
+    }
+  },
+
+  gridTitleBarHover: {
+    opacity: 1,
+    cursor: 'pointer',
+    transition: '.25s',
   }
 }));
 
@@ -68,7 +104,10 @@ const CardView = props => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
   const cols = props.cols || []
 
-  const [col, setCol, sort, setSort] = React.useState('')
+  const [col, setCol, sort, setSort] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState({});
+  
   React.useEffect(() => {
     //setSort('date')
   }, []);
@@ -80,6 +119,18 @@ const CardView = props => {
   const handleSortChange = name => event => {
     setSort(event.target.value)
   }
+
+  const handleClickOpen = (card) => {
+    setOpen(true);
+    setSelectedValue(card)
+  }
+
+  const handleClose = (value) => {
+    setOpen(false);
+  }
+
+  //const [isHover, setIsHover] = useState(false)
+  const cap = (str) => str.split(' ').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
 
   return (
     <cardview>
@@ -136,16 +187,35 @@ const CardView = props => {
         </FormControl>
       </Container>
       <hr/>*/}
-      <GridList spacing={10} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
+      <GridList spacing={20} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
         {props.cards.map((x, i) => (
-          <GridListTile key={x.url}>
-            <img src={x.url} className='card'/>
+          <GridListTile key={x.url} /*onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)*/>
+            <img src={x.url} className={classes.card}/>
+            <GridListTileBar
+                  onClick={() => handleClickOpen(x)}
+                  className={classes.gridTitleBar}
+                  title={cap(x.name.replace(/_/g, ' '))}
+                  subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+                />
+            {/*
+              this.state.hover ? (
+                <GridListTileBar
+                  className={classes.gridTitleBarHover}
+                  title={cap(x.name.replace(/_/g, ' '))}
+                  subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+                />
+              ) : (
+                <GridListTileBar
+                  className={classes.gridTitleBar}
+                  title={cap(x.name.replace(/_/g, ' '))}
+                  subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+                />
+              )
+            */}
           </GridListTile>
         ))}
       </GridList>
-      <style jsx global>{`
-
-      `}</style>
+      <CardDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
     </cardview>
   )
 }
