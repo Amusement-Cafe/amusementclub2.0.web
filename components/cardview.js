@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import FormHelperText from '@material-ui/core/FormHelperText'
 import SortIcon from '@material-ui/icons/Sort'
+import CardDialog from './carddialog'
 
 import { 
   MenuItem, 
@@ -103,7 +104,10 @@ const CardView = props => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
   const cols = props.cols || []
 
-  const [col, setCol, sort, setSort] = React.useState('')
+  const [col, setCol, sort, setSort] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState({});
+  
   React.useEffect(() => {
     //setSort('date')
   }, []);
@@ -114,6 +118,15 @@ const CardView = props => {
 
   const handleSortChange = name => event => {
     setSort(event.target.value)
+  }
+
+  const handleClickOpen = (card) => {
+    setOpen(true);
+    setSelectedValue(card)
+  }
+
+  const handleClose = (value) => {
+    setOpen(false);
   }
 
   //const [isHover, setIsHover] = useState(false)
@@ -179,6 +192,7 @@ const CardView = props => {
           <GridListTile key={x.url} /*onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)*/>
             <img src={x.url} className={classes.card}/>
             <GridListTileBar
+                  onClick={() => handleClickOpen(x)}
                   className={classes.gridTitleBar}
                   title={cap(x.name.replace(/_/g, ' '))}
                   subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
@@ -201,6 +215,7 @@ const CardView = props => {
           </GridListTile>
         ))}
       </GridList>
+      <CardDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
     </cardview>
   )
 }

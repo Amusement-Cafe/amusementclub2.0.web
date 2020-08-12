@@ -11,22 +11,17 @@ import {
 
 const useStyles = makeStyles(theme => ({
   button: {
-    display: 'block',
-    backgroundColor: '#333',
-    fontSize: '25px',
-    fontWeight: 600,
+    display: 'flex',
     padding: '15px',
     color: '#fff',
     margin: '50px auto',
     left: 0,
     right: 0,
-    lineHeight: 1.5,
-    '&:hover': {
-      backgroundColor: '#222',
-    }
   },
 
   buttonspan: {
+    fontWeight: 600,
+    fontSize: '1.5rem',
     verticalAlign: 'top',
     marginLeft: '20px',
     background: 'radial-gradient(#eb2196, #0d4acf, #2b9ab5)',
@@ -64,6 +59,11 @@ const useStyles = makeStyles(theme => ({
 
   card: {
     width: '30%',
+    transition: '0.3s',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      transition: '0.3s',
+    }
   }
 
 }))
@@ -88,9 +88,10 @@ const Home = props => {
         All your progress is transferred between Discord servers</h3>
 
       
-      <Button variant="contained" className={classes.button}>
+      <Button color="primary" variant="outlined" className={classes.button} startIcon={
+          <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
+        }>
         <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
-          <Icon className={classes.buttonimg}><img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/></Icon>
           <span className={classes.buttonspan}>Add to Discord</span>
         </a>
       </Button>
