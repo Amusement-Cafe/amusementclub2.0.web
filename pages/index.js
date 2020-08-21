@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     background: 'radial-gradient(#eb2196, #0d4acf, #2b9ab5)',
     backgroundSize: '500% 500%',
     backgroundClip: 'text',
+    '-webkit-background-clip': 'text',
     textFillColor: 'transparent',
     animation: `$shine 60s linear infinite`,
   },
