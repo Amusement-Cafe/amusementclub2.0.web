@@ -3,7 +3,6 @@ import Layout from '../components/layout'
 import CardView from '../components/cardview'
 import getHost from '../utils/get-host'
 import Footer from '../components/footer'
-import { makeStyles } from '@material-ui/core/styles'
 
 const Cards = props => {
   const cards = props.cards.filter(x => x)
@@ -12,7 +11,7 @@ const Cards = props => {
       <Layout>
         <h2>{props.type === 'claim'? "Your claimed cards:" : "Cards featured in the bot"}</h2>
         <CardView cards={cards} cols={props.cols} />
-        <div style={{paddingTop: '30px'}}><b>...and 16,000+ more</b></div>
+        <div style={{paddingTop: '30px'}}><b>...and 20,000+ more</b></div>
         <Footer/>
       </Layout>
   )

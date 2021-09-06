@@ -96,7 +96,7 @@ const Header = (props) => {
           </IconButton>
           )}
 
-          <div className={classes.search}>
+          {/*<div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -108,7 +108,7 @@ const Header = (props) => {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+            </div>*/}
 
           <div className={classes.grow} />
 
@@ -116,9 +116,9 @@ const Header = (props) => {
             <Button color="inherit">Cards</Button>
           </Link>
 
-          <Link href="/upgrade">
+          {/*<Link href="/upgrade">
             <Button color="inherit">Upgrade Guide</Button>
-          </Link>
+            </Link>*/}
 
           {/*<Link href="/cards">
             <Button color="inherit">Store</Button>
@@ -128,7 +128,7 @@ const Header = (props) => {
             <Button color="inherit">Documentation</Button>
           </a>
 
-          <IconButton color="inherit">
+          {/*<IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">
               <NotificationsIcon />
             </Badge>
@@ -138,7 +138,7 @@ const Header = (props) => {
             <Badge badgeContent={0} color="secondary">
               <Settings />
             </Badge>
-          </IconButton>
+        </IconButton>*/}
           {/*username && avatar? (
             <IconButton color="inherit">
               <Link href="/profile">

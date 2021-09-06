@@ -8,6 +8,7 @@ import {
   Icon,
   Avatar
 } from '@material-ui/core'
+import { random } from 'lodash'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -82,12 +83,17 @@ const Home = props => {
       </div>
 
       <div style={{height: '50px'}}></div>
-      <Avatar className={classes.avatar} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/alexandritepfp.jpg"/>
+      {
+        Math.random() > 0.5 ? (
+          <Avatar className={classes.avatar} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amethystpfp.jpg"/>
+        ) : (
+          <Avatar className={classes.avatar} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amethyst2.jpg"/>
+        )
+      }
 
-      <h1 style={{'textAlign': 'center'}}>Amusement Club: Global Gacha for Discord</h1>
-      <h3 style={{'textAlign': 'center'}}>Claim and create cards, build your guild, choose your hero character craft various effects and trade on auctions. 
-        All your progress is transferred between Discord servers</h3>
-
+      <h1 style={{'textAlign': 'center'}}>Amusement Club: Global card trading for Discord</h1>
+      <h3 style={{'textAlign': 'center'}}>Choose from thousands of community crafted cards to trade and auction.</h3> 
+      <h3 style={{'textAlign': 'center'}}>All your progress is transferred between Discord servers</h3>
       
       <Button color="primary" variant="outlined" className={classes.button} startIcon={
           <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
@@ -96,6 +102,8 @@ const Home = props => {
           <span className={classes.buttonspan}>Add to Discord</span>
         </a>
       </Button>
+
+      <div style={{'height': '500px'}}></div>
     </Layout>
   )
 }
