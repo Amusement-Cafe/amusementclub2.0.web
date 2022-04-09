@@ -7,6 +7,7 @@ import Footer from '../components/footer'
 import { 
   Button,
 } from '@material-ui/core'
+import { random } from 'lodash'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -96,8 +97,8 @@ const Home = props => {
         <div className={classes.titleContainer}>
 
           <h1 className={classes.title}>/amusement</h1>
-          <h3 className={classes.desc}>Claim and create cards, build your guild, choose your hero character craft various effects and trade on auctions. 
-            All your progress is transferred between Discord servers</h3>
+          <h2 style={{'textAlign': 'center'}}>Amusement Club: Global card trading for Discord</h2>
+          <h3 style={{'textAlign': 'center'}}>Choose from thousands of community crafted cards to trade and auction. All your progress is transferred between Discord servers</h3> 
           
           <Button color="primary" variant="text" className={classes.button} startIcon={
               <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
@@ -119,7 +120,7 @@ const Home = props => {
 
         </div>
       </div>
-      
+
       <Footer/>
     </Layout>
   )

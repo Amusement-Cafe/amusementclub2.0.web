@@ -128,7 +128,7 @@ const Header = (props) => {
             <Button color="inherit">Documentation</Button>
           </a>
 
-          <IconButton color="inherit">
+          {/*<IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">
               <NotificationsIcon />
             </Badge>
@@ -138,7 +138,7 @@ const Header = (props) => {
             <Badge badgeContent={0} color="secondary">
               <Settings />
             </Badge>
-          </IconButton>
+        </IconButton>*/}
           {/*username && avatar? (
             <IconButton color="inherit">
               <Link href="/profile">
