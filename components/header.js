@@ -62,7 +62,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   appbar: {
-    backgroundColor: '#222',
+    backgroundColor: '#79F2DF',
+    position: 'fixed',
   },
   toolbar: {
     paddingLeft: '1rem',
@@ -81,7 +82,6 @@ const Header = (props) => {
 
   return (
     <header>
-      <div className="alexandrite-header"></div>
       <AppBar position="static" className={classes.appbar}>
         <Toolbar variant="dense" className={classes.toolbar}>
 
@@ -96,7 +96,7 @@ const Header = (props) => {
           </IconButton>
           )}
 
-          <div className={classes.search}>
+          {/*<div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -108,7 +108,7 @@ const Header = (props) => {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+            </div>*/}
 
           <div className={classes.grow} />
 
@@ -117,7 +117,7 @@ const Header = (props) => {
           </Link>
 
           <Link href="/upgrade">
-            <Button color="inherit">Upgrade Guide</Button>
+            <Button color="inherit">Bort Upgrade</Button>
           </Link>
 
           {/*<Link href="/cards">
@@ -201,6 +201,12 @@ const Header = (props) => {
           box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.2), 
                       0px -2px 2px 0px rgba(0, 0, 0, 0.14), 
                       0px -3px 1px -2px rgba(0, 0, 0, 0.12);
+        }
+        
+        .bort-header {
+          width: 100%;
+          height: 7px;
+          background: linear-gradient(to right, #79F2DF, #2B4E54, #4B0017, #2C000D);
         }
       `}</style>
     </header>

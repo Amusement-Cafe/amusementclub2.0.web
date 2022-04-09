@@ -47,16 +47,16 @@ export default class Footer extends React.Component {
       width: 100%;
       bottom: 0;
       color: '#fff';
-      margin-top: 2em;
+      margin-top: 1em;
     }
 
     .footer .content {
       display: flex;
-      margin-top: 2em;
+      margin-top: 1em;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding-right: 20%;
+      padding: 0 10%;
     }
 
       .footer .content .block {

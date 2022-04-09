@@ -25,7 +25,7 @@ const Layout = props => (
 
       body {
         margin: 0;
-        background-color: #333639;
+        background-color: #222;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
           'Helvetica Neue', Arial, Noto Sans, sans-serif, 'Apple Color Emoji',
           'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -40,7 +40,7 @@ const Layout = props => (
 
       .container {
         max-width: 65rem;
-        margin: 1.5rem auto;
+        margin: auto;
         padding-left: 1rem;
         padding-right: 1rem;
       }
@@ -65,9 +65,9 @@ const Layout = props => (
       h1 {
         width: 100%;
         display: block;
-        font-size: 2em;
+        font-size: 10em;
         font-weight: 700;
-        color: #2b9ab5;
+        color: #79F2DF;
         margin: 30px 0;
       }
 
@@ -76,12 +76,12 @@ const Layout = props => (
         display: block;
         font-size: 30px;
         font-weight: 600;
-        color: #2b9ab5;
+        color: #79F2DF;
       }
 
       a {
         text-decoration: none;
-        color: #eb2196;
+        color: #4b0118;
         font-weight: 500;
       }
 
