@@ -7,12 +7,10 @@ import Footer from '../components/footer'
 import { 
   Button,
 } from '@material-ui/core'
-import { random } from 'lodash'
 
 const useStyles = makeStyles(theme => ({
   button: {
     display: 'flex',
-    padding: '20px',
     margin: '50px auto',
     left: 0,
     right: 0,
@@ -23,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1.5rem',
     verticalAlign: 'top',
     marginLeft: '20px',
-    color: '#79F2DF',
+    color: '#FFF',
   },
 
   avatar: {
@@ -56,13 +54,13 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     width: '100%',
-    opacity: 0.75,
-    backgroundImage: 'url("https://amusementclub.nyc3.digitaloceanspaces.com/web/bort_crop-min.png")',
+    backgroundImage: 'url("https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/bort_crop-min.png")',
     backgroundRepeat: 'no-repeat',
+    backgroundSize: '100%',
   },
 
   titleContainer: {
-    marginTop: '60%',
+    marginTop: '55%',
   },
 
   title: {
@@ -75,13 +73,19 @@ const useStyles = makeStyles(theme => ({
     padding: '5px',
   },
 
+  textWithBack: {
+    backgroundColor: '#222',
+    textAlign: 'center',
+    color: '#fff',
+  },
+
   desc: {
     margin: 'auto',
     left: 0,
     right: 0,
     textAlign: 'center',
     width: '70%',
-    color: '#fff',
+    backgroundColor: '#222',
   }
 
 }))
@@ -97,10 +101,11 @@ const Home = props => {
         <div className={classes.titleContainer}>
 
           <h1 className={classes.title}>/amusement</h1>
-          <h2 style={{'textAlign': 'center'}}>Amusement Club: Global card trading for Discord</h2>
-          <h3 style={{'textAlign': 'center'}}>Choose from thousands of community crafted cards to trade and auction. All your progress is transferred between Discord servers</h3> 
+          <h2 className={classes.textWithBack}>global card trading bot for Discord</h2>
+          <h3 className={classes.desc}>Claim and create cards, choose your hero character, craft various effects and trade on auctions. 
+            All your progress is transferred between Discord servers.</h3>
           
-          <Button color="primary" variant="text" className={classes.button} startIcon={
+          <Button color="secondary" variant="contained" size="large" className={classes.button} startIcon={
               <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
             }>
             <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
@@ -116,7 +121,7 @@ const Home = props => {
             <img src={cards[2].url} className={classes.card}/>
           </div>
           
-          <div style={{height: '100px'}}></div>
+          <div style={{height: '50px'}}></div>
 
         </div>
       </div>

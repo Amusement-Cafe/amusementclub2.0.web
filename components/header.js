@@ -1,12 +1,10 @@
 import Link from 'next/link'
 import cookie from 'js-cookie'
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { Avatar, AppBar, Toolbar, Button, IconButton, InputBase, Badge } from '@material-ui/core';
+import { Avatar, AppBar, Toolbar, Button, IconButton } from '@material-ui/core';
 
 import { Settings } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { useMediaQuery } from 'react-responsive'
 
 const useStyles = makeStyles(theme => ({
@@ -110,15 +108,13 @@ const Header = (props) => {
             />
             </div>*/}
 
-          <div className={classes.grow} />
-
           <Link href="/cards">
-            <Button color="inherit">Cards</Button>
+            <Button color="inherit">Sample Cards</Button>
           </Link>
 
-          <Link href="/upgrade">
-            <Button color="inherit">Bort Upgrade</Button>
-          </Link>
+          <a href="https://docs.amusement.cafe/en/latest-changelog" style={{color: '#fff'}}>
+            <Button color="inherit">Latest Changelog</Button>
+          </a>
 
           {/*<Link href="/cards">
             <Button color="inherit">Store</Button>
@@ -127,6 +123,8 @@ const Header = (props) => {
           <a href="https://docs.amusement.cafe/" style={{color: '#fff'}}>
             <Button color="inherit">Documentation</Button>
           </a>
+
+          <div className={classes.grow} />
 
           {/*<IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">

@@ -39,7 +39,7 @@ const Layout = props => (
       }
 
       .container {
-        max-width: 65rem;
+        max-width: 63rem;
         margin: auto;
         padding-left: 1rem;
         padding-right: 1rem;
