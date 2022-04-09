@@ -12,6 +12,7 @@ export default class Footer extends React.Component {
           <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-LogoWordmark-White.svg"/>
           <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amusement-cafe-smalltext.png"/>
           <span><b>support@amusement.cafe</b></span>
+          <span><b>Bort art by <a href="https://twitter.com/NAMIORII">@NAMIORII</a></b></span>
         </div>
         <div className="block">
           <span className="title">Get Started</span>

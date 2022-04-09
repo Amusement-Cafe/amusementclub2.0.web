@@ -3,7 +3,6 @@ import Layout from '../components/layout'
 import CardView from '../components/cardview'
 import getHost from '../utils/get-host'
 import Footer from '../components/footer'
-import { makeStyles } from '@material-ui/core/styles'
 
 const Cards = props => {
   const cards = props.cards.filter(x => x)
@@ -20,7 +19,6 @@ const Cards = props => {
 
 Cards.getInitialProps = async ctx => {
   const apiUrl = getHost(ctx.req) + '/api/cards'
-  //const apiUrl = 'http://noxcaos.ddns.net:3000/api/cards'
 
   try {
     const response = await fetch(apiUrl, {

@@ -91,7 +91,7 @@ const Header = (props) => {
           </IconButton>):
           (<IconButton color="inherit">
             <Link href="/">
-              <img src={'https://amusementclub.nyc3.digitaloceanspaces.com/web/buns_logo2.png'} className={classes.avatar} />
+              <img src={'https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/buns_logo_white.png'} className={classes.avatar} />
             </Link>
           </IconButton>
           )}

@@ -6,25 +6,23 @@ import Footer from '../components/footer'
 
 import { 
   Button,
-  Icon,
-  Avatar
 } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   button: {
     display: 'flex',
-    padding: '15px',
-    color: '#fff',
+    padding: '20px',
     margin: '50px auto',
     left: 0,
     right: 0,
   },
 
   buttonspan: {
-    fontWeight: 600,
+    fontWeight: 800,
     fontSize: '1.5rem',
     verticalAlign: 'top',
     marginLeft: '20px',
+    color: '#79F2DF',
   },
 
   avatar: {
@@ -47,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     width: '30%',
     transition: '0.3s',
     '&:hover': {
-      transform: 'scale(1.1)',
-      transition: '0.3s',
+      transform: 'scale(1.05)',
+      transition: '0.1s',
     }
   },
 
@@ -101,7 +99,7 @@ const Home = props => {
           <h3 className={classes.desc}>Claim and create cards, build your guild, choose your hero character craft various effects and trade on auctions. 
             All your progress is transferred between Discord servers</h3>
           
-          <Button color="primary" variant="outlined" className={classes.button} startIcon={
+          <Button color="primary" variant="text" className={classes.button} startIcon={
               <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
             }>
             <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
