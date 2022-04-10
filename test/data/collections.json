@@ -1,17 +1,127 @@
 [
-    {"id":"blends","name":"Blend S","aliases":["blends"],"compressed":true},
-    {"id":"codegeass","name":"Code Geass","aliases":["codegeass"],"compressed":true},
-    {"id":"darlinginthefranxx","name":"Darling In The FranXX","aliases":["darlinginthefranxx"],"compressed":false},
-    {"id":"special","name":"s p e c i a l","aliases":["special"],"compressed":true,"rarity":0.02},
-    {"id":"gabrieldropout","name":"Gabriel Dropout","aliases":["gabrieldropout"],"compressed":true},
-    {"id":"mahoutsukai","name":"Mahoutsukai","aliases":["mahoutsukai"],"compressed":true},
-    {"id":"gochiusa","name":"Gochiusa","aliases":["gochiusa"],"compressed":true},
-    {"id":"steinsgate","name":"Steins;Gate","aliases":["steinsgate"],"compressed":true},
-    {"id":"luckystar","name":"Luckystar","aliases":["luckystar"],"compressed":true},
-    {"id":"newgame","name":"Newgame","aliases":["newgame"],"compressed":true},
-    {"id":"rezero","name":"RE:Zero","aliases":["rezero"],"compressed":true},
-    {"id":"nonnonbiyori","name":"NonNonBiyori","aliases":["nonnonbiyori"],"compressed":true},
-    {"id":"nichijou","name":"Nichijou","aliases":["nichijou"],"compressed":false},
-    {"id":"kakegurui","name":"Kakegurui","aliases":["kakegurui"],"compressed":true},
-    {"id":"madeinabyss","name":"Made in Abyss","aliases":["madeinabyss"],"compressed":true}
-]
+    {
+      "id": "clannad",
+      "name": "Clannad",
+      "compressed": true
+    },
+    {
+      "id": "danganronpa",
+      "name": "Danganronpa",
+      "compressed": true
+    },
+    {
+      "id": "girlsfrontline",
+      "name": "Girls' Frontline",
+      "compressed": true
+    },
+    {
+      "id": "kimetsunoyaiba",
+      "name": "Kimetsu no Yaiba",
+      "compressed": true
+    },
+    {
+      "id": "loghorizon",
+      "name": "Log Horizon",
+      "compressed": true
+    },
+    {
+      "id": "hetalia",
+      "name": "Hetalia Axis Powers",
+      "compressed": true
+    },
+    {
+      "id": "jojo",
+      "name": "JoJo no Kimyou na Bouken",
+      "compressed": true
+    },
+    {
+      "id": "shieldhero",
+      "name": "The Rising of The Shield Hero",
+      "compressed": true
+    },
+    {
+      "id": "k-on",
+      "name": "K-On!",
+      "compressed": true
+    },
+    {
+      "id": "persona",
+      "name": "Persona Series",
+      "compressed": true
+    },
+    {
+      "id": "kancolle",
+      "name": "Kantai Collection",
+      "compressed": true
+    },
+    {
+      "id": "kakegurui",
+      "name": "Kakegurui",
+      "compressed": true
+    },
+    {
+      "id": "littlewitchacademia",
+      "name": "Little Witch Academia",
+      "compressed": true
+    },
+    {
+      "id": "mahouka",
+      "name": "Mahouka Koukou no Rettousei",
+      "compressed": true
+    },
+    {
+      "id": "blends",
+      "name": "Blend S",
+      "compressed": true
+    },
+    {
+      "id": "mahoutsukai",
+      "name": "Mahoutsukai no Yome",
+      "compressed": true
+    },
+    {
+      "id": "slowstart",
+      "name": "Slow Start",
+      "compressed": true
+    },
+    {
+      "id": "yukiyuna",
+      "name": "Yuki Yuna is a Hero",
+      "compressed": true
+    },
+    {
+      "id": "kingdomhearts",
+      "name": "Kingdom Hearts",
+      "compressed": true
+    },
+    {
+      "id": "housekinokuni",
+      "name": "Houseki no Kuni",
+      "compressed": true
+    },
+    {
+      "id": "genshinimpact",
+      "name": "Genshin Impact",
+      "compressed": false
+    },
+    {
+      "id": "hololive",
+      "name": "Hololive",
+      "compressed": false
+    },
+    {
+      "id": "loveiswar",
+      "name": "Kaguya-sama: Love is War",
+      "compressed": false
+    },
+    {
+      "id": "sailormoon",
+      "name": "Sailor Moon",
+      "compressed": true
+    },
+    {
+      "id": "touhou",
+      "name": "Touhou",
+      "compressed": true
+    }
+  ]
