@@ -50,7 +50,6 @@ const useStyles = makeStyles(theme => ({
   },
 
   background: {
-    marginTop: 'auto',
     left: 0,
     right: 0,
     width: '100%',
@@ -101,9 +100,9 @@ const Home = props => {
         <div className={classes.titleContainer}>
 
           <h1 className={classes.title}>/amusement</h1>
-          <h2 className={classes.textWithBack}>global card trading bot for Discord</h2>
+          <h2 className={classes.textWithBack}>Global card trading bot for Discord</h2>
           <h3 className={classes.desc}>Claim and create cards, choose your hero character, craft various effects and trade on auctions. 
-            All your progress is transferred between Discord servers.</h3>
+          All of your cards are persistent across all Discord servers.</h3>
           
           <Button color="secondary" variant="contained" size="large" className={classes.button} startIcon={
               <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>

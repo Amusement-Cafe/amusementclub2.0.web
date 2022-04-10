@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
   gridTitleBar: {
     opacity: 0,
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
 
     '&:hover' : {
       opacity: 1,

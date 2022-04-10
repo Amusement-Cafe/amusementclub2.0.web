@@ -9,7 +9,11 @@ const Cards = props => {
 
   return (
       <Layout>
+        <div style={{height: '75px'}}></div>
+
         <h2>{props.type === 'claim'? "Your claimed cards:" : "Cards featured in the bot"}</h2>
+
+        <div style={{height: '25px'}}></div>
         <CardView cards={cards} cols={props.cols} />
         <div style={{paddingTop: '30px'}}><b>...and 20,000+ more</b></div>
         <Footer/>
