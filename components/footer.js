@@ -1,3 +1,4 @@
+import React from 'react'
 import { Divider } from '@material-ui/core' 
 
 export default class Footer extends React.Component {
@@ -9,7 +10,9 @@ export default class Footer extends React.Component {
       <Divider />
       <div className="content">
         <div className="block">
-          <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-LogoWordmark-White.svg"/>
+          <a href="https://discord.com/">
+            <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/discord_logo_2021.svg"/>
+          </a>
           <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amusement-cafe-smalltext.png"/>
           <span><b>support@amusement.cafe</b></span>
           <span><b>Website <a href="https://twitter.com/madebynoxc">@madebynoxc</a></b></span>
@@ -51,6 +54,7 @@ export default class Footer extends React.Component {
       bottom: 0;
       color: '#fff';
       margin-top: 1em;
+      margin-bottom: 1em;
     }
 
     .footer .content {
@@ -59,7 +63,7 @@ export default class Footer extends React.Component {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding: 0 10%;
+      padding: 0 5%;
     }
 
       .footer .content .block {

@@ -1,20 +1,19 @@
 import React from 'react'
 import Head from 'next/head'
 import Header from './header'
-import dynamic from 'next/dynamic';
 
 const Layout = props => (
-  <>
+  <React.Fragment>
     <Head>
-      <title>Amusement Club Gacha</title>
+      <title>Amusement Club</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
-      <meta name="description" content="Amusement Club is a global Discord bot for collecting amazing cards from your favourite show or game! Gift a fun game to your Discord community!" />
-      <meta property="og:title" content="Amusement Club: Discord gacha" />
+      <meta name="description" content="Claim and create cards, choose your hero character, craft various effects and trade on auctions." />
+      <meta property="og:title" content="Amusement Club - Discord bot" />
       <meta property="og:type" content="discord bot" />
       <meta property="og:url" content="https://club.amusement.cafe" />
       <meta property="og:image" content="https://amusementclub.nyc3.digitaloceanspaces.com/web/amusement-logo-small.png" />
-      <meta property="og:description" content="Global gacha game for Discord with thousands of cute and fancy cards made by the bot's community." />
+      <meta property="og:description" content="Claim and create cards, choose your hero character, craft various effects and trade on auctions." />
     </Head>
     <style jsx global>{`
       *,
@@ -90,7 +89,7 @@ const Layout = props => (
     <main>
       <div className="container">{props.children}</div>
     </main>
-  </>
+  </React.Fragment>
 )
 
 export default Layout

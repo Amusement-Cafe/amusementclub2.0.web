@@ -105,7 +105,7 @@ const Home = props => {
           All of your cards are persistent across all Discord servers.</h3>
           
           <Button color="secondary" variant="contained" size="large" className={classes.button} startIcon={
-              <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
+              <img style={{height: '30px'}} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-Logo-White.svg"/>
             }>
             <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
               <span className={classes.buttonspan}>Add to Discord</span>
