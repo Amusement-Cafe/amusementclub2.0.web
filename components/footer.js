@@ -21,7 +21,7 @@ export default class Footer extends React.Component {
         <div className="block">
           <span className="title">Get Started</span>
           <ul>
-            <li><a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126016">Invite</a></li>
+            <li><a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot">Invite</a></li>
             <li><a href="https://docs.amusement.cafe/">Documentation</a></li>
             <li><a href="https://discord.gg/kqgAvdX">Bot Discord</a></li>
           </ul>
@@ -32,7 +32,7 @@ export default class Footer extends React.Component {
             <li><a href="https://github.com/Amusement-Cafe/amusementclub2.0">GitHub</a></li>
             <li><a href="https://github.com/Amusement-Cafe">Amusement Cafe</a></li>
             <li><a href="https://github.com/NoxCaos/amusement-club">Legacy Bot</a></li>
-            <li><a href="https://ko-fi.com/noxcaos">Donate</a></li>
+            <li><a href="https://ko-fi.com/amusement">Donate</a></li>
           </ul>
         </div>
         <div className="block">
