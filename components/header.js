@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   appbar: {
-    backgroundColor: '#79F2DF',
+    backgroundColor: '#39bfaa',
     position: 'fixed',
   },
   toolbar: {
