@@ -2,41 +2,26 @@ import React from 'react'
 import Layout from '../components/layout'
 import { makeStyles } from '@material-ui/core/styles'
 import getHost from '../utils/get-host'
+import Footer from '../components/footer'
 
 import { 
   Button,
-  Icon,
-  Avatar
 } from '@material-ui/core'
-import { random } from 'lodash'
 
 const useStyles = makeStyles(theme => ({
   button: {
     display: 'flex',
-    padding: '15px',
-    color: '#fff',
     margin: '50px auto',
     left: 0,
     right: 0,
   },
 
   buttonspan: {
-    fontWeight: 600,
+    fontWeight: 800,
     fontSize: '1.5rem',
     verticalAlign: 'top',
     marginLeft: '20px',
-    background: 'radial-gradient(#eb2196, #0d4acf, #2b9ab5)',
-    backgroundSize: '500% 500%',
-    backgroundClip: 'text',
-    '-webkit-background-clip': 'text',
-    textFillColor: 'transparent',
-    animation: `$shine 60s linear infinite`,
-  },
-
-  '@keyframes shine': {
-    'to': {
-      backgroundPosition: '800% 800%',
-    }
+    color: '#FFF',
   },
 
   avatar: {
@@ -45,10 +30,6 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     height: '100px',
     width: '100px',
-  },
-
-  h2: {
-    color: '#fff',
   },
 
   cardContainer: {
@@ -63,9 +44,47 @@ const useStyles = makeStyles(theme => ({
     width: '30%',
     transition: '0.3s',
     '&:hover': {
-      transform: 'scale(1.1)',
-      transition: '0.3s',
+      transform: 'scale(1.05)',
+      transition: '0.1s',
     }
+  },
+
+  background: {
+    left: 0,
+    right: 0,
+    width: '100%',
+    backgroundImage: 'url("https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/bort_crop-min.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100%',
+  },
+
+  titleContainer: {
+    marginTop: '55%',
+  },
+
+  title: {
+    marginTop: 'auto',
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontSize: '75px',
+    backgroundColor: '#222',
+    padding: '5px',
+  },
+
+  textWithBack: {
+    backgroundColor: '#222',
+    textAlign: 'center',
+    color: '#fff',
+  },
+
+  desc: {
+    margin: 'auto',
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    width: '70%',
+    backgroundColor: '#222',
   }
 
 }))
@@ -76,34 +95,37 @@ const Home = props => {
 
   return (
     <Layout>
-      <div className={classes.cardContainer}>
-        <img src={cards[0].url} className={classes.card}/>
-        <img src={cards[1].url} className={classes.card}/>
-        <img src={cards[2].url} className={classes.card}/>
+      <div className={classes.background}>
+        <div style={{height: '50px'}}></div>
+        <div className={classes.titleContainer}>
+
+          <h1 className={classes.title}>/amusement</h1>
+          <h2 className={classes.textWithBack}>Global card trading bot for Discord</h2>
+          <h3 className={classes.desc}>Claim and create cards, choose your hero character, craft various effects and trade on auctions. 
+          All of your cards are persistent across all Discord servers.</h3>
+          
+          <Button color="secondary" variant="contained" size="large" className={classes.button} startIcon={
+              <img style={{height: '30px'}} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-Logo-White.svg"/>
+            }>
+            <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
+              <span className={classes.buttonspan}>Add to Discord</span>
+            </a>
+          </Button>
+
+          <div style={{height: '20px'}}></div>
+
+          <div className={classes.cardContainer}>
+            <img src={cards[0].url} className={classes.card}/>
+            <img src={cards[1].url} className={classes.card}/>
+            <img src={cards[2].url} className={classes.card}/>
+          </div>
+          
+          <div style={{height: '50px'}}></div>
+
+        </div>
       </div>
 
-      <div style={{height: '50px'}}></div>
-      {
-        Math.random() > 0.5 ? (
-          <Avatar className={classes.avatar} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amethystpfp.jpg"/>
-        ) : (
-          <Avatar className={classes.avatar} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amethyst2.jpg"/>
-        )
-      }
-
-      <h1 style={{'textAlign': 'center'}}>Amusement Club: Global card trading for Discord</h1>
-      <h3 style={{'textAlign': 'center'}}>Choose from thousands of community crafted cards to trade and auction.</h3> 
-      <h3 style={{'textAlign': 'center'}}>All your progress is transferred between Discord servers</h3>
-      
-      <Button color="primary" variant="outlined" className={classes.button} startIcon={
-          <img src="https://amusementclub.nyc3.digitaloceanspaces.com/web/discord_logo.svg"/>
-        }>
-        <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
-          <span className={classes.buttonspan}>Add to Discord</span>
-        </a>
-      </Button>
-
-      <div style={{'height': '500px'}}></div>
+      <Footer/>
     </Layout>
   )
 }

@@ -20,7 +20,7 @@
     "js-cookie": "latest",
     "lodash": "^4.17.19",
     "mongodb": "^3.6.0",
-    "next": "^9.5.1",
+    "next": "^12.1.4",
     "next-cookies": "latest",
     "nprogress": "^0.2.0",
     "react": "^16.13.1",

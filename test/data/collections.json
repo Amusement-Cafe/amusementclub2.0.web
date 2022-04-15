@@ -1,17 +1,127 @@
 [
-    {"id":"blends","name":"Blend S","origin":null,"aliases":["blends"],"promo":false,"compressed":true},
-    {"id":"codegeass","name":"Code Geass","origin":null,"aliases":["codegeass"],"promo":false,"compressed":true},
-    {"id":"darlinginthefranxx","name":"Darling In The FranXX","origin":null,"aliases":["darlinginthefranxx"],"promo":false,"compressed":false},
-    {"id":"special","name":"s p e c i a l","origin":null,"aliases":["special"],"promo":false,"compressed":true,"rarity":0.02},
-    {"id":"gabrieldropout","name":"Gabriel Dropout","origin":null,"aliases":["gabrieldropout"],"compressed":true},
-    {"id":"mahoutsukai","name":"Mahoutsukai","origin":null,"aliases":["mahoutsukai"],"promo":false,"compressed":true},
-    {"id":"gochiusa","name":"Gochiusa","origin":null,"aliases":["gochiusa"],"promo":false,"compressed":true},
-    {"id":"steinsgate","name":"Steins;Gate","origin":null,"aliases":["steinsgate"],"promo":false,"compressed":true},
-    {"id":"luckystar","name":"Luckystar","origin":null,"aliases":["luckystar"],"promo":false,"compressed":true},
-    {"id":"newgame","name":"Newgame","origin":null,"aliases":["newgame"],"promo":false,"compressed":true},
-    {"id":"rezero","name":"RE:Zero","origin":null,"aliases":["rezero"],"promo":false,"compressed":true},
-    {"id":"nonnonbiyori","name":"NonNonBiyori","origin":null,"aliases":["nonnonbiyori"],"promo":false,"compressed":true},
-    {"id":"nichijou","name":"Nichijou","origin":null,"aliases":["nichijou"],"promo":false,"compressed":false},
-    {"id":"kakegurui","name":"Kakegurui","origin":null,"aliases":["kakegurui"],"promo":false,"compressed":true},
-    {"id":"madeinabyss","name":"Made in Abyss","origin":null,"aliases":["madeinabyss"],"promo":false,"compressed":true}
-]
+    {
+      "id": "clannad",
+      "name": "Clannad",
+      "compressed": true
+    },
+    {
+      "id": "danganronpa",
+      "name": "Danganronpa",
+      "compressed": true
+    },
+    {
+      "id": "girlsfrontline",
+      "name": "Girls' Frontline",
+      "compressed": true
+    },
+    {
+      "id": "kimetsunoyaiba",
+      "name": "Kimetsu no Yaiba",
+      "compressed": true
+    },
+    {
+      "id": "loghorizon",
+      "name": "Log Horizon",
+      "compressed": true
+    },
+    {
+      "id": "hetalia",
+      "name": "Hetalia Axis Powers",
+      "compressed": true
+    },
+    {
+      "id": "jojo",
+      "name": "JoJo no Kimyou na Bouken",
+      "compressed": true
+    },
+    {
+      "id": "shieldhero",
+      "name": "The Rising of The Shield Hero",
+      "compressed": true
+    },
+    {
+      "id": "k-on",
+      "name": "K-On!",
+      "compressed": true
+    },
+    {
+      "id": "persona",
+      "name": "Persona Series",
+      "compressed": true
+    },
+    {
+      "id": "kancolle",
+      "name": "Kantai Collection",
+      "compressed": true
+    },
+    {
+      "id": "kakegurui",
+      "name": "Kakegurui",
+      "compressed": true
+    },
+    {
+      "id": "littlewitchacademia",
+      "name": "Little Witch Academia",
+      "compressed": true
+    },
+    {
+      "id": "mahouka",
+      "name": "Mahouka Koukou no Rettousei",
+      "compressed": true
+    },
+    {
+      "id": "blends",
+      "name": "Blend S",
+      "compressed": true
+    },
+    {
+      "id": "mahoutsukai",
+      "name": "Mahoutsukai no Yome",
+      "compressed": true
+    },
+    {
+      "id": "slowstart",
+      "name": "Slow Start",
+      "compressed": true
+    },
+    {
+      "id": "yukiyuna",
+      "name": "Yuki Yuna is a Hero",
+      "compressed": true
+    },
+    {
+      "id": "kingdomhearts",
+      "name": "Kingdom Hearts",
+      "compressed": true
+    },
+    {
+      "id": "housekinokuni",
+      "name": "Houseki no Kuni",
+      "compressed": true
+    },
+    {
+      "id": "genshinimpact",
+      "name": "Genshin Impact",
+      "compressed": false
+    },
+    {
+      "id": "hololive",
+      "name": "Hololive",
+      "compressed": false
+    },
+    {
+      "id": "loveiswar",
+      "name": "Kaguya-sama: Love is War",
+      "compressed": false
+    },
+    {
+      "id": "sailormoon",
+      "name": "Sailor Moon",
+      "compressed": true
+    },
+    {
+      "id": "touhou",
+      "name": "Touhou",
+      "compressed": true
+    }
+  ]

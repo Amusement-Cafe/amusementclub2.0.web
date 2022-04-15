@@ -1,3 +1,4 @@
+import React from 'react'
 import { Divider } from '@material-ui/core' 
 
 export default class Footer extends React.Component {
@@ -9,14 +10,18 @@ export default class Footer extends React.Component {
       <Divider />
       <div className="content">
         <div className="block">
-          <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-LogoWordmark-White.svg"/>
+          <a href="https://discord.com/">
+            <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/discord_logo_2021.svg"/>
+          </a>
           <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amusement-cafe-smalltext.png"/>
           <span><b>support@amusement.cafe</b></span>
+          <span><b>Website <a href="https://twitter.com/madebynoxc">@madebynoxc</a></b></span>
+          <span><b>Bort art by <a href="https://twitter.com/NAMIORII">@NAMIORII</a></b></span>
         </div>
         <div className="block">
           <span className="title">Get Started</span>
           <ul>
-            <li><a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126016">Invite</a></li>
+            <li><a href="https://discord.com/api/oauth2/authorize?client_id=340988108222758934&permissions=0&scope=bot%20applications.commands">Invite</a></li>
             <li><a href="https://docs.amusement.cafe/">Documentation</a></li>
             <li><a href="https://discord.gg/kqgAvdX">Bot Discord</a></li>
           </ul>
@@ -24,9 +29,10 @@ export default class Footer extends React.Component {
         <div className="block">
           <span className="title">Links</span>
           <ul>
-            <li><a href="https://github.com/NoxCaos/amusementclub2.0">GitHub</a></li>
+            <li><a href="https://github.com/Amusement-Cafe/amusementclub2.0">GitHub</a></li>
+            <li><a href="https://github.com/Amusement-Cafe">Amusement Cafe</a></li>
             <li><a href="https://github.com/NoxCaos/amusement-club">Legacy Bot</a></li>
-            <li><a href="https://ko-fi.com/noxcaos">Donate</a></li>
+            <li><a href="https://ko-fi.com/amusement">Donate</a></li>
           </ul>
         </div>
         <div className="block">
@@ -47,16 +53,17 @@ export default class Footer extends React.Component {
       width: 100%;
       bottom: 0;
       color: '#fff';
-      margin-top: 2em;
+      margin-top: 1em;
+      margin-bottom: 1em;
     }
 
     .footer .content {
       display: flex;
-      margin-top: 2em;
+      margin-top: 1em;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding-right: 20%;
+      padding: 0 5%;
     }
 
       .footer .content .block {
