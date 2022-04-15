@@ -21,7 +21,7 @@ export default class Footer extends React.Component {
         <div className="block">
           <span className="title">Get Started</span>
           <ul>
-            <li><a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot">Invite</a></li>
+            <li><a href="https://discord.com/api/oauth2/authorize?client_id=340988108222758934&permissions=0&scope=bot%20applications.commands">Invite</a></li>
             <li><a href="https://docs.amusement.cafe/">Documentation</a></li>
             <li><a href="https://discord.gg/kqgAvdX">Bot Discord</a></li>
           </ul>
