@@ -109,7 +109,7 @@ const Home = props => {
           <Button color="secondary" variant="contained" size="large" className={classes.button} startIcon={
               <img style={{height: '30px'}} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-Logo-White.svg"/>
             }>
-            <a href="https://discordapp.com/oauth2/authorize?client_id=340988108222758934&scope=bot&permissions=126017">
+            <a href="https://discord.com/api/oauth2/authorize?client_id=340988108222758934&permissions=0&scope=bot%20applications.commands">
               <span className={classes.buttonspan}>Add to Discord</span>
             </a>
           </Button>
