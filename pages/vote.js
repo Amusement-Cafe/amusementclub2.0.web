@@ -1,15 +1,12 @@
-import { fade, makeStyles } from '@material-ui/core/styles'
+import { alpha, makeStyles } from '@material-ui/core/styles'
 import fetch from 'isomorphic-unfetch'
 import getHost from '../utils/get-host'
 import { useMediaQuery } from 'react-responsive'
 
 import Layout from '../components/layout'
-import CardDialog from '../components/carddialog'
 import Footer from '../components/footer'
 
 import { 
-  Alert,
-  Snackbar,
   Button,
   GridList,
   GridListTile,
@@ -20,6 +17,37 @@ const useStyles = makeStyles(theme => ({
   grow: {
     display: 'inline-block',
     flexGrow: 1,
+  },
+
+  title: {
+    marginTop: 'auto',
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontSize: '45px',
+    backgroundColor: '#222',
+    padding: '5px',
+  },
+
+  textWithBack: {
+    backgroundColor: '#222',
+    textAlign: 'center',
+    color: '#fff',
+  },
+
+  alert: {
+    display: 'block',
+    textAlign: 'center',
+    padding: '10px',
+    fontWeight: 800,
+  },
+
+  success: {
+    backgroundColor: 'rgb(45, 114, 48)'
+  },
+
+  error: {
+    backgroundColor: 'rgb(167, 35, 35)'
   },
 
   button: {
@@ -40,6 +68,23 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
     borderRadius: '1rem',
     transition: '.25s',
+  },
+
+  cardSmall: {
+    width: '30%',
+    transition: '0.3s',
+    '&:hover': {
+      transform: 'scale(1.05)',
+      transition: '0.1s',
+    }
+  },
+
+  cardContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-between',
+    margin: '0 15%',
   },
 
   cardTitle: {
@@ -72,27 +117,53 @@ const useStyles = makeStyles(theme => ({
     opacity: 1,
     cursor: 'pointer',
     transition: '.25s',
-  }
+  },
+
+  gridTitleRibbon: {
+    marginTop: '20px',
+    backgroundColor: 'rgb(46, 153, 136)',
+  },
 }));
+
+const successMessage = ''
+const errorMessage = 'If this issue persists, please let us know through out support Discord (https://amusement.cafe).'
 
 const Vote = props => {
   const classes = useStyles()
   const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
   const cap = (str) => str.split(' ').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
   const cards = props.cards.filter(x => x)
+  const success = props.status == 'ok'
+  const defaultPage = props.status == 'default'
 
-  return (
-    <Layout>
-      <Snackbar open={open} autoHideDuration={10000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <Alert severity="success" sx={{ width: '100%' }}>
-          This is a success message!
-        </Alert>
-      </Snackbar>
+  console.log(cards)
 
-      <div style={{height: '75px'}}></div>
+  let alert, page;
 
-      <h2>Vote for the next special card!</h2>
-      <span>You can vote once every 12 hours. Vote for any card that you like and it might be added to the bot after voting is over!</span>
+  if (props.message)
+  {
+    const msg = `${props.message}.\n ${success? successMessage : errorMessage}`
+    alert = <div className={`${classes.alert} ${success? classes.success : classes.error}`}>{msg}</div>
+  }
+  
+  if(defaultPage) {
+    page =
+    (<div>
+      <div style={{height: '50px'}}></div>
+      <h1 className={classes.title}>Vote for the next special cards!</h1>
+      <h2 className={classes.textWithBack}>Run /vote in Amusement Club bot to get your special voting link.</h2>
+      <div className={classes.cardContainer}>
+        <img src={cards[0].url} className={classes.cardSmall}/>
+        <img src={cards[1].url} className={classes.cardSmall}/>
+        <img src={cards[2].url} className={classes.cardSmall}/>
+      </div>
+      <div style={{height: '50px'}}></div>
+    </div>)
+  } else {
+    page = 
+    (<div>
+      <h2>{props.results? 'Results for 2023' : 'Vote for the next special cards!'}</h2>
+      <span>{props.results? 'Cards are sorted by the amount of votes.' : 'You can vote once every 12 hours. Vote for any card that you like. Top voted cards will be added to bot once Cinnabar update is out! Please, make sure to generate a special link with /vote from Amusement Club bot because old links will not work!'}</span>
 
       <div style={{height: '25px'}}></div>
       <GridList spacing={25} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
@@ -100,12 +171,15 @@ const Vote = props => {
         <GridListTile key={x.url}>
           <img src={x.url} className={classes.card}/>
           <GridListTileBar
-            //onClick={() => handleClickOpen(x)}
             className={classes.gridTitleBar}
             title={
-              <div className={classes.cardTitle}>{cap(x.name.split('.')[0].replace(/_/g, ' '))}</div>
+              <div className={classes.cardTitle}>
+                {cap(x.name.split('.')[0].replace(/_/g, ' '))}<br/>
+                { props.results? `votes: ${x.votes}` : ``}
+              </div>
             }
             subtitle={
+              props.message? '' :
               <Button color="primary" variant="contained" size="small" className={classes.button}>
                 <a href={`?token=${props.token}&id=${x.id}`}>
                   <span className={classes.buttonspan}>vote</span>
@@ -116,8 +190,17 @@ const Vote = props => {
         </GridListTile>
       ))}
       </GridList>
+    </div>)
+  }
 
-      {/*<CardDialog selectedValue={selectedValue} open={open} onClose={handleClose} />*/}
+  return (
+    <Layout>
+      <div style={{height: '75px'}}></div>
+
+      {alert}
+      
+      {page}
+
       <Footer/>
     </Layout>
   )
