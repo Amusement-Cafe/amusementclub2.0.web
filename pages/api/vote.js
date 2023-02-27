@@ -25,7 +25,7 @@ const handler = async (req, res) => {
 
       const cards = req.specials.map((x, i) => ({
         name: x.name,
-        id: i,
+        id: x.id,
         url: x.url,
         votes: voteResults.find(y => y.vote == i)?.count || 0
       }))

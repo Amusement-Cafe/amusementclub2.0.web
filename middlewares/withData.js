@@ -11,7 +11,7 @@ cards.map(x => {
     x.url = `${baseURL}/cards/${col.id}/${x.level}_${x.name}.${x.animated? 'gif' : (col.compressed? 'jpg' : 'png')}`
 })
 
-specials23 = specials23.map((x, i) => ({
+const specials = specials23.map((x, i) => ({
     id: i,
     name: x,
     url: `${specialsURL}/4_${x}`
@@ -20,7 +20,7 @@ specials23 = specials23.map((x, i) => ({
 const withData = handler => (req, res) => {
     req.cards = cards
     req.collections = collections
-    req.specials = specials23
+    req.specials = specials
     return handler(req, res)
 }
 
