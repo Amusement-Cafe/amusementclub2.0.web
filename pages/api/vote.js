@@ -14,7 +14,7 @@ const handler = async (req, res) => {
     const voteId = json.id
     const now = new Date()
 
-    if(now > endDate)
+    if (now > endDate)
     {
       const response = await fetch(`${process.env.AMUSE_ENDPOINT}/votes`, {
           method: 'get',
@@ -35,7 +35,7 @@ const handler = async (req, res) => {
       return res.status(200).json({ status: 'ok', results: true, message: 'Voting has ended. Thank you for participation', cards })
     }
 
-    if(!token && !voteId)
+    if (!token && !voteId)
     {
       const cards = _.sampleSize(req.specials, 3)
       return res.status(200).json({ status: 'default', cards })
@@ -49,8 +49,13 @@ const handler = async (req, res) => {
 
     console.log(`Request with token ${token} id ${voteId} response ${response.status}`)
 
-    if(response.status == 403) {
+    if (response.status == 403) {
       throw {message: 'Invalid or expired vote token' }
+    }
+
+    if (response.status != 200)
+    {
+      throw {message: response.statusText}
     }
 
     const cards = _.shuffle(req.specials)
