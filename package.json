@@ -12,7 +12,7 @@
   "author": "NoxCaos",
   "license": "ISC",
   "repository": "https://github.com/NoxCaos/amusement-portal",
-  "engines": { "node": "16.x" },
+  "engines": { "node": ">=16.0.0" },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",

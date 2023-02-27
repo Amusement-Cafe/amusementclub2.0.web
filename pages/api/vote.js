@@ -1,5 +1,4 @@
 import withData from '../../middlewares/withData';
-import config from '../../config';
 import _ from "lodash"
 
 import fetch from 'node-fetch'
@@ -17,7 +16,7 @@ const handler = async (req, res) => {
 
     if(now > endDate)
     {
-      const response = await fetch(`${config.amusementEndpoint}/votes`, {
+      const response = await fetch(`${process.env.AMUSE_ENDPOINT}/votes`, {
           method: 'get',
           headers: {'Content-Type': 'application/json'}
       })
@@ -42,7 +41,7 @@ const handler = async (req, res) => {
       return res.status(200).json({ status: 'default', cards })
     }
 
-    const response = await fetch(`${config.amusementEndpoint}/specials`, {
+    const response = await fetch(`${process.env.AMUSE_ENDPOINT}/specials`, {
         method: 'post',
         body: data,
         headers: {'Content-Type': 'application/json'}
