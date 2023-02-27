@@ -126,7 +126,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const successMessage = ''
-const errorMessage = 'If this issue persists, please let us know through out support Discord (https://amusement.cafe).'
+const errorMessage = 'If this issue persists, please let us know through our support Discord (https://amusement.cafe).'
 
 const Vote = props => {
   const classes = useStyles()
