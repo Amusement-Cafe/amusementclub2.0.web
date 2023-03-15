@@ -136,8 +136,6 @@ const Vote = props => {
   const success = props.status == 'ok'
   const defaultPage = props.status == 'default'
 
-  console.log(cards)
-
   let alert, page;
 
   if (props.message)
