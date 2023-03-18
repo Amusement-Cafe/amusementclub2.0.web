@@ -2,15 +2,16 @@ import { alpha, makeStyles } from '@material-ui/core/styles'
 import fetch from 'isomorphic-unfetch'
 import getHost from '../utils/get-host'
 import { useMediaQuery } from 'react-responsive'
+import { useState, useEffect } from 'react'
 
 import Layout from '../components/layout'
 import Footer from '../components/footer'
 
 import { 
   Button,
-  GridList,
-  GridListTile,
-  GridListTileBar,
+  ImageList,
+  ImageListItemBar,
+  ImageListItem,
 } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -130,13 +131,18 @@ const errorMessage = 'If this issue persists, please let us know through our sup
 
 const Vote = props => {
   const classes = useStyles()
-  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
+  const [columns, setColumns] = useState(4);
+  const isDesktop = useMediaQuery({minWidth: 960});
   const cap = (str) => str.split(' ').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
   const cards = props.cards.filter(x => x)
   const success = props.status == 'ok'
   const defaultPage = props.status == 'default'
 
   let alert, page;
+
+  useEffect(() => {
+    setColumns(isDesktop ? 4 : 2);
+  }, [isDesktop]);
 
   if (props.message)
   {
@@ -164,11 +170,11 @@ const Vote = props => {
       <span>{props.results? 'Cards are sorted by the amount of votes.' : 'You can vote once every 12 hours. Vote for any card that you like. Top voted cards will be added to bot once Cinnabar update is out! Please, make sure to generate a special link with /vote from Amusement Club bot because old links will not work!'}</span>
 
       <div style={{height: '25px'}}></div>
-      <GridList spacing={25} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
+      <ImageList gap={25} rowHeight={'auto'} cols={columns}>
       {cards.map((x, i) => (
-        <GridListTile key={x.url}>
+        <ImageListItem key={x.url}>
           <img src={x.url} className={classes.card}/>
-          <GridListTileBar
+          <ImageListItemBar
             className={classes.gridTitleBar}
             title={
               <div className={classes.cardTitle}>
@@ -185,9 +191,9 @@ const Vote = props => {
               </Button>
             }
           />
-        </GridListTile>
+        </ImageListItem>
       ))}
-      </GridList>
+      </ImageList>
     </div>)
   }
 
