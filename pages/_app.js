@@ -1,59 +1,37 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { CacheProvider } from '@emotion/react';
+import theme from '../src/theme';
+import createEmotionCache from '../src/createEmotionCache';
+import { SessionProvider } from "next-auth/react"
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from '../components/theme';
-import Router from 'next/router';
-import NProgress from 'nprogress';
-import '../styles/nprogress.css';
-
-Router.events.on('routeChangeStart', () => NProgress.start()); 
-Router.events.on('routeChangeComplete', () => NProgress.done()); 
-Router.events.on('routeChangeError', () => NProgress.done());
-NProgress.configure({ minimum: 0.5 });
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
-  const { Component, pageProps } = props;
-
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
-
-  const palletType = "dark";
-  const mainPrimaryColor = '#2b9ab5';
-  const mainSecondaryColor = '#eb2196';
-  const darkTheme = createMuiTheme({
-    palette: {
-      type: palletType,
-      primary: {
-        main: mainPrimaryColor
-      },
-      secondary: {
-        main: mainSecondaryColor
-      }
-    }
-  });
+  const { Component, emotionCache = clientSideEmotionCache, pageProps: { session, ...pageProps } } = props;
 
   return (
-    <React.Fragment>
+    <CacheProvider value={emotionCache}>
       <Head>
-        <title>Amusement Club</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={darkTheme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </React.Fragment>
+      <SessionProvider session={session}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </SessionProvider>
+    </CacheProvider>
   );
 }
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
+  emotionCache: PropTypes.object,
   pageProps: PropTypes.object.isRequired,
 };
