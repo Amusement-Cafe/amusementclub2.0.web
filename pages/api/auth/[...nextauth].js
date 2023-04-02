@@ -1,29 +1,38 @@
 import NextAuth from 'next-auth';
 import DiscordProvider from "next-auth/providers/discord";
 
+const scopes = ['identify'].join(' ')
+
 export default NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
+      authorization: {params: {scope: scopes}},
     }),
   ],
   callbacks: {
-    session: async ({ session, token }) => {
-      if (session?.user) {
-        session.user.id = token.uid;
-      }
-      return session;
-    },
-    jwt: async ({ user, token }) => {
+    async jwt({ token, user }) {
+      console.log("JWT")
       if (user) {
-        token.uid = user.id;
+        console.log(token)
+        console.log(user)
+        token.id = user.id
       }
-      return token;
+      return Promise.resolve(token);
+    },
+    async session({ session, token }) {
+      console.log("SESSION")
+      if (session?.user) {
+        console.log(token)
+        session.user.id = token.sub;
+      }
+      console.log(session)
+      return session;
     },
   },
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
 });

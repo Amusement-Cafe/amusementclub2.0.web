@@ -18,12 +18,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import { red, cyan } from '@mui/material/colors';
+import { red, cyan, blueGrey } from '@mui/material/colors';
 import Chart from './Chart';
 import Table from './Table';
 import { Login } from '@mui/icons-material';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { Avatar } from '@mui/material';
+import CardList from './CardList';
 
 function Copyright(props) {
   return (
@@ -87,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme({
   palette: {
     primary: {
-      main: red[300],
+      main: blueGrey[300],
     },
     secondary: {
       main: cyan[500],
@@ -95,14 +96,14 @@ const mdTheme = createTheme({
   },
 });
 
-function DashboardContent() {
+export default function DashboardContent({props}) {
   const [open, setOpen] = React.useState(true);
   const { data: session, status } = useSession()
-  console.log(session)
-  console.log(status)
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  console.log(session)
 
   const handleLogin = () => {
     signIn('discord');
@@ -150,6 +151,7 @@ function DashboardContent() {
             </IconButton>
             {status === "authenticated" ? (
               <IconButton color="inherit" onClick={handleLogout}>
+                <p>{session.user.id}</p>
                 <Avatar alt={session.user.name} src={session.user.image} />
               </IconButton>
             ) : (
@@ -214,14 +216,11 @@ function DashboardContent() {
                 </Paper>
               </Grid>
             </Grid>
+            <CardList cards={props.cards}/>
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
       </Box>
     </ThemeProvider>
   );
-}
-
-export default function Dashboard() {
-  return <DashboardContent />;
 }

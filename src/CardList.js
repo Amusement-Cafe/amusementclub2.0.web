@@ -1,7 +1,6 @@
 import React from 'react'
-import { useMediaQuery } from 'react-responsive'
-
-import CardDialog from './carddialog'
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 import { 
   MenuItem, 
@@ -10,16 +9,14 @@ import {
   InputLabel, 
   InputBase, 
   Select,
-  GridList,
-  GridListTile,
-  GridListTileBar,
+  Grid,
+  Card,
+  CardMedia,
   Container,
 } from '@mui/material';
 
-const CardList = props => {
-    const classes = useStyles()
-    const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 })
-    const cols = props.cols || []
+const CardList = ({cards, cols}) => {
+    //const cols = props.cols || []
   
     const [col, setCol, sort, setSort] = React.useState(false)
     const [open, setOpen] = React.useState(false);
@@ -47,40 +44,65 @@ const CardList = props => {
     }
   
     //const [isHover, setIsHover] = useState(false)
+    // {"name":"nagisas_leisure","level":1,"animated":false,"col":"clannad"}
     const cap = (str) => str.split(' ').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
   
     return (
-      <CardList>
-        <GridList spacing={20} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
-          {props.cards.map((x, i) => (
-            <GridListTile key={x.url} /*onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)*/>
-              <img src={x.url} className={classes.card}/>
-              <GridListTileBar
-                    onClick={() => handleClickOpen(x)}
-                    className={classes.gridTitleBar}
-                    title={cap(x.name.replace(/_/g, ' '))}
-                    subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
-                  />
-              {/*
-                this.state.hover ? (
-                  <GridListTileBar
-                    className={classes.gridTitleBarHover}
-                    title={cap(x.name.replace(/_/g, ' '))}
-                    subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
-                  />
-                ) : (
-                  <GridListTileBar
-                    className={classes.gridTitleBar}
-                    title={cap(x.name.replace(/_/g, ' '))}
-                    subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
-                  />
-                )
-              */}
-            </GridListTile>
-          ))}
-        </GridList>
-        <CardDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
-      </CardList>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+        {cards.map((card) => {
+          return (
+            <Grid item key={card.url} xs={6} sm={4} md={3} lg={2}>
+              <Card>
+                <CardMedia component="img" src={card.url} />
+              </Card>
+            </Grid>
+          );
+        })}
+      </Grid>
+
+      // <ImageList sx={{ height: 1000 }} cols={4} gap={10}>
+      //   {cards.map((item) => (
+      //     <ImageListItem key={item.url}>
+      //       <img
+      //         src={item.url}
+      //         alt={item.name}
+      //         loading="lazy"
+      //       />
+      //     </ImageListItem>
+      //   ))}
+      // </ImageList>
+
+      // <CardList>
+      //   <GridList spacing={20} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
+      //     {props.cards.map((x, i) => (
+      //       <GridListTile key={x.url} /*onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)*/>
+      //         <img src={x.url} className={classes.card}/>
+      //         <GridListTileBar
+      //               onClick={() => handleClickOpen(x)}
+      //               className={classes.gridTitleBar}
+      //               title={cap(x.name.replace(/_/g, ' '))}
+      //               subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+      //             />
+      //         {/*
+      //           this.state.hover ? (
+      //             <GridListTileBar
+      //               className={classes.gridTitleBarHover}
+      //               title={cap(x.name.replace(/_/g, ' '))}
+      //               subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+      //             />
+      //           ) : (
+      //             <GridListTileBar
+      //               className={classes.gridTitleBar}
+      //               title={cap(x.name.replace(/_/g, ' '))}
+      //               subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
+      //             />
+      //           )
+      //         */}
+      //       </GridListTile>
+      //     ))}
+      //   </GridList>
+      //   <CardDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+      // </CardList>
     )
   }
   

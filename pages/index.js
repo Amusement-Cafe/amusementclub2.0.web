@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from './api/auth/[...nextauth]'
 
 import Dashboard from '../src/Dashboard'
+import CardList from '../src/CardList';
 
 // const useStyles = makeStyles(theme => ({
 //   button: {
@@ -93,7 +94,9 @@ const Home = props => {
   // const classes = useStyles();
 
   return (
-    <Dashboard/>
+    <div>
+      <Dashboard props={props}/>
+    </div>
   )
 }
 
@@ -118,9 +121,30 @@ const Home = props => {
 // }
 
 export async function getServerSideProps({ req, res }) {
+  const apiUrl = getHost(req) + '/api/cards'
+  const session = await getServerSession(req, res, authOptions)
+  let response
+  //console.log(session)
+
+  if(session) {
+    session.user.email = null
+    response = await fetch(apiUrl, { userId: session.user.id })
+  }
+  else {
+    response = await fetch(apiUrl)
+  }
+
+  if (!response.ok) {
+    return {}
+  }
+
+  const js = await response.json()
+
   return {
     props: {
-      session: await getServerSession(req, res, authOptions)
+      cards: js.cards,
+      cols: js.cols,
+      session,
     }
   }
 }
