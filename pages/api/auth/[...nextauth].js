@@ -14,21 +14,15 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      console.log("JWT")
       if (user) {
-        console.log(token)
-        console.log(user)
         token.id = user.id
       }
       return Promise.resolve(token);
     },
     async session({ session, token }) {
-      console.log("SESSION")
       if (session?.user) {
-        console.log(token)
         session.user.id = token.sub;
       }
-      console.log(session)
       return session;
     },
   },

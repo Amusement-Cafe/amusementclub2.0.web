@@ -12,7 +12,7 @@ const handler = async (req, res) => {
     return res.status(200).json({ cards, cols })
     
   } catch (error) {
-    const cards = _.sampleSize(req.cards.filter(x => x.level < 4), 32)
+    const cards = _.sampleSize(req.cards.filter(x => x.level < 4), 12)
     return res.status(200).json({ cards, cols: req.collections })
   }
 }

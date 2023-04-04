@@ -3,6 +3,7 @@
 import React from 'react'
 import getHost from '../utils/get-host'
 import { getServerSession } from "next-auth/next"
+import { getToken } from "next-auth/jwt"
 import { authOptions } from './api/auth/[...nextauth]'
 
 import Dashboard from '../src/Dashboard'
@@ -122,13 +123,25 @@ const Home = props => {
 
 export async function getServerSideProps({ req, res }) {
   const apiUrl = getHost(req) + '/api/cards'
-  const session = await getServerSession(req, res, authOptions)
+  
   let response
-  //console.log(session)
+  let session = await getServerSession(req, res, authOptions)
 
   if(session) {
     session.user.email = null
     response = await fetch(apiUrl, { userId: session.user.id })
+
+    const token = await getToken({ req: req})
+
+    if (token && token.sub && session.user) {
+      session = {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.sub
+        }
+      }
+    }
   }
   else {
     response = await fetch(apiUrl)
