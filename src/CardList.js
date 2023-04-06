@@ -46,14 +46,17 @@ const CardList = ({cards, cols}) => {
     //const [isHover, setIsHover] = useState(false)
     // {"name":"nagisas_leisure","level":1,"animated":false,"col":"clannad"}
     const cap = (str) => str.split(' ').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
+
   
     return (
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
         {cards.map((card) => {
+          const col = cols.find(x => x.id == card.col)
+          const url = `https://cdn.amusement.cafe/cards/${card.col}/${card.level}_${card.name}.${card.animated? 'gif' : (col.compressed? 'jpg' : 'png')}`
           return (
             <Grid item key={card.url} xs={6} sm={4} md={3} lg={2}>
               <Card>
-                <CardMedia component="img" src={card.url} />
+                <CardMedia component="img" src={url} />
               </Card>
             </Grid>
           );

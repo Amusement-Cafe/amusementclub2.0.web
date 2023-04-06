@@ -5,6 +5,11 @@ import getHost from '../utils/get-host'
 import { getServerSession } from "next-auth/next"
 import { getToken } from "next-auth/jwt"
 import { authOptions } from './api/auth/[...nextauth]'
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { red, cyan, blueGrey } from '@mui/material/colors';
+
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import Dashboard from '../src/Dashboard'
 import CardList from '../src/CardList';
@@ -90,14 +95,28 @@ import CardList from '../src/CardList';
 
 // }))
 
-const Home = props => {
-  // const cards = props.cards.filter(x => x)
-  // const classes = useStyles();
+const mdTheme = createTheme({
+  palette: {
+    primary: {
+      main: blueGrey[300],
+    },
+    secondary: {
+      main: cyan[500],
+    },
+  },
+});
 
+const Home = props => {
+  
   return (
-    <div>
-      <Dashboard props={props}/>
-    </div>
+    <ThemeProvider theme={mdTheme}>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <Dashboard props={props}>
+          <CardList cards={props.cards} cols={props.cols}/>
+        </Dashboard>
+      </Box>
+    </ThemeProvider>
   )
 }
 
@@ -129,7 +148,6 @@ export async function getServerSideProps({ req, res }) {
 
   if(session) {
     session.user.email = null
-    response = await fetch(apiUrl, { userId: session.user.id })
 
     const token = await getToken({ req: req})
 
@@ -142,6 +160,12 @@ export async function getServerSideProps({ req, res }) {
         }
       }
     }
+
+    response = await fetch(apiUrl, {
+      headers: {
+        Data: JSON.stringify({ userId: session.user.id })
+      },
+    })
   }
   else {
     response = await fetch(apiUrl)

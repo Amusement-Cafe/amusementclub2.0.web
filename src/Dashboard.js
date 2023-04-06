@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import MuiAppBar from '@mui/material/AppBar';
@@ -96,14 +95,13 @@ const mdTheme = createTheme({
   },
 });
 
-export default function DashboardContent({props}) {
+export default function DashboardContent({children}) {
   const [open, setOpen] = React.useState(true);
   const { data: session, status } = useSession()
+  
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
-  console.log(session)
 
   const handleLogin = () => {
     signIn('discord');
@@ -116,7 +114,6 @@ export default function DashboardContent({props}) {
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
@@ -193,10 +190,10 @@ export default function DashboardContent({props}) {
             overflow: 'auto',
           }}
         >
-          <Toolbar />
+          {children}
+          {/* <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   sx={{
@@ -209,16 +206,16 @@ export default function DashboardContent({props}) {
                   <Chart />
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
+
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Table />
                 </Paper>
               </Grid>
             </Grid>
-            <CardList cards={props.cards}/>
+
             <Copyright sx={{ pt: 4 }} />
-          </Container>
+          </Container> */}
         </Box>
       </Box>
     </ThemeProvider>
