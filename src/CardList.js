@@ -1,38 +1,17 @@
 import React from 'react'
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
 
 import { 
-  MenuItem, 
-  Button, 
-  FormControl, 
-  InputLabel, 
-  InputBase, 
-  Select,
   Grid,
   Card,
   CardMedia,
   Container,
+  Box,
+  TextField,
 } from '@mui/material';
 
 const CardList = ({cards, cols}) => {
-    //const cols = props.cols || []
-  
-    const [col, setCol, sort, setSort] = React.useState(false)
-    const [open, setOpen] = React.useState(false);
-    const [selectedValue, setSelectedValue] = React.useState({});
-    
-    React.useEffect(() => {
-      //setSort('date')
-    }, []);
-  
-    const handleColChange = name => event => {
-      setCol(event.target.value)
-    }
-  
-    const handleSortChange = name => event => {
-      setSort(event.target.value)
-    }
+    const [open, setOpen] = React.useState(false)
+    const [selectedValue, setSelectedValue] = React.useState('')
   
     const handleClickOpen = (card) => {
       setOpen(true);
@@ -47,21 +26,22 @@ const CardList = ({cards, cols}) => {
     // {"name":"nagisas_leisure","level":1,"animated":false,"col":"clannad"}
     const cap = (str) => str.split(' ').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
 
-  
     return (
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
-        {cards.map((card) => {
-          const col = cols.find(x => x.id == card.col)
-          const url = `https://cdn.amusement.cafe/cards/${card.col}/${card.level}_${card.name}.${card.animated? 'gif' : (col.compressed? 'jpg' : 'png')}`
-          return (
-            <Grid item key={card.url} xs={6} sm={4} md={3} lg={2}>
-              <Card>
-                <CardMedia component="img" src={url} />
-              </Card>
-            </Grid>
-          );
-        })}
-      </Grid>
+      <Box sx={{ m: 6 }}>
+        <Grid container spacing={{ xs: 2, md: 3 }} sx={{ width: '100%' }} >
+          {cards.map((card) => {
+            const col = cols.find(x => x.id == card.col)
+            const url = `https://cdn.amusement.cafe/${col.promo?'promo':'cards'}/${card.col}/${card.level}_${card.name}.${card.animated? 'gif' : (col.compressed? 'jpg' : 'png')}`
+            return (
+              <Grid item key={card.url} xs={6} sm={4} md={3} lg={2}>
+                <Card>
+                  <CardMedia component="img" src={url} />
+                </Card>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Box>
 
       // <ImageList sx={{ height: 1000 }} cols={4} gap={10}>
       //   {cards.map((item) => (

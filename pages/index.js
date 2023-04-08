@@ -3,6 +3,7 @@
 import React from 'react'
 import getHost from '../utils/get-host'
 import { getServerSession } from "next-auth/next"
+import { useSession } from 'next-auth/react';
 import { getToken } from "next-auth/jwt"
 import { authOptions } from './api/auth/[...nextauth]'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
@@ -13,6 +14,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Dashboard from '../src/Dashboard'
 import CardList from '../src/CardList';
+import CardForm from '../src/CardForm'
 
 // const useStyles = makeStyles(theme => ({
 //   button: {
@@ -108,12 +110,23 @@ const mdTheme = createTheme({
 
 const Home = props => {
   
+  const { data: session } = useSession()
+  const [cards, setCards] = React.useState([])
+  const [collections, setCollections] = React.useState(props.cols)
+
+  const onCardsChanged = (data) => {
+    setCards(data.cards)
+    setCollections(data.cols)
+    console.log(data.cards.length)
+  }
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <Dashboard props={props}>
-          <CardList cards={props.cards} cols={props.cols}/>
+        <Dashboard title='Your Cards'>
+          <CardForm cols={collections} session={session} onCardsChanged={onCardsChanged}/>
+          <CardList cards={cards} cols={collections}/>
         </Dashboard>
       </Box>
     </ThemeProvider>
@@ -141,7 +154,7 @@ const Home = props => {
 // }
 
 export async function getServerSideProps({ req, res }) {
-  const apiUrl = getHost(req) + '/api/cards'
+  const apiUrl = getHost(req) + '/api/collections'
   
   let response
   let session = await getServerSession(req, res, authOptions)
@@ -149,7 +162,7 @@ export async function getServerSideProps({ req, res }) {
   if(session) {
     session.user.email = null
 
-    const token = await getToken({ req: req})
+    const token = await getToken({ req: req })
 
     if (token && token.sub && session.user) {
       session = {
@@ -160,16 +173,9 @@ export async function getServerSideProps({ req, res }) {
         }
       }
     }
+  }
 
-    response = await fetch(apiUrl, {
-      headers: {
-        Data: JSON.stringify({ userId: session.user.id })
-      },
-    })
-  }
-  else {
-    response = await fetch(apiUrl)
-  }
+  response = await fetch(apiUrl)
 
   if (!response.ok) {
     return {}
@@ -179,7 +185,6 @@ export async function getServerSideProps({ req, res }) {
 
   return {
     props: {
-      cards: js.cards,
       cols: js.cols,
       session,
     }

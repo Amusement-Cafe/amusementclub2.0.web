@@ -95,7 +95,7 @@ const mdTheme = createTheme({
   },
 });
 
-export default function DashboardContent({children}) {
+export default function DashboardContent({children, title}) {
   const [open, setOpen] = React.useState(true);
   const { data: session, status } = useSession()
   
@@ -139,7 +139,7 @@ export default function DashboardContent({children}) {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              {title}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={0} color="secondary">
@@ -148,7 +148,6 @@ export default function DashboardContent({children}) {
             </IconButton>
             {status === "authenticated" ? (
               <IconButton color="inherit" onClick={handleLogout}>
-                <p>{session.user.id}</p>
                 <Avatar alt={session.user.name} src={session.user.image} />
               </IconButton>
             ) : (
@@ -188,6 +187,7 @@ export default function DashboardContent({children}) {
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
+            paddingTop: '50px',
           }}
         >
           {children}
