@@ -11,31 +11,14 @@ import {
   TextField,
 } from '@mui/material';
 
-const CardForm = ({cols, session, onCardsChanged}) => {
+const CardForm = ({cols, onQueryChanged}) => {
     const [collection, setCol] = React.useState('')
     const [sort, setSort] = React.useState('obtained-desc')
     const [keywords, setSearchKeywords] = React.useState('')
 
     React.useEffect(() => {
-      fetchCards(collection, keywords, sort);
+      onQueryChanged({collection, keywords, sort});
     }, [collection, keywords, sort]);
-
-    const fetchCards = async (collection, keywords, sort) => {
-      const response = await fetch(`/api/cards?collection=${collection}&keywords=${keywords}`, 
-      {
-        headers: {
-          Data: JSON.stringify({
-            collection,
-            keywords,
-            sort,
-            userId: session.user.id,
-          })
-        },
-      });
-
-      const data = await response.json();
-      onCardsChanged(data);
-    };
   
     const handleColChange = event => {
       setCol(event.target.value)

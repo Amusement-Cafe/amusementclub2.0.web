@@ -11,10 +11,12 @@ import { red, cyan, blueGrey } from '@mui/material/colors';
 
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import Dashboard from '../src/Dashboard'
 import CardList from '../src/CardList';
 import CardForm from '../src/CardForm'
+import { Button } from '@mui/material';
 
 // const useStyles = makeStyles(theme => ({
 //   button: {
@@ -106,6 +108,13 @@ const mdTheme = createTheme({
       main: cyan[500],
     },
   },
+  components: {
+    CardActions: {
+      styleOverrides: {
+        spacing: '5px',
+      }
+    }
+  }
 });
 
 const Home = props => {
@@ -113,20 +122,70 @@ const Home = props => {
   const { data: session } = useSession()
   const [cards, setCards] = React.useState([])
   const [collections, setCollections] = React.useState(props.cols)
+  const [page, setPage] = React.useState(1);
+  const [query, setQuery] = React.useState({});
 
-  const onCardsChanged = (data) => {
-    setCards(data.cards)
-    setCollections(data.cols)
-    console.log(data.cards.length)
+  const onQueryChanged = (newQuery) => {
+    fetchCards(newQuery, 1)
   }
+
+  const fetchCards = async (currentQuery, page) => {
+    const response = await fetch(`/api/cards?collection=${currentQuery.collection}&keywords=${currentQuery.keywords}`, 
+    {
+      headers: {
+        Data: JSON.stringify({
+          collection: currentQuery.collection,
+          keywords: currentQuery.keywords,
+          sort: currentQuery.sort,
+          page,
+          userId: session.user.id,
+        })
+      },
+    });
+
+    const data = await response.json();
+
+    if(page == 1) {
+      setCards(data.cards)
+    }
+    else {
+      setCards([...cards, ...data.cards])
+    }
+
+    console.log(data.cards.length)
+    setQuery(currentQuery)
+    setPage(page)
+  };
+
+  // const trigger = useScrollTrigger();
+
+  // React.useEffect(() => {
+  //   const handleScroll = event => {
+  //     console.log('scroll!')
+  //     const windowHeight = window.innerHeight;
+  //     const scrollTop = document.documentElement.scrollTop;
+  //     const fullHeight = document.documentElement.offsetHeight;
+  
+  //     if (windowHeight + scrollTop >= fullHeight) {
+  //       //onScrollToBottom();
+  //       console.log('bottom!')
+  //     }
+  //   }
+
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);    
 
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Dashboard title='Your Cards'>
-          <CardForm cols={collections} session={session} onCardsChanged={onCardsChanged}/>
+          <CardForm cols={collections} onQueryChanged={onQueryChanged}/>
           <CardList cards={cards} cols={collections}/>
+          <Box textAlign='center'>
+            <Button onClick={() => fetchCards(query, page + 1)} variant="contained">Load more</Button>
+          </Box>
         </Dashboard>
       </Box>
     </ThemeProvider>
