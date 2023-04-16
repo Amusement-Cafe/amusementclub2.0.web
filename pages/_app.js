@@ -4,14 +4,24 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
-import theme from '../src/theme';
-import createEmotionCache from '../src/createEmotionCache';
+import createEmotionCache from 'createEmotionCache';
 import { SessionProvider } from "next-auth/react"
+import { MaterialUIControllerProvider } from "context";
+import Sidenav from 'Sidenav';
+import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
+import brandWhite from "assets/images/logo-ct.png";
+import brandDark from "assets/images/logo-ct-dark.png";
+import routes from 'routes';
+
+// Material Dashboard 2 React themes
+import theme from "assets/theme";
+import themeDark from "assets/theme-dark";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
+  const darkMode = true
   const { Component, emotionCache = clientSideEmotionCache, pageProps: { session, ...pageProps } } = props;
 
   return (
@@ -20,11 +30,21 @@ export default function MyApp(props) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <SessionProvider session={session}>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <MaterialUIControllerProvider>
+          <ThemeProvider theme={darkMode? themeDark : theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Sidenav
+              color="primary"
+              brand={'brandDark'}
+              brandName="Amusement Cafe"
+              routes={routes}
+              //onMouseEnter={handleOnMouseEnter}
+              //onMouseLeave={handleOnMouseLeave}
+            />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </MaterialUIControllerProvider>
       </SessionProvider>
     </CacheProvider>
   );

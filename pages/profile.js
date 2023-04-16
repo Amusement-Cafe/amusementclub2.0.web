@@ -1,92 +1,245 @@
-import React from 'react'
-import Router from 'next/router'
-import fetch from 'isomorphic-unfetch'
-import nextCookie from 'next-cookies'
-import Layout from '../components/layout'
-import { withAuthSync } from '../utils/auth'
+/**
+=========================================================
+* Material Dashboard 2 React - v2.1.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard-react
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
+import { useSession } from 'next-auth/react';
+import { getServerSession } from "next-auth/next"
+import { authOptions } from './api/auth/[...nextauth]'
+import { getToken } from "next-auth/jwt"
+
+// @mui material components
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+
+// @mui icons
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+
+// Material Dashboard 2 React components
+import MDBox from "components/MDBox";
+import MDTypography from "components/MDTypography";
+
+// Material Dashboard 2 React example components
+import DashboardLayout from "LayoutContainers/DashboardLayout";
+import DashboardNavbar from "Navbars/DashboardNavbar";
+import Footer from "Footer";
+import ProfileInfoCard from "Cards/InfoCards/ProfileInfoCard";
+import ProfilesList from "Lists/ProfilesList";
+import AchievementList from 'Lists/AchievementList';
+import DefaultProjectCard from "Cards/ProjectCards/DefaultProjectCard";
+
+// Overview page components
+import Header from "layouts/profile/components/Header";
+import PlatformSettings from "layouts/profile/components/PlatformSettings";
+import HeroCard from 'Cards/HeroCard';
+
+// Data
+import profilesListData from "layouts/profile/data/profilesListData";
+
 import getHost from '../utils/get-host'
-import cookie from 'js-cookie'
-import CardView from '../components/cardview'
 
-import { 
-  GridList,
-  GridListTile,
-  Avatar
-} from '@material-ui/core';
+// Images
+import homeDecor1 from "assets/images/home-decor-1.jpg";
+import homeDecor2 from "assets/images/home-decor-2.jpg";
+import homeDecor3 from "assets/images/home-decor-3.jpg";
+import homeDecor4 from "assets/images/home-decor-4.jpeg";
+import team1 from "assets/images/team-1.jpg";
+import team2 from "assets/images/team-2.jpg";
+import team3 from "assets/images/team-3.jpg";
+import team4 from "assets/images/team-4.jpg";
+import { Circle } from '@mui/icons-material';
 
-const Profile = props => {
-  const { username, id, cards, avatar, discriminator } = props.user
-
-  if(props.token) {
-    cookie.set('token', props.token, { expires: 1 })
-    cookie.set('username', username, { expires: 1 })
-    cookie.set('avatar', avatar, { expires: 1 })
-  }
+function Overview({user, hero}) {
+  const { data: session } = useSession();
+  const { xp, joined, cloutedcols, roles, achievements } = user;
+  console.log(session.user)
 
   return (
-    <Layout>
-      <Avatar alt={username} src={avatar} />
-      <h1>{username}#{discriminator}</h1>
-      <p className="lead">{id}</p>
-
-      <CardView cards={cards} />
-      <GridList spacing={10} cellHeight={'auto'} cols={4}>
-        {cards.map((x, i) => (
-          <GridListTile key={x.url}>
-            <img src={x.url} className='card'/>
-          </GridListTile>
-        ))}
-      </GridList>
-
-      <style jsx>{`
-        h1 {
-          margin-bottom: 0;
-        }
-
-        .lead {
-          margin-top: 0;
-          font-size: 1.5rem;
-          font-weight: 300;
-          color: #666;
-        }
-
-        p {
-          color: #6a737d;
-        }
-      `}</style>
-    </Layout>
-  )
+    <DashboardLayout>
+      <DashboardNavbar />
+      <MDBox mb={2} />
+      <Header>
+        <MDBox mt={5} mb={3}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} md={6} xl={4} sx={{ display: "flex" }}>
+              <ProfileInfoCard
+                info={{
+                  level: xp,
+                  InGameSince: joined,
+                  OverallClout: cloutedcols.length,
+                }}
+                roles={roles.map(role => ({ 
+                  name: role,
+                  color: "primary",
+                  icon: <Circle/> 
+                }))}
+                shadow={true}
+              />
+            </Grid>
+            <Grid item xs={12} md={6} xl={4}>
+              <HeroCard hero={hero} shadow={true}/>
+            </Grid>
+            <Grid item xs={12} xl={4}>
+              <AchievementList title="Achievements" achievementIds={achievements.reverse()} shadow={true} />
+            </Grid>
+          </Grid>
+        </MDBox>
+        <MDBox pt={2} px={2} lineHeight={1.25}>
+          <MDTypography variant="h6" fontWeight="medium">
+            Favourite Cards
+          </MDTypography>
+          <MDBox mb={1}>
+            <MDTypography variant="button" color="text">
+              Architects design houses
+            </MDTypography>
+          </MDBox>
+        </MDBox>
+        <MDBox p={2}>
+          <MDTypography variant="h6" fontWeight="medium">
+            Completed Collections
+          </MDTypography>
+          <Grid container spacing={6}>
+            <Grid item xs={12} md={6} xl={3}>
+              <DefaultProjectCard
+                image={homeDecor1}
+                label="project #2"
+                title="modern"
+                description="As Uber works through a huge amount of internal management turmoil."
+                action={{
+                  type: "internal",
+                  route: "/pages/profile/profile-overview",
+                  color: "info",
+                  label: "view project",
+                }}
+                authors={[
+                  { image: team1, name: "Elena Morison" },
+                  { image: team2, name: "Ryan Milly" },
+                  { image: team3, name: "Nick Daniel" },
+                  { image: team4, name: "Peterson" },
+                ]}
+              />
+            </Grid>
+            <Grid item xs={12} md={6} xl={3}>
+              <DefaultProjectCard
+                image={homeDecor2}
+                label="project #1"
+                title="scandinavian"
+                description="Music is something that everyone has their own specific opinion about."
+                action={{
+                  type: "internal",
+                  route: "/pages/profile/profile-overview",
+                  color: "info",
+                  label: "view project",
+                }}
+                authors={[
+                  { image: team3, name: "Nick Daniel" },
+                  { image: team4, name: "Peterson" },
+                  { image: team1, name: "Elena Morison" },
+                  { image: team2, name: "Ryan Milly" },
+                ]}
+              />
+            </Grid>
+            <Grid item xs={12} md={6} xl={3}>
+              <DefaultProjectCard
+                image={homeDecor3}
+                label="project #3"
+                title="minimalist"
+                description="Different people have different taste, and various types of music."
+                action={{
+                  type: "internal",
+                  route: "/pages/profile/profile-overview",
+                  color: "info",
+                  label: "view project",
+                }}
+                authors={[
+                  { image: team4, name: "Peterson" },
+                  { image: team3, name: "Nick Daniel" },
+                  { image: team2, name: "Ryan Milly" },
+                  { image: team1, name: "Elena Morison" },
+                ]}
+              />
+            </Grid>
+            <Grid item xs={12} md={6} xl={3}>
+              <DefaultProjectCard
+                image={homeDecor4}
+                label="project #4"
+                title="gothic"
+                description="Why would anyone pick blue over pink? Pink is obviously a better color."
+                action={{
+                  type: "internal",
+                  route: "/pages/profile/profile-overview",
+                  color: "info",
+                  label: "view project",
+                }}
+                authors={[
+                  { image: team4, name: "Peterson" },
+                  { image: team3, name: "Nick Daniel" },
+                  { image: team2, name: "Ryan Milly" },
+                  { image: team1, name: "Elena Morison" },
+                ]}
+              />
+            </Grid>
+          </Grid>
+        </MDBox>
+      </Header>
+      <Footer />
+    </DashboardLayout>
+  );
 }
 
-Profile.getInitialProps = async ctx => {
-  const token = ctx.query.token || nextCookie(ctx).token
-  const apiUrl = getHost(ctx.req) + '/api/profile'
-  //const apiUrl = 'http://noxcaos.ddns.net:3000/api/profile'
+export async function getServerSideProps({ req, res }) {
+  let session = await getServerSession(req, res, authOptions)
 
-  const redirectOnError = () =>
-    typeof window !== 'undefined'
-      ? Router.push('/api/login')
-      : ctx.res.writeHead(302, { Location: '/api/login' }).end()
+  if(session) {
+    session.user.email = null
 
-  try {
-    const response = await fetch(apiUrl, {
-      credentials: 'include',
-      headers: {
-        Authorization: JSON.stringify({ token }),
-      },
-    })
+    const token = await getToken({ req: req })
 
-    if (response.ok) {
+    if (token && token.sub && session.user) {
+      session = {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.sub
+        }
+      }
+
+      const apiUrl = getHost(req) + '/api/users'
+      const response = await fetch(`${apiUrl}?id=${token.sub}`)
+
+      if (!response.ok) {
+        return {}
+      }
+
       const js = await response.json()
-      return js
-    } else {
-      console.error(error)
-      //return await redirectOnError()
+
+      return {
+        props: {
+          session,
+          user: js.user,
+          hero: js.hero,
+        }
+      }
     }
-  } catch (error) {
-    console.error(error)
-    //return redirectOnError()
+  }
+
+  return {
+    props: {
+      session,
+    }
   }
 }
 
-export default withAuthSync(Profile)
+export default Overview;

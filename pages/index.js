@@ -99,24 +99,6 @@ import { Button } from '@mui/material';
 
 // }))
 
-const mdTheme = createTheme({
-  palette: {
-    primary: {
-      main: blueGrey[300],
-    },
-    secondary: {
-      main: cyan[500],
-    },
-  },
-  components: {
-    CardActions: {
-      styleOverrides: {
-        spacing: '5px',
-      }
-    }
-  }
-});
-
 const Home = props => {
   
   const { data: session } = useSession()
@@ -177,7 +159,6 @@ const Home = props => {
   // }, []);    
 
   return (
-    <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Dashboard title='Your Cards'>
@@ -188,7 +169,6 @@ const Home = props => {
           </Box>
         </Dashboard>
       </Box>
-    </ThemeProvider>
   )
 }
 

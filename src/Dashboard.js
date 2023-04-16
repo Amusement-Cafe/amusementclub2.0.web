@@ -112,9 +112,8 @@ export default function DashboardContent({children, title}) {
   };
 
   return (
-    <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
-        <AppBar position="absolute" open={open}>
+        {/* <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -176,7 +175,7 @@ export default function DashboardContent({children, title}) {
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
           </List>
-        </Drawer>
+        </Drawer> */}
         <Box
           component="main"
           sx={{
@@ -218,6 +217,5 @@ export default function DashboardContent({children, title}) {
           </Container> */}
         </Box>
       </Box>
-    </ThemeProvider>
   );
 }

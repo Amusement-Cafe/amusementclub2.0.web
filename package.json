@@ -1,7 +1,7 @@
 {
-  "name": "amusement-portal",
-  "version": "1.1.0",
-  "description": "Website for amusement club gacha",
+  "name": "amusementclub2.0.web",
+  "version": "2.0.0",
+  "description": "Website and dahshboard for Amusement Club 2.0",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -9,9 +9,9 @@
     "start": "next start"
   },
   "keywords": [],
-  "author": "NoxCaos",
+  "author": "madebynoxc",
   "license": "ISC",
-  "repository": "https://github.com/NoxCaos/amusement-portal",
+  "repository": "https://github.com/madebynoxc/amusementclub2.0.web",
   "dependencies": {
     "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.6",
@@ -19,13 +19,20 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
+    "chart.js": "4.1.1",
+    "chroma-js": "2.4.2",
     "lodash": "^4.17.21",
     "mongodb": "^5.1.0",
     "next": "^13.2.4",
     "next-auth": "^4.20.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "recharts": "^2.5.0"
+    "react-table": "^7.8.0",
+    "recharts": "^2.5.0",
+    "stylis": "4.0.13",
+    "web-vitals": "2.1.4",
+    "yup": "0.32.11"
   }
 }
