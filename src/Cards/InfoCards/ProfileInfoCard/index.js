@@ -103,16 +103,4 @@ ProfileInfoCard.defaultProps = {
   shadow: true,
 };
 
-// Typechecking props for the ProfileInfoCard
-ProfileInfoCard.propTypes = {
-  description: PropTypes.string.isRequired,
-  info: PropTypes.objectOf(PropTypes.string).isRequired,
-  social: PropTypes.arrayOf(PropTypes.object).isRequired,
-  action: PropTypes.shape({
-    route: PropTypes.string.isRequired,
-    tooltip: PropTypes.string.isRequired,
-  }).isRequired,
-  shadow: PropTypes.bool,
-};
-
 export default ProfileInfoCard;

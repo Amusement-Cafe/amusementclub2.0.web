@@ -25,11 +25,9 @@ import Grid from "@mui/material/Grid";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Icon from "@mui/material/Icon";
 
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import StyleIcon from '@mui/icons-material/Style';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ViewListIcon from '@mui/icons-material/ViewList';
 
 // Material Dashboard 2 React components

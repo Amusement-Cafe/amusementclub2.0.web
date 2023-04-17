@@ -20,6 +20,7 @@ import { getToken } from "next-auth/jwt"
 
 // @mui material components
 import Grid from "@mui/material/Grid";
+import CardList from 'CardList';
 import Divider from "@mui/material/Divider";
 
 // @mui icons
@@ -61,7 +62,7 @@ import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
 import { Circle } from '@mui/icons-material';
 
-function Overview({user, hero}) {
+function Overview({user, hero, favCards, clout}) {
   const { data: session } = useSession();
   const { xp, joined, cloutedcols, roles, achievements } = user;
   console.log(session.user)
@@ -92,107 +93,41 @@ function Overview({user, hero}) {
               <HeroCard hero={hero} shadow={true}/>
             </Grid>
             <Grid item xs={12} xl={4}>
-              <AchievementList title="Achievements" achievementIds={achievements.reverse()} shadow={true} />
+              <AchievementList title="Achievements" achievementIds={achievements} shadow={true} />
             </Grid>
           </Grid>
         </MDBox>
-        <MDBox pt={2} px={2} lineHeight={1.25}>
+        <MDBox p={2}>
           <MDTypography variant="h6" fontWeight="medium">
             Favourite Cards
           </MDTypography>
-          <MDBox mb={1}>
-            <MDTypography variant="button" color="text">
-              Architects design houses
-            </MDTypography>
-          </MDBox>
+          <CardList cards={favCards} />
         </MDBox>
+        {cloutedcols.length > 0 && 
         <MDBox p={2}>
           <MDTypography variant="h6" fontWeight="medium">
             Completed Collections
           </MDTypography>
           <Grid container spacing={6}>
+            {clout.map((col) => (
             <Grid item xs={12} md={6} xl={3}>
               <DefaultProjectCard
                 image={homeDecor1}
-                label="project #2"
-                title="modern"
-                description="As Uber works through a huge amount of internal management turmoil."
+                label={col.amount}
+                title={col.name}
+                description={`Added ${col.dateAdded}`}
                 action={{
                   type: "internal",
-                  route: "/pages/profile/profile-overview",
+                  route: "/cards?collection=" + col.id,
                   color: "info",
-                  label: "view project",
+                  label: "view collection cards",
                 }}
-                authors={[
-                  { image: team1, name: "Elena Morison" },
-                  { image: team2, name: "Ryan Milly" },
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team4, name: "Peterson" },
-                ]}
               />
             </Grid>
-            <Grid item xs={12} md={6} xl={3}>
-              <DefaultProjectCard
-                image={homeDecor2}
-                label="project #1"
-                title="scandinavian"
-                description="Music is something that everyone has their own specific opinion about."
-                action={{
-                  type: "internal",
-                  route: "/pages/profile/profile-overview",
-                  color: "info",
-                  label: "view project",
-                }}
-                authors={[
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team4, name: "Peterson" },
-                  { image: team1, name: "Elena Morison" },
-                  { image: team2, name: "Ryan Milly" },
-                ]}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} xl={3}>
-              <DefaultProjectCard
-                image={homeDecor3}
-                label="project #3"
-                title="minimalist"
-                description="Different people have different taste, and various types of music."
-                action={{
-                  type: "internal",
-                  route: "/pages/profile/profile-overview",
-                  color: "info",
-                  label: "view project",
-                }}
-                authors={[
-                  { image: team4, name: "Peterson" },
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team2, name: "Ryan Milly" },
-                  { image: team1, name: "Elena Morison" },
-                ]}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} xl={3}>
-              <DefaultProjectCard
-                image={homeDecor4}
-                label="project #4"
-                title="gothic"
-                description="Why would anyone pick blue over pink? Pink is obviously a better color."
-                action={{
-                  type: "internal",
-                  route: "/pages/profile/profile-overview",
-                  color: "info",
-                  label: "view project",
-                }}
-                authors={[
-                  { image: team4, name: "Peterson" },
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team2, name: "Ryan Milly" },
-                  { image: team1, name: "Elena Morison" },
-                ]}
-              />
-            </Grid>
+            ))}
           </Grid>
         </MDBox>
+        }
       </Header>
       <Footer />
     </DashboardLayout>
@@ -228,8 +163,7 @@ export async function getServerSideProps({ req, res }) {
       return {
         props: {
           session,
-          user: js.user,
-          hero: js.hero,
+          ...js
         }
       }
     }

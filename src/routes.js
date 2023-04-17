@@ -55,6 +55,7 @@ import PeopleIcon from '@mui/icons-material/People';
 const routes = [
   {
     type: "title",
+    key: "loginTitle",
     title: "Logged in as ...",
   },
   {
@@ -98,6 +99,7 @@ const routes = [
   },
   {
     type: "title",
+    key: "globalTitle",
     title: "Global",
   },
   {

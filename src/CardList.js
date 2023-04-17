@@ -13,9 +13,11 @@ import {
   IconButton,
 } from '@mui/material';
 
+import MDTypography from "components/MDTypography";
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const CardList = ({cards, cols}) => {
+const CardList = ({cards}) => {
     const [open, setOpen] = React.useState(false)
     const [selectedValue, setSelectedValue] = React.useState('')
   
@@ -35,20 +37,17 @@ const CardList = ({cards, cols}) => {
     return (
       <Box sx={{ m: 6 }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 2, md: 4, lg: 6 }}>
-          {cards.map((card) => {
-            const col = cols.find(x => x.id == card.col)
-            const url = `https://cdn.amusement.cafe/${col.promo?'promo':'cards'}/${card.col}/${card.level}_${card.name}.${card.animated? 'gif' : (col.compressed? 'jpg' : 'png')}`
-            return (
-              <Grid item key={url} xs={1} sm={1} md={1} lg={1}>
+          {cards.map((card) => (
+              <Grid item key={card.url} xs={1} sm={1} md={1} lg={1}>
                 <Card sx={{transition: "transform 0.15s ease-in-out", "&:hover": { transform: "scale3d(1.05, 1.05, 1)" }, cursor: 'pointer'}}>
-                  <CardMedia component="img" src={url} />
+                  <CardMedia component="img" src={card.url} />
                   <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
                       {cap(card.name)}
                     </Typography>
-                    <Typography variant="body2" color="text.primary">
-                      {col.name}
-                    </Typography>
+                    <MDTypography variant="button" fontWeight="regular" color="text">
+                      {card.colName}
+                    </MDTypography>
                   </CardContent>
                   <CardActions>
                     {card.fav && 
@@ -56,71 +55,21 @@ const CardList = ({cards, cols}) => {
                         <FavoriteIcon />
                       </IconButton>
                     }
+                    {card.amount && 
                     <Typography variant="body3" color="text.secondary">
                       x{card.amount}
                     </Typography>
-                    <IconButton aria-label="share">
+                    }
+                    {/* <IconButton aria-label="share">
                       
-                    </IconButton>
-                    {/* <ExpandMore
-                      expand={expanded}
-                      onClick={handleExpandClick}
-                      aria-expanded={expanded}
-                      aria-label="show more"
-                    >
-                      <ExpandMoreIcon />
-                    </ExpandMore>*/}
+                    </IconButton> */}
                   </CardActions> 
                 </Card>
               </Grid>
-            );
-          })}
+            )
+          )}
         </Grid>
       </Box>
-
-      // <ImageList sx={{ height: 1000 }} cols={4} gap={10}>
-      //   {cards.map((item) => (
-      //     <ImageListItem key={item.url}>
-      //       <img
-      //         src={item.url}
-      //         alt={item.name}
-      //         loading="lazy"
-      //       />
-      //     </ImageListItem>
-      //   ))}
-      // </ImageList>
-
-      // <CardList>
-      //   <GridList spacing={20} cellHeight={'auto'} cols={isTabletOrMobile? 2 : 4}>
-      //     {props.cards.map((x, i) => (
-      //       <GridListTile key={x.url} /*onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)*/>
-      //         <img src={x.url} className={classes.card}/>
-      //         <GridListTileBar
-      //               onClick={() => handleClickOpen(x)}
-      //               className={classes.gridTitleBar}
-      //               title={cap(x.name.replace(/_/g, ' '))}
-      //               subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
-      //             />
-      //         {/*
-      //           this.state.hover ? (
-      //             <GridListTileBar
-      //               className={classes.gridTitleBarHover}
-      //               title={cap(x.name.replace(/_/g, ' '))}
-      //               subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
-      //             />
-      //           ) : (
-      //             <GridListTileBar
-      //               className={classes.gridTitleBar}
-      //               title={cap(x.name.replace(/_/g, ' '))}
-      //               subtitle={<span>from <b>{props.cols.find(y => y.id === x.col).name}</b></span>}
-      //             />
-      //           )
-      //         */}
-      //       </GridListTile>
-      //     ))}
-      //   </GridList>
-      //   <CardDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
-      // </CardList>
     )
   }
   

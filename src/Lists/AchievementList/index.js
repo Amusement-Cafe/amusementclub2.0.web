@@ -56,11 +56,4 @@ AchievementList.defaultProps = {
   shadow: true,
 };
 
-// Typechecking props for the AchievementList
-AchievementList.propTypes = {
-  title: PropTypes.string.isRequired,
-  achievements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  shadow: PropTypes.bool,
-};
-
 export default AchievementList;
