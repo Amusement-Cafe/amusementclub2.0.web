@@ -6,28 +6,35 @@ import _ from "lodash"
 const escapeRegex = (string) => string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
 
 const handler = async (req, res) => {
+  const pageAmount = 50 // 50 cards per page
   const { collection, keywords } = req.query;
   const json = await req.headers.data
   const data = JSON.parse(json)
 
   //try {
-    // const ids = data.ids.split(',').map(x => parseInt(x))
-
+    let cards = []
     const sortType = data.sort.split('-')
     const sort = {obtained: -1}
     sort[sortType[0]] = sortType[1] == 'desc'? -1 : 1
 
-    const usercards = await req.db.collection('usercards')
-      .find({userid: data.userId}, { _id:0, userid:0 })
-      .sort(sort)
-      .toArray()
+    if (data.useWishlist) {
+      const user = await req.db.collection('users')
+        .findOne({discord_id: data.userId}, { projection: { _id:0, wishlist:1 }})
 
-    console.log(data.page)
+      console.log(user)
 
-    const pageAmount = 50 
-    let cards = usercards
-      .map(x => ({...x, ...req.cards[x.cardid]}))
-      .filter(x => x.col)
+      cards = user.wishlist.map(x => (req.cards[x]))
+    }
+    else {
+      const usercards = await req.db.collection('usercards')
+        .find({userid: data.userId}, { projection: { _id:0, userid:0 }})
+        .sort(sort)
+        .toArray()
+      
+      cards = usercards
+        .map(x => ({...x, ...req.cards[x.cardid]}))
+        .filter(x => x.col)
+    }
 
     if (keywords && keywords.length >= 3) {
       cards = cards.filter(c => (new RegExp(`(_|^)${keywords.split(' ').map(k => escapeRegex(k)).join('.*')}`, 'gi')).test(c.name))

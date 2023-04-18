@@ -38,10 +38,14 @@ import MDAvatar from "components/MDAvatar";
 // Material Dashboard 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-function Header({ children }) {
+function Header({ children, onTabChange }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
   const { data: session } = useSession()
+
+  useEffect(() => {
+    onTabChange(tabValue)
+  }, [onTabChange, tabValue])
 
   useEffect(() => {
     // A function that sets the orientation state of the tabs.

@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { useSession } from 'next-auth/react';
-
 import { 
   MenuItem, 
   FormControl, 
@@ -10,6 +8,10 @@ import {
   Box,
   TextField,
 } from '@mui/material';
+
+import MDBox from "components/MDBox";
+import MDInput from 'components/MDInput';
+import MDTypography from "components/MDTypography";
 
 const CardForm = ({cols, onQueryChanged}) => {
     const [collection, setCol] = React.useState('')
@@ -33,16 +35,19 @@ const CardForm = ({cols, onQueryChanged}) => {
     }
 
     return (
-      <Box sx={{ m: 3 }}>
+      <MDBox sx={{ alignItems: 'stretch' }}>
+        <MDBox m={2}/>
           <form>
-            <TextField
-                sx={{ m: 2 }}
+            <MDInput
+                sx={{ m: 2, minWidth: '250px' }}
                 label="Keywords and tags"
                 value={keywords}
                 onChange={handleSearchChange}
             />
-            <FormControl sx={{ m: 2, minWidth: '200px' }}>
-              <InputLabel id="collection-select-label">Collection</InputLabel>
+            <FormControl sx={{ m: 2, minWidth: '250px' }}>
+              <InputLabel id="collection-select-label">
+                <MDTypography variant="text">Collection</MDTypography>
+              </InputLabel>
               <Select
                 labelId="collection-select-label"
                 id="collection-select"
@@ -53,8 +58,10 @@ const CardForm = ({cols, onQueryChanged}) => {
                 {cols.sort((a, b) => a.id.localeCompare(b.id)).map(col => (<MenuItem value={col.id}>{col.name}</MenuItem>))}
               </Select>
             </FormControl>
-            <FormControl sx={{ m: 2, minWidth: '200px' }}>
-              <InputLabel id="sort-label">Sort by</InputLabel>
+            <FormControl sx={{ m: 2, minWidth: '250px' }}>
+              <InputLabel id="sort-label">
+                <MDTypography variant="text">Sort by</MDTypography>
+              </InputLabel>
               <Select
                 labelId="sort-label"
                 id="sort"
@@ -77,7 +84,8 @@ const CardForm = ({cols, onQueryChanged}) => {
               </Select>
             </FormControl>
           </form>
-      </Box>
+          <MDBox m={2}/>
+      </MDBox>
     )
   }
   

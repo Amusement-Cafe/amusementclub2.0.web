@@ -14,7 +14,7 @@ const handler = async (req, res) => {
     const favCardIds = await req.db.collection('usercards')
       .find({userid: id}, { _id:0, userid:0 })
       .sort({rating: -1})
-      .limit(6)
+      .limit(5)
       .toArray()
 
     const favCards = favCardIds.map(x => req.cards[x.cardid])

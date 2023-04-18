@@ -14,7 +14,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import Dashboard from '../src/Dashboard'
-import CardList from '../src/CardList';
+import CardList from 'Lists/CardList';
 import CardForm from '../src/CardForm'
 import { Button } from '@mui/material';
 

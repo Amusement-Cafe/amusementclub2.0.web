@@ -13,6 +13,8 @@ import {
   IconButton,
 } from '@mui/material';
 
+import MDBox from "components/MDBox";
+import MDButton from 'components/MDButton';
 import MDTypography from "components/MDTypography";
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -35,8 +37,8 @@ const CardList = ({cards}) => {
     const cap = (str) => str.split('_').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
 
     return (
-      <Box sx={{ m: 6 }}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 2, md: 4, lg: 6 }}>
+      <MDBox>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 2, md: 4, lg: 5 }}>
           {cards.map((card) => (
               <Grid item key={card.url} xs={1} sm={1} md={1} lg={1}>
                 <Card sx={{transition: "transform 0.15s ease-in-out", "&:hover": { transform: "scale3d(1.05, 1.05, 1)" }, cursor: 'pointer'}}>
@@ -49,7 +51,7 @@ const CardList = ({cards}) => {
                       {card.colName}
                     </MDTypography>
                   </CardContent>
-                  <CardActions>
+                  {/* <CardActions>
                     {card.fav && 
                       <IconButton aria-label="is favorited">
                         <FavoriteIcon />
@@ -60,16 +62,13 @@ const CardList = ({cards}) => {
                       x{card.amount}
                     </Typography>
                     }
-                    {/* <IconButton aria-label="share">
-                      
-                    </IconButton> */}
-                  </CardActions> 
+                  </CardActions>  */}
                 </Card>
               </Grid>
             )
           )}
         </Grid>
-      </Box>
+      </MDBox>
     )
   }
   

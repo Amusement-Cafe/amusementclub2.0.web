@@ -23,7 +23,7 @@ import Table from './Table';
 import { Login } from '@mui/icons-material';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { Avatar } from '@mui/material';
-import CardList from './CardList';
+import CardList from './Lists/CardList';
 
 function Copyright(props) {
   return (
