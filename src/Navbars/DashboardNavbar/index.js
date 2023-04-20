@@ -169,7 +169,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
               >
                 <NotificationAddSharp/>
               </IconButton>
-              {renderMenu()}
+              {/* {renderMenu()} */}
             </MDBox>
           </MDBox>
         )}

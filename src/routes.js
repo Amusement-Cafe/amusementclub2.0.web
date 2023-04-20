@@ -52,12 +52,7 @@ import StyleIcon from '@mui/icons-material/Style';
 import GavelIcon from '@mui/icons-material/Gavel';
 import PeopleIcon from '@mui/icons-material/People';
 
-const routes = [
-  {
-    type: "title",
-    key: "loginTitle",
-    title: "Logged in as ...",
-  },
+const sessionRoutes = [
   {
     type: "collapse",
     name: "Dashboard",
@@ -102,6 +97,9 @@ const routes = [
     key: "globalTitle",
     title: "Global",
   },
+];
+
+const globalRoutes = [
   {
     type: "collapse",
     name: "Auctions",
@@ -123,6 +121,6 @@ const routes = [
     icon: <PeopleIcon fontSize="small"/>,
     route: "/users",
   },
-];
+]
 
-export default routes;
+export default { sessionRoutes, globalRoutes }

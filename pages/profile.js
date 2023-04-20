@@ -55,7 +55,7 @@ import homeDecor1 from "assets/images/home-decor-1.jpg";
 import { Circle } from '@mui/icons-material';
 import CardView from 'Views/CardView';
 
-function Overview({user, hero, favCards, clout, collections}) {
+function Profile({user, hero, favCards, clout, collections}) {
   const { data: session } = useSession();
   const { xp, joined, cloutedcols, roles, achievements } = user;
   
@@ -189,4 +189,4 @@ export async function getServerSideProps({ req, res }) {
   return { props: { session } }
 }
 
-export default Overview;
+export default Profile;

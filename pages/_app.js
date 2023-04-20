@@ -36,9 +36,10 @@ export default function MyApp(props) {
             <CssBaseline />
             <Sidenav
               color="primary"
-              brand={'brandDark'}
-              brandName="Amusement Cafe"
-              routes={routes}
+              brand={'https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/buns_logo_white.png'}
+              brandName="Amusement Club"
+              sessionRoutes={routes.sessionRoutes}
+              globalRoutes={routes.globalRoutes}
               //onMouseEnter={handleOnMouseEnter}
               //onMouseLeave={handleOnMouseLeave}
             />

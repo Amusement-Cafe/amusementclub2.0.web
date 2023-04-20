@@ -14,6 +14,7 @@ Coded by www.creative-tim.com
 */
 
 import { useEffect } from "react";
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 import NavLink from 'next/link'
 import { useRouter } from "next/router";
@@ -26,6 +27,9 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
+import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -46,9 +50,11 @@ import {
   setTransparentSidenav,
   setWhiteSidenav,
 } from "context";
+import link from "assets/theme/components/link";
 
-function Sidenav({ color, brand, brandName, routes, ...rest }) {
+function Sidenav({ color, brand, brandName, sessionRoutes, globalRoutes, ...rest }) {
   const router = useRouter()
+  const { data: session } = useSession();
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
   const collapseName = router.pathname.replace("/", "");
@@ -83,8 +89,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     return () => window.removeEventListener("resize", handleMiniSidenav);
   }, [dispatch, router]);
 
-  // Render all the routes from the routes.js (All the visible items on the Sidenav)
-  const renderRoutes = routes.map(({ type, name, icon, title, noCollapse, key, href, route }) => {
+  const renderLink = ({ type, name, icon, title, noCollapse, key, href, route }) => {
     let returnValue;
 
     if (type === "collapse") {
@@ -138,7 +143,10 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     }
 
     return returnValue;
-  });
+  }
+
+  const renderSessionRoutes = sessionRoutes.map((x) => renderLink(x));
+  const renderGlobalRoutes = globalRoutes.map((x) => renderLink(x));
 
   return (
     <SidenavRoot
@@ -178,7 +186,19 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           (darkMode && !transparentSidenav && whiteSidenav)
         }
       />
-      <List>{renderRoutes}</List>
+      {session && <>
+        <MDBox px={4} py={2} display="flex">
+          <Avatar sx={{ mr: 2, width: 53, height: 53 }} src={session.user.image} />
+          <MDBox>
+            <MDTypography variant="h5">
+              {session.user.name}
+            </MDTypography>
+            <Button size="small" variant="text" onClick={() => signOut()}> Sign out </Button>
+          </MDBox>
+        </MDBox>
+      </>}
+      {session && <List>{renderSessionRoutes}</List>}
+      <List>{renderGlobalRoutes}</List>
     </SidenavRoot>
   );
 }
