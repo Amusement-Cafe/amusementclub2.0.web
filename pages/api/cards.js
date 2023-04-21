@@ -15,17 +15,22 @@ const handler = async (req, res) => {
     let cards = []
     const sortType = data.sort.split('-')
     const sort = {obtained: -1}
-    sort[sortType[0]] = sortType[1] == 'desc'? -1 : 1
 
-    if (data.useWishlist) {
+    if (!data.userId) {
+
+      // TODO implement sorting
+      cards = _.reverse(req.cards)
+
+    } else if (data.useWishlist) {
       const user = await req.db.collection('users')
         .findOne({discord_id: data.userId}, { projection: { _id:0, wishlist:1 }})
-
-      console.log(user)
-
+      
+      // TODO implement sorting
       cards = user.wishlist.map(x => (req.cards[x]))
     }
     else {
+      sort[sortType[0]] = sortType[1] == 'desc'? -1 : 1
+      
       const usercards = await req.db.collection('usercards')
         .find({userid: data.userId}, { projection: { _id:0, userid:0 }})
         .sort(sort)

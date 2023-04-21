@@ -5,9 +5,9 @@ import {
   FormControl, 
   InputLabel, 
   Select,
-  Box,
-  TextField,
 } from '@mui/material';
+
+import CircularProgress from '@mui/material/CircularProgress';
 
 import MDBox from "components/MDBox";
 import MDInput from 'components/MDInput';
@@ -33,6 +33,13 @@ const CardForm = ({cols, onQueryChanged}) => {
     const handleSortChange = event => {
       setSort(event.target.value)
     }
+
+    if (!cols) return (
+      <MDBox sx={{ alignItems: 'stretch' }}>
+        <MDBox m={2}/>
+        <CircularProgress />
+      </MDBox>
+    )
 
     return (
       <MDBox sx={{ alignItems: 'stretch' }}>

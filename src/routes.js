@@ -51,6 +51,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import StyleIcon from '@mui/icons-material/Style';
 import GavelIcon from '@mui/icons-material/Gavel';
 import PeopleIcon from '@mui/icons-material/People';
+import WindowIcon from '@mui/icons-material/Window';
 
 const sessionRoutes = [
   {
@@ -61,14 +62,14 @@ const sessionRoutes = [
     route: "/dashboard",
     component: <Dashboard />,
   },
-  {
-    type: "collapse",
-    name: "My Transactions",
-    key: "transactions",
-    icon: <ReceiptIcon fontSize="small"/>,
-    route: "/tables",
-    component: <Tables />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Transactions",
+  //   key: "transactions",
+  //   icon: <ReceiptIcon fontSize="small"/>,
+  //   route: "/tables",
+  //   component: <Tables />,
+  // },
   {
     type: "collapse",
     name: "My Cards",
@@ -76,17 +77,16 @@ const sessionRoutes = [
     icon: <StyleIcon fontSize="small"/>,
     route: "/userCards",
   },
-//   {
-//     type: "collapse",
-//     name: "Notifications",
-//     key: "notifications",
-//     icon: <Icon fontSize="small">notifications</Icon>,
-//     route: "/notifications",
-//     component: <Notifications />,
-//   },
   {
     type: "collapse",
-    name: "My Profile",
+    name: "My Plots",
+    key: "plots",
+    icon: <WindowIcon />,
+    route: "/plots",
+  },
+  {
+    type: "collapse",
+    name: "Profile",
     key: "profile",
     icon: <AccountCircleIcon fontSize="small"/>,
     route: "/profile",

@@ -60,15 +60,6 @@ function Profile({user, hero, favCards, clout, collections}) {
   const { xp, joined, cloutedcols, roles, achievements } = user;
   
   const [tabValue, setTabValue] = useState(0);
-  const [userCards, setUserCards] = useState([]);
-
-  useEffect(() => {
-    if (tabValue === 1) {
-
-    } else if (tabValue === 2) {
-
-    }
-  }, [tabValue])
 
   return (
     <DashboardLayout>

@@ -13,6 +13,8 @@ import {
   IconButton,
 } from '@mui/material';
 
+import {cap} from 'utils'
+
 import MDBox from "components/MDBox";
 import MDButton from 'components/MDButton';
 import MDTypography from "components/MDTypography";
@@ -34,7 +36,6 @@ const CardList = ({cards}) => {
   
     //const [isHover, setIsHover] = useState(false)
     // {"name":"nagisas_leisure","level":1,"animated":false,"col":"clannad"}
-    const cap = (str) => str.split('_').map(s => s[0].toUpperCase() + s.slice(1).toLowerCase()).join(' ')
 
     return (
       <MDBox>

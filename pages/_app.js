@@ -9,8 +9,6 @@ import { SessionProvider } from "next-auth/react"
 import { MaterialUIControllerProvider } from "context";
 import Sidenav from 'Sidenav';
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
-import brandWhite from "assets/images/logo-ct.png";
-import brandDark from "assets/images/logo-ct-dark.png";
 import routes from 'routes';
 
 // Material Dashboard 2 React themes

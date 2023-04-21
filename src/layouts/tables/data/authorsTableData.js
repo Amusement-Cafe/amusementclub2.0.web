@@ -16,15 +16,19 @@ Coded by www.creative-tim.com
 */
 
 // Material Dashboard 2 React components
+import Box from "@mui/material/Box";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 
+import Countdown from 'react-countdown';
+
 // Images
 import team2 from "assets/images/team-2.jpg";
 import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
+import { Button } from "@mui/material";
 
 export default function data() {
   const Author = ({ image, name, email }) => (
@@ -50,32 +54,46 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "author", accessor: "author", width: "45%", align: "left" },
-      { Header: "function", accessor: "function", align: "left" },
-      { Header: "status", accessor: "status", align: "center" },
-      { Header: "employed", accessor: "employed", align: "center" },
+      { Header: "seller", accessor: "author", align: "left" },
+      { Header: "id", accessor: "id", align: "center" },
+      { Header: "price", accessor: "price", align: "center" },
+      { Header: "card", accessor: "card", align: "center" },
+      { Header: "time remaining", accessor: "time", align: "center" },
       { Header: "action", accessor: "action", align: "center" },
     ],
 
     rows: [
       {
         author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        function: <Job title="Manager" description="Organization" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: (
+        id: <Box component="div" sx={{ 
+            display: 'inline',
+            p: 1,
+            m: 1,
+            bgcolor: '#222',
+            color: 'grey.100',
+            border: '1px solid',
+            borderColor: 'grey.500',
+            borderRadius: 2,
+            fontSize: '0.875rem',
+            cursor: 'pointer',
+          }}>inline</Box>,
+        price: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            23/04/18
+            2550 🍅
           </MDTypography>
         ),
         action: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Edit
-          </MDTypography>
+          <Button variant="contained" color="primary">
+            View Details
+          </Button>
         ),
+        time: (
+          <Countdown date={Date.now() + 10000} >
+            <MDBox ml={-1}>
+              <MDBadge badgeContent="finished" color="success" variant="gradient" size="sm" />
+            </MDBox>
+          </Countdown>
+        )
       },
       {
         author: <Author image={team3} name="Alexa Liras" email="alexa@creative-tim.com" />,
@@ -95,6 +113,9 @@ export default function data() {
             Edit
           </MDTypography>
         ),
+        time: (
+          <Countdown date={Date.now() + 10000} />
+        )
       },
       {
         author: <Author image={team4} name="Laurent Perrier" email="laurent@creative-tim.com" />,

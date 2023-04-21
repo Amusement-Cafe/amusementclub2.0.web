@@ -193,7 +193,7 @@ function Sidenav({ color, brand, brandName, sessionRoutes, globalRoutes, ...rest
             <MDTypography variant="h5">
               {session.user.name}
             </MDTypography>
-            <Button size="small" variant="text" onClick={() => signOut()}> Sign out </Button>
+            <Button size="small" sx={{padding: 0}} variant="text" onClick={() => signOut()}> Sign out </Button>
           </MDBox>
         </MDBox>
       </>}
