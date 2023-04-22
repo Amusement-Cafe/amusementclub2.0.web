@@ -6,5 +6,5 @@ export const cap = (str) => str.split('_').map(s => s[0].toUpperCase() + s.slice
 export const formatCardName = (x) => {
     // const promo = promoRarity[x.col]
     const rarity = new Array(x.level + 1).join('⭐')
-    return `${rarity} ${x.fav? ' `❤` ' : ' '}${cap(x.name)} [${x.col}]`
+    return `${rarity} ${cap(x.name)} [${x.col}]`
 }

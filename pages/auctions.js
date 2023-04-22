@@ -1,3 +1,4 @@
+import React from "react";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -19,18 +20,20 @@ import DataTable from "Tables/DataTable";
 
 import useSWR from 'swr';
 import Countdown from 'react-countdown';
-import { fetcher } from "utils";
 
-// Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
 import InlineCopyItem from "Items/InlineCopyItem";
-import { formatCardName } from "utils";
+import AuctionPopup from "Popups/AuctionPopup";
+import { fetcher, formatCardName } from "utils";
+import CountdownItem from "Items/CountdownItem";
+import CardPopup from "Popups/CardPopup";
 
 function Auctions() {
-  const { data: auctions, error } = useSWR('/api/auctions', fetcher)
+  const [auctionOpen, setAuctionOpen] = React.useState(false);
+  const [cardOpen, setCardOpen] = React.useState(false);
+  const [selectedAuction, setSelectedAuction] = React.useState(null);
+  const [selectedCard, setSelectedCard] = React.useState(null);
 
-  console.log(auctions)
+  const { data: auctions, error } = useSWR('/api/auctions', fetcher)
 
   if (!auctions) {
     return (
@@ -42,7 +45,6 @@ function Auctions() {
     )
   }
 
-  //const { columns, rows } = authorsTableData();
   const Seller = ({ image, name, title }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
@@ -57,14 +59,31 @@ function Auctions() {
 
   const columns = [
     { Header: "seller", accessor: "seller", align: "left" },
-    { Header: "id", accessor: "id", align: "center" },
+    { Header: "id", accessor: "id", align: "center", sortable: false },
     { Header: "price", accessor: "price", align: "center" },
     { Header: "card", accessor: "card", align: "center" },
     { Header: "time remaining", accessor: "time", align: "center" },
-    { Header: "action", accessor: "action", align: "center" },
+    { Header: "action", accessor: "action", align: "center", sortable: false },
   ]
 
-  const now = new Date()
+  const viewAuction = (auction) => {
+    setAuctionOpen(true);
+    setSelectedAuction(auction);
+  };
+
+  const viewCard = (card) => {
+    setCardOpen(true);
+    setSelectedCard(card);
+  };
+
+  const handleAuctionClose = () => {
+    setAuctionOpen(false);
+  };
+
+  const handleCardClose = () => {
+    setCardOpen(false);
+  };
+
   const rows = auctions.map(auction => {
     return {
       seller: <Seller image={auction.author.image} name={auction.author.username} title={auction.author.title} />,
@@ -75,20 +94,22 @@ function Auctions() {
         </MDTypography>
       ),
       card: (
-        <Button>
-        <MDTypography variant="button" fontWeight="medium">
-          {formatCardName(auction.card)}
-        </MDTypography>
+        <Button onClick={() => viewCard(auction.card)}>
+          <MDTypography variant="button" fontWeight="medium">
+            {formatCardName(auction.card)}
+          </MDTypography>
         </Button>
       ),
       time: (
-        <Countdown date={Date.parse(auction.expires)} >
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="finished" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        </Countdown>
+        <CountdownItem date={Date.parse(auction.expires)} >
+          <MDBadge badgeContent="finished" color="success" size="sm" />
+        </CountdownItem>
       ),
-      action: <Button variant="contained" color="primary">View Details</Button>
+      action: (
+        <Button variant="contained" color="primary" onClick={() => viewAuction(auction)}>
+          View Details
+        </Button>
+      )
     }
   })
 
@@ -115,15 +136,17 @@ function Auctions() {
               <MDBox pt={3}>
                 <DataTable
                   table={{ columns, rows }}
-                  isSorted={false}
+                  isSorted={true}
+                  isPaginated={true}
                   entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
+                  showTotalEntries={true}
                 />
               </MDBox>
             </Card>
           </Grid>
         </Grid>
+        <AuctionPopup auction={selectedAuction} open={auctionOpen} onClose={handleAuctionClose} />
+        <CardPopup card={selectedCard} open={cardOpen} onClose={handleCardClose} />
       </MDBox>
       <Footer />
     </DashboardLayout>

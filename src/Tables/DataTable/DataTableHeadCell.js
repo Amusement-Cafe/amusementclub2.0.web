@@ -18,6 +18,8 @@ import PropTypes from "prop-types";
 
 // @mui material components
 import Icon from "@mui/material/Icon";
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -70,7 +72,7 @@ function DataTableHeadCell({ width, children, sorted, align, ...rest }) {
               color={sorted === "asce" ? "text" : "secondary"}
               opacity={sorted === "asce" ? 1 : 0.5}
             >
-              <Icon>arrow_drop_up</Icon>
+              <ArrowDropUpIcon />
             </MDBox>
             <MDBox
               position="absolute"
@@ -78,7 +80,7 @@ function DataTableHeadCell({ width, children, sorted, align, ...rest }) {
               color={sorted === "desc" ? "text" : "secondary"}
               opacity={sorted === "desc" ? 1 : 0.5}
             >
-              <Icon>arrow_drop_down</Icon>
+              <ArrowDropDownIcon />
             </MDBox>
           </MDBox>
         )}

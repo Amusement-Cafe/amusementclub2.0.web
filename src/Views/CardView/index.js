@@ -15,7 +15,6 @@ import CardForm from 'CardForm'
 
 function CardView({collections, userId, useWishlist}) {
   const [cards, setCards] = React.useState([])
-  //const [collections, setCollections] = React.useState(props.cols)
   const [page, setPage] = React.useState(1);
   const [query, setQuery] = React.useState({});
 
@@ -47,7 +46,6 @@ function CardView({collections, userId, useWishlist}) {
       setCards([...cards, ...data.cards])
     }
 
-    console.log(data.cards.length)
     setQuery(currentQuery)
     setPage(page)
   };

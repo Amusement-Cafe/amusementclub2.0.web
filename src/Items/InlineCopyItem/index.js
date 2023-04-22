@@ -15,7 +15,6 @@ const InlineCopyItem = ({text}) => {
             sx={{ 
                 display: 'inline',
                 p: 1,
-                m: 1,
                 bgcolor: '#222',
                 color: 'grey.100',
                 border: '1px solid',
