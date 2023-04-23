@@ -1,6 +1,7 @@
 
 import cards from '../../data/cards'
 import collections from '../../data/collections'
+import items from '../../data/items'
 
 const baseURL = `https://amusementclub.nyc3.digitaloceanspaces.com`
 cards.map(x => {
@@ -12,6 +13,7 @@ cards.map(x => {
 const withData = handler => (req, res) => {
     req.cards = cards
     req.collections = collections
+    req.items = items
     return handler(req, res)
 }
 

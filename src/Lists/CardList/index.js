@@ -42,9 +42,6 @@ const CardList = ({cards}) => {
     const handleCardClose = () => {
       setCardOpen(false);
     };
-  
-    //const [isHover, setIsHover] = useState(false)
-    // {"name":"nagisas_leisure","level":1,"animated":false,"col":"clannad"}
 
     return (
       <MDBox>

@@ -25,11 +25,7 @@ import CountdownItem from 'Items/CountdownItem';
 
 const CardPopup = ({card, onClose, open}) => {
   if (!card) {
-    return (
-      <MDTypography variant="button" fontWeight="regular">
-        Undefined card
-      </MDTypography>
-    )
+    return null;
   }
 
   return (
