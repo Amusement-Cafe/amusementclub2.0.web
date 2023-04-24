@@ -3,10 +3,13 @@ import { getSession } from "next-auth/react"
 
 import withData from '../../middlewares/withData';
 import withMongo from '../../middlewares/withMongo';
+import withSession from '../../middlewares/withSession';
 import _ from "lodash"
 
 const handler = async (req, res) => {
-  const session = await getSession({ req });
+  const session = req.session
+
+  console.log("session", session)
 
   if (!session) return res.status(401).json({ error: "Unauthorized" })
 
@@ -27,4 +30,4 @@ const handler = async (req, res) => {
   return res.status(200).json(plots)
 }
 
-export default withMongo(withData(handler))
+export default withSession(withMongo(withData(handler)))

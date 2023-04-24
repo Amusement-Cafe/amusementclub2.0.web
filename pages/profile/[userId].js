@@ -15,9 +15,9 @@ Coded by www.creative-tim.com
 
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from "react";
-import { getServerSession } from "next-auth/next"
-import { authOptions } from './api/auth/[...nextauth]'
-import { getToken } from "next-auth/jwt"
+import { useRouter } from 'next/router'
+import useSWR from 'swr';
+import _ from "lodash"
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -48,24 +48,39 @@ import PlatformSettings from "layouts/profile/components/PlatformSettings";
 import HeroCard from 'Cards/HeroCard';
 
 // Data
-import getHost from '../utils/get-host'
+import getHost from '../../utils/get-host'
 
 // Images
 import homeDecor1 from "assets/images/home-decor-1.jpg";
 import { Circle } from '@mui/icons-material';
 import CardView from 'Views/CardView';
+import { XPtoLEVEL, fetcher } from 'utils';
 
-function Profile({user, hero, favCards, clout, collections}) {
+function Profile() {
+  const router = useRouter()
+  let { userId } = router.query
   const { data: session } = useSession();
-  const { xp, joined, cloutedcols, roles, achievements } = user;
-  
+
+  if (userId === 'me') {
+    userId = session?.user.id
+  }
+
+  const { data: profile, error } = useSWR(`/api/profile?userId=${userId}`, fetcher)
+  const { data: collections, error2 } = useSWR(`/api/collections`, fetcher)
+
   const [tabValue, setTabValue] = useState(0);
+
+  if (!profile || !session) return <div>Loading...</div>
+
+  const { user, hero, favCards, clout } = profile;
+  const { xp, joined, cloutedcols, roles, achievements } = user;
+  const sortedAchievements = _.reverse(achievements)
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox mb={2} />
-      <Header onTabChange={setTabValue}>
+      <Header onTabChange={setTabValue} user={user}>
         {tabValue === 0 && (
         <>
           <MDBox mt={5} mb={3}>
@@ -73,8 +88,8 @@ function Profile({user, hero, favCards, clout, collections}) {
               <Grid item xs={12} md={6} xl={4} sx={{ display: "flex" }}>
                 <ProfileInfoCard
                   info={{
-                    level: xp,
-                    InGameSince: joined,
+                    level: XPtoLEVEL(xp),
+                    InGameSince: (new Date(joined)).toDateString(),
                     OverallClout: cloutedcols.length,
                   }}
                   roles={roles.map(role => ({ 
@@ -89,7 +104,7 @@ function Profile({user, hero, favCards, clout, collections}) {
                 <HeroCard hero={hero} shadow={true}/>
               </Grid>
               <Grid item xs={12} xl={4}>
-                <AchievementList title="Achievements" achievementIds={achievements} shadow={true} />
+                <AchievementList title="Achievements" achievementIds={sortedAchievements} shadow={true} />
               </Grid>
             </Grid>
           </MDBox>
@@ -128,11 +143,11 @@ function Profile({user, hero, favCards, clout, collections}) {
           }
         </>
         )}
-        {tabValue === 1 && (
-          <CardView collections={collections} userId={session.user.id} />
+        {session && tabValue === 1 && (
+          <CardView collections={collections} userId={userId || session.user.id} />
         )}
-        {tabValue === 2 && (
-          <CardView collections={collections} userId={session.user.id} useWishlist={true} />
+        {session && tabValue === 2 && (
+          <CardView collections={collections} userId={userId || session.user.id} useWishlist={true} />
         )}
       </Header>
       <Footer />
@@ -141,43 +156,52 @@ function Profile({user, hero, favCards, clout, collections}) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  let session = await getServerSession(req, res, authOptions)
-
-  if(session) {
-    session.user.email = null
-    
-    const token = await getToken({ req: req })
-
-    if (token && token.sub && session.user) {
-      session = {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.sub
-        }
-      }
-
-      const userApiUrl = getHost(req) + '/api/users'
-      const colApiUrl = getHost(req) + '/api/collections'
-      const userResponse = await fetch(`${userApiUrl}?id=${token.sub}`)
-      const colResponse = await fetch(colApiUrl)
-
-      if (userResponse.ok && colResponse.ok) {
-        const user = await userResponse.json()
-        const collections = await colResponse.json()
-
-        return {
-          props: {
-            session,
-            collections,
-            ...user
-          }
-        }
-      }      
-    }
+  if (!req.query) {
+    return { props: {} }
   }
 
-  return { props: { session } }
+  return {
+    props: {
+      userId: req.query.id,
+    }
+  }
+  // let session = await getServerSession(req, res, authOptions)
+
+  // if(session) {
+  //   session.user.email = null
+    
+  //   const token = await getToken({ req: req })
+
+  //   if (token && token.sub && session.user) {
+  //     session = {
+  //       ...session,
+  //       user: {
+  //         ...session.user,
+  //         id: token.sub
+  //       }
+  //     }
+
+  //     const userApiUrl = getHost(req) + '/api/profile'
+  //     const colApiUrl = getHost(req) + '/api/collections'
+  //     const userResponse = await fetch(`${userApiUrl}?id=${token.sub}`)
+  //     const colResponse = await fetch(colApiUrl)
+
+  //     if (userResponse.ok && colResponse.ok) {
+  //       const user = await userResponse.json()
+  //       const collections = await colResponse.json()
+
+  //       return {
+  //         props: {
+  //           session,
+  //           collections,
+  //           ...user
+  //         }
+  //       }
+  //     }      
+  //   }
+  // }
+
+  // return { props: { session } }
 }
 
 export default Profile;

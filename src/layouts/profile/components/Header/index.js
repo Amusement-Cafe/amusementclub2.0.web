@@ -38,7 +38,7 @@ import MDAvatar from "components/MDAvatar";
 // Material Dashboard 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-function Header({ children, onTabChange }) {
+function Header({ children, onTabChange, user }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
   const { data: session } = useSession()
@@ -96,15 +96,15 @@ function Header({ children, onTabChange }) {
       >
         <Grid container spacing={3} alignItems="center">
           <Grid item>
-            <MDAvatar src={session.user.image} alt="profile-image" size="xl" shadow="sm" />
+            <MDAvatar src={user.avatar} alt="profile-image" size="xl" shadow="sm" />
           </Grid>
           <Grid item>
             <MDBox height="100%" mt={0.5} lineHeight={1}>
               <MDTypography variant="h5" fontWeight="medium">
-                {session.user.name}
+                {user.username}
               </MDTypography>
               <MDTypography variant="button" color="text" fontWeight="regular">
-                {session.user.id}
+                {user.title}
               </MDTypography>
             </MDBox>
           </Grid>
@@ -136,11 +136,6 @@ function Header({ children, onTabChange }) {
 // Setting default props for the Header
 Header.defaultProps = {
   children: "",
-};
-
-// Typechecking props for the Header
-Header.propTypes = {
-  children: PropTypes.node,
 };
 
 export default Header;

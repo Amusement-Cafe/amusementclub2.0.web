@@ -31,6 +31,10 @@ import { Home } from '@mui/icons-material';
 function Breadcrumbs({ title, route, light }) {
   const routes = route.slice(0, -1);
 
+  if (title[0] === "[") {
+    title = route[route.length - 1];
+  }
+
   return (
     <MDBox mr={{ xs: 0, xl: 8 }}>
       <MuiBreadcrumbs
@@ -51,7 +55,8 @@ function Breadcrumbs({ title, route, light }) {
             <Home />
           </MDTypography>
         </Link>
-        {routes.map((el) => (
+        {routes.map((el) => {
+          return (
           <Link href={`/${el}`}>
             <MDTypography
               component="span"
@@ -65,7 +70,7 @@ function Breadcrumbs({ title, route, light }) {
               {el}
             </MDTypography>
           </Link>
-        ))}
+        )})}
         <MDTypography
           variant="button"
           fontWeight="regular"

@@ -1,14 +1,8 @@
 
-// prop-types is a library for typechecking of props
-import PropTypes from "prop-types";
-
 // @mui material components
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
-import Icon from "@mui/material/Icon";
 import Stack from "@mui/material/Stack";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -127,11 +121,5 @@ function Footer() {
     </MDBox>
   );
 }
-
-// Typechecking props for the Footer
-Footer.propTypes = {
-  company: PropTypes.objectOf(PropTypes.string),
-  links: PropTypes.arrayOf(PropTypes.object),
-};
 
 export default Footer;

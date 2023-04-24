@@ -22,7 +22,7 @@ function AchievementList({ title, achievementIds, shadow, limit = 5 }) {
     return (
     <MDBox key={name} component="li" display="flex" alignItems="center" py={1} mb={1}>
       <MDBox mr={2}>
-        <MDAvatar src={image} alt="something here" shadow="md" />
+        <MDAvatar src={image} alt={name} shadow="md" />
       </MDBox>
       <MDBox display="flex" flexDirection="column" alignItems="flex-start" justifyContent="center">
         <MDTypography variant="button" fontWeight="medium">

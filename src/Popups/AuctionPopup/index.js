@@ -25,11 +25,7 @@ import CountdownItem from 'Items/CountdownItem';
 
 const AuctionPopup = ({auction, onClose, open}) => {
   if (!auction) {
-    return (
-      <MDTypography variant="button" fontWeight="regular">
-        No auction selected
-      </MDTypography>
-    )
+    return null;
   }
 
   const card = auction.card;

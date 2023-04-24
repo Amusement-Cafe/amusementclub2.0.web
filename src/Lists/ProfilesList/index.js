@@ -28,20 +28,24 @@ import MDAvatar from "components/MDAvatar";
 import MDButton from "components/MDButton";
 
 function ProfilesList({ title, profiles, shadow }) {
-  const renderProfiles = profiles.map(({ image, name, description, action }) => (
-    <MDBox key={name} component="li" display="flex" alignItems="center" py={1} mb={1}>
+  console.log(profiles)
+  const renderProfiles = profiles.map(({ avatar, username, discord_id }) => (
+    <MDBox key={username} component="li" display="flex" alignItems="center" py={1} mb={1}>
       <MDBox mr={2}>
-        <MDAvatar src={image} alt="something here" shadow="md" />
+        <MDAvatar src={avatar} alt={username} shadow="md" />
       </MDBox>
-      <MDBox display="flex" flexDirection="column" alignItems="flex-start" justifyContent="center">
+      <MDBox mr={3} display="flex" flexDirection="column" alignItems="flex-start" justifyContent="center">
         <MDTypography variant="button" fontWeight="medium">
-          {name}
+          {username}
         </MDTypography>
         <MDTypography variant="caption" color="text">
-          {description}
+          {discord_id}
         </MDTypography>
       </MDBox>
-      <MDBox ml="auto">
+      <MDButton component={Link} href={`/profile/${discord_id}`} variant="outlined" color="info">
+        View Profile
+      </MDButton>
+      {/* <MDBox ml="auto">
         {action.type === "internal" ? (
           <MDButton component={Link} href={action.route} variant="text" color="info">
             {action.label}
@@ -58,7 +62,7 @@ function ProfilesList({ title, profiles, shadow }) {
             {action.label}
           </MDButton>
         )}
-      </MDBox>
+      </MDBox> */}
     </MDBox>
   ));
 
@@ -81,13 +85,6 @@ function ProfilesList({ title, profiles, shadow }) {
 // Setting default props for the ProfilesList
 ProfilesList.defaultProps = {
   shadow: true,
-};
-
-// Typechecking props for the ProfilesList
-ProfilesList.propTypes = {
-  title: PropTypes.string.isRequired,
-  profiles: PropTypes.arrayOf(PropTypes.object).isRequired,
-  shadow: PropTypes.bool,
 };
 
 export default ProfilesList;

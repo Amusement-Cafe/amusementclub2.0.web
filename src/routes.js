@@ -89,7 +89,7 @@ const sessionRoutes = [
     name: "Profile",
     key: "profile",
     icon: <AccountCircleIcon fontSize="small"/>,
-    route: "/profile",
+    route: "/profile/me",
     component: <Profile />,
   },
   {
