@@ -14,9 +14,7 @@ Coded by www.creative-tim.com
 */
 
 import Link from 'next/link'
-
-// prop-types is library for typechecking of props
-import PropTypes from "prop-types";
+import { useSession } from 'next-auth/react'
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -28,7 +26,8 @@ import MDAvatar from "components/MDAvatar";
 import MDButton from "components/MDButton";
 
 function ProfilesList({ title, profiles, shadow }) {
-  console.log(profiles)
+  const { data: session } = useSession();
+
   const renderProfiles = profiles.map(({ avatar, username, discord_id }) => (
     <MDBox key={username} component="li" display="flex" alignItems="center" py={1} mb={1}>
       <MDBox mr={2}>
@@ -42,9 +41,11 @@ function ProfilesList({ title, profiles, shadow }) {
           {discord_id}
         </MDTypography>
       </MDBox>
+      {session && 
       <MDButton component={Link} href={`/profile/${discord_id}`} variant="outlined" color="info">
         View Profile
       </MDButton>
+      }
       {/* <MDBox ml="auto">
         {action.type === "internal" ? (
           <MDButton component={Link} href={action.route} variant="text" color="info">

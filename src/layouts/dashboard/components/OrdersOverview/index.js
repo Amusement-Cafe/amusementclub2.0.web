@@ -13,6 +13,9 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useSession } from 'next-auth/react';
+import useSWR from 'swr';
+
 // @mui material components
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
@@ -24,58 +27,75 @@ import MDTypography from "components/MDTypography";
 // Material Dashboard 2 React example components
 import TimelineItem from "Timeline/TimelineItem";
 
+import SwapHorizontalCircleIcon from '@mui/icons-material/SwapHorizontalCircle';
+import PlaylistAddCircleIcon from '@mui/icons-material/PlaylistAddCircle';
+import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+
+import { fetcher } from 'utils';
+import { CircularProgress } from '@mui/material';
+
 function OrdersOverview() {
+  const { data: session } = useSession();
+  const include = ["transaction", "claim", "forge"]
+  const { data } = useSWR(`/api/transactions?userId=${session?.user.id}&include=${include.join(',')}`, fetcher)
+
+  if (!data || !session) {
+    return (
+      <Card sx={{ height: "100%" }}>
+        <MDBox display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100%" >
+          <CircularProgress />
+        </MDBox>
+      </Card>
+    )
+  }
+
+  const iconMap = {
+    transaction: <SwapHorizontalCircleIcon />,
+    claim: <PlaylistAddCircleIcon />,
+    forge: <BuildCircleIcon />,
+  }
+
+  const { transactions, claims, forges } = data
+  const concat = _.concat(transactions, claims, forges)
+  const sorted = concat.sort((a, b) => new Date(b.date) - new Date(a.date))
+
   return (
     <Card sx={{ height: "100%" }}>
       <MDBox pt={3} px={3}>
         <MDTypography variant="h6" fontWeight="medium">
-          Orders overview
+          Cards in/out
         </MDTypography>
-        <MDBox mt={0} mb={2}>
+        <MDBox mt={0} mb={1}>
           <MDTypography variant="button" color="text" fontWeight="regular">
-            <MDTypography display="inline" variant="body2" verticalAlign="middle">
-              <Icon sx={{ color: ({ palette: { success } }) => success.main }}>arrow_upward</Icon>
-            </MDTypography>
-            &nbsp;
             <MDTypography variant="button" color="text" fontWeight="medium">
-              24%
+              + 24
             </MDTypography>{" "}
-            this month
+            cards this month
           </MDTypography>
         </MDBox>
       </MDBox>
       <MDBox p={2}>
-        <TimelineItem
-          color="success"
-          icon="notifications"
-          title="$2400, Design changes"
-          dateTime="22 DEC 7:20 PM"
-        />
-        <TimelineItem
-          color="error"
-          icon="inventory_2"
-          title="New order #1832412"
-          dateTime="21 DEC 11 PM"
-        />
-        <TimelineItem
-          color="info"
-          icon="shopping_cart"
-          title="Server payments for April"
-          dateTime="21 DEC 9:34 PM"
-        />
-        <TimelineItem
-          color="warning"
-          icon="payment"
-          title="New card added for order #4395133"
-          dateTime="20 DEC 2:20 AM"
-        />
-        <TimelineItem
-          color="primary"
-          icon="vpn_key"
-          title="New card added for order #4395133"
-          dateTime="18 DEC 4:54 AM"
-          lastItem
-        />
+        {sorted.filter(x => x).slice(0, 5).map((item, i) => {
+          const title = item.type === 'transaction' ? `Transaction [${item.id}]` : item.type === 'claim' ? `Claim [${item.id}]` : `Forge [${item.id}]`
+          const amount = item.cards.length
+          const color = item.type === 'transaction' ? 'success' : item.type === 'claim' ? 'warning' : 'info'
+
+          return (
+            <TimelineItem
+              color={color}
+              icon={iconMap[item.type]}
+              title={title}
+              dateTime={(new Date(item.date)).toDateString()}
+              lastItem={i === 4}
+              description={`You ${item.type === 'transaction' ? 
+                (item.seller_id === session?.user.id? 'sold' : 'bought') : 
+                (item.type === 'claim' ? 'claimed' : 'forged')} ${amount} card(s) for ${item.cost} 🍅`}
+            />
+          )
+        })}
       </MDBox>
     </Card>
   );

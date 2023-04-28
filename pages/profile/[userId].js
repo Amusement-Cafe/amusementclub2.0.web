@@ -1,17 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from "react";
@@ -23,11 +9,6 @@ import _ from "lodash"
 import Grid from "@mui/material/Grid";
 import CardList from 'Lists/CardList';
 import Divider from "@mui/material/Divider";
-
-// @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -46,9 +27,6 @@ import DefaultProjectCard from "Cards/ProjectCards/DefaultProjectCard";
 import Header from "layouts/profile/components/Header";
 import PlatformSettings from "layouts/profile/components/PlatformSettings";
 import HeroCard from 'Cards/HeroCard';
-
-// Data
-import getHost from '../../utils/get-host'
 
 // Images
 import homeDecor1 from "assets/images/home-decor-1.jpg";
@@ -153,55 +131,6 @@ function Profile() {
       <Footer />
     </DashboardLayout>
   );
-}
-
-export async function getServerSideProps({ req, res }) {
-  if (!req.query) {
-    return { props: {} }
-  }
-
-  return {
-    props: {
-      userId: req.query.id,
-    }
-  }
-  // let session = await getServerSession(req, res, authOptions)
-
-  // if(session) {
-  //   session.user.email = null
-    
-  //   const token = await getToken({ req: req })
-
-  //   if (token && token.sub && session.user) {
-  //     session = {
-  //       ...session,
-  //       user: {
-  //         ...session.user,
-  //         id: token.sub
-  //       }
-  //     }
-
-  //     const userApiUrl = getHost(req) + '/api/profile'
-  //     const colApiUrl = getHost(req) + '/api/collections'
-  //     const userResponse = await fetch(`${userApiUrl}?id=${token.sub}`)
-  //     const colResponse = await fetch(colApiUrl)
-
-  //     if (userResponse.ok && colResponse.ok) {
-  //       const user = await userResponse.json()
-  //       const collections = await colResponse.json()
-
-  //       return {
-  //         props: {
-  //           session,
-  //           collections,
-  //           ...user
-  //         }
-  //       }
-  //     }      
-  //   }
-  // }
-
-  // return { props: { session } }
 }
 
 export default Profile;

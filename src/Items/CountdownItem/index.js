@@ -3,7 +3,7 @@ import MDTypography from 'components/MDTypography';
 import Countdown from 'react-countdown';
 
 const CountdownItem = ({children, date, variant="body2"}) => {
-  const renderer = ({ hours, minutes, seconds, completed }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       return (
         <MDBox>
@@ -12,9 +12,19 @@ const CountdownItem = ({children, date, variant="body2"}) => {
       );
     } else {
       return (
+        <>
+        {days > 0 && 
         <MDTypography variant={variant}>
-          {hours}h {minutes}m {seconds}s
+          {days}d
+        </MDTypography>}{" "}
+        {(days > 0 || hours > 0) && 
+        <MDTypography variant={variant}>
+          {hours}h 
+        </MDTypography>}{" "}
+        <MDTypography variant={variant}>
+          {minutes}m {seconds}s
         </MDTypography>
+        </>
       );
     }
   };

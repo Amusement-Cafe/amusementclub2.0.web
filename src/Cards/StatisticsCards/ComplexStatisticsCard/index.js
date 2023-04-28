@@ -30,11 +30,10 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
     <Card>
       <MDBox display="flex" justifyContent="space-between" pt={1} px={2}>
         <MDBox
-          variant="gradient"
           bgColor={color}
           color={color === "light" ? "dark" : "white"}
           coloredShadow={color}
-          borderRadius="xl"
+          borderRadius="50%"
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -42,9 +41,9 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
           height="4rem"
           mt={-3}
         >
-          <Icon fontSize="medium" color="inherit">
+          <MDTypography variant="h2" color="inherit">
             {icon}
-          </Icon>
+          </MDTypography>
         </MDBox>
         <MDBox textAlign="right" lineHeight={1.25}>
           <MDTypography variant="button" fontWeight="light" color="text">

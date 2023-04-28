@@ -9,8 +9,6 @@ import _ from "lodash"
 const handler = async (req, res) => {
   const session = req.session
 
-  console.log("session", session)
-
   if (!session) return res.status(401).json({ error: "Unauthorized" })
 
   const userId = session.user.id
