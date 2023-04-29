@@ -1,7 +1,7 @@
 import { Alert, Box, Snackbar } from '@mui/material'
 import { useState } from 'react'
 
-const InlineCopyItem = ({text}) => {
+const InlineCopyItem = ({text, p=1}) => {
     const [open, setOpen] = useState(false)
     const handleClick = () => {
       setOpen(true)
@@ -12,9 +12,9 @@ const InlineCopyItem = ({text}) => {
         <>
           <Box component="div" 
             onClick={handleClick}
+            p={p}
             sx={{ 
                 display: 'inline',
-                p: 1,
                 bgcolor: '#222',
                 color: 'grey.100',
                 border: '1px solid',

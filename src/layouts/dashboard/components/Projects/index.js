@@ -96,7 +96,7 @@ function Projects() {
       ),
       completion: (
         <MDBox width="8rem" textAlign="left">
-          <MDProgress value={quest.data.target ? quest.data.target : 0} color="info" variant="gradient" label={false} />
+          <MDProgress value={0} color="info" variant="gradient" label={false} />
         </MDBox>
       ),
     })) : []

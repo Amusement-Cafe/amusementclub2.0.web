@@ -1,15 +1,13 @@
 
 import { useSession } from 'next-auth/react';
-import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
+import { fetcher } from 'utils';
 import useSWR from 'swr';
 import _ from "lodash"
 
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import CardList from 'Lists/CardList';
-import Divider from "@mui/material/Divider";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -20,15 +18,11 @@ import MDTypography from "components/MDTypography";
 import DashboardLayout from "LayoutContainers/DashboardLayout";
 import DashboardNavbar from "Navbars/DashboardNavbar";
 import Footer from "Footer";
-import ProfileInfoCard from "Cards/InfoCards/ProfileInfoCard";
-import ProfilesList from "Lists/ProfilesList";
-import AchievementList from 'Lists/AchievementList';
 import DefaultProjectCard from "Cards/ProjectCards/DefaultProjectCard";
-
-// Material Dashboard 2 React example components
 import ReportsBarChart from "Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "Cards/StatisticsCards/ComplexStatisticsCard";
+import CountdownItem from 'Items/CountdownItem';
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
@@ -37,23 +31,34 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
-
-import homeDecor1 from "assets/images/home-decor-1.jpg";
-import CardView from 'Views/CardView';
-import { fetcher } from 'utils';
-import CountdownItem from 'Items/CountdownItem';
-import { Badge } from '@mui/material';
+import TodoList from 'layouts/dashboard/components/TodoList';
 
 function Profile() {
   const router = useRouter()
   const { data: session } = useSession();
 
   const { data: user, error } = useSWR(`/api/users?userId=${session?.user.id}`, fetcher)
-  const { sales, tasks } = reportsLineChartData;
+  const { data: stats } = useSWR(`/api/stats?userId=${session?.user.id}&include=combined,latest&range=7`, fetcher)
 
-  if (!user || !session) return <div>Loading...</div>
+  if (!user || !session || !stats) return <div>Loading...</div>
 
-  console.log(new Date(user.lastdaily))
+  const getColor = (val1, val2) => {
+    if (val1 > val2) return "success"
+    if (val1 < val2) return "error"
+    return "warning"
+  }
+
+  const getPercentage = (val1, val2) => {
+    const presentage = _.round((val1/val2 * 100), 2)
+    if (presentage > 0) return `+${presentage}%`
+    if (presentage < 0) return `${presentage}%`
+    return "0%"
+  }
+
+  const { combined, latest } = stats
+  const tomatoDiff =  combined? combined.tomatoin - combined.tomatoout : 0
+  const vialDiff = combined? combined.vialin - combined.vialout : 0
+  const lemonsDiff = combined? combined.lemonin - combined.lemonout : 0
 
   return (
     <DashboardLayout>
@@ -69,9 +74,9 @@ function Profile() {
                 title="Tomatoes"
                 count={_.round(user.exp)}
                 percentage={{
-                  color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
+                  color: getColor(tomatoDiff, 0),
+                  amount: getPercentage(tomatoDiff, user.exp),
+                  label: "last week",
                 }}
               />
             </MDBox>
@@ -84,9 +89,9 @@ function Profile() {
                 title="Vials"
                 count={_.round(user.vials)}
                 percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last month",
+                  color: getColor(vialDiff, 0),
+                  amount: getPercentage(vialDiff, user.vials),
+                  label: "last week",
                 }}
               />
             </MDBox>
@@ -99,9 +104,9 @@ function Profile() {
                 title="Lemons"
                 count={_.round(user.lemons)}
                 percentage={{
-                  color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
+                  color: getColor(lemonsDiff, 0),
+                  amount: getPercentage(lemonsDiff, user.lemons),
+                  label: "last week",
                 }}
               />
             </MDBox>
@@ -166,11 +171,14 @@ function Profile() {
         </MDBox> */}
         <MDBox>
           <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={4}>
+              <TodoList user={user} dailyStats={latest} />
+            </Grid>
             <Grid item xs={12} md={6} lg={8}>
               <Projects />
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
+              <OrdersOverview combinedStats={combined} />
             </Grid>
           </Grid>
         </MDBox>

@@ -103,7 +103,7 @@ function Profile() {
               {clout.map((col) => (
               <Grid item xs={12} md={6} xl={3}>
                 <DefaultProjectCard
-                  image={homeDecor1}
+                  image={col.url}
                   label={col.amount}
                   title={col.name}
                   description={`Added ${col.dateAdded}`}

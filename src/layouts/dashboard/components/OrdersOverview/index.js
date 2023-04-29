@@ -34,7 +34,7 @@ import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 import { fetcher } from 'utils';
 import { CircularProgress } from '@mui/material';
 
-function OrdersOverview() {
+function OrdersOverview({ combinedStats }) {
   const { data: session } = useSession();
   const include = ["transaction", "claim", "forge"]
   const { data } = useSWR(`/api/transactions?userId=${session?.user.id}&include=${include.join(',')}`, fetcher)
@@ -61,6 +61,10 @@ function OrdersOverview() {
   const { transactions, claims, forges } = data
   const concat = _.concat(transactions, claims, forges)
   const sorted = concat.sort((a, b) => new Date(b.date) - new Date(a.date))
+  
+  const cardChange = combinedStats? combinedStats.claims - combinedStats.aucsell + combinedStats.aucwin - 
+    combinedStats.liquefy + combinedStats.draw - combinedStats.forge - 
+    combinedStats.usersell - combinedStats.botsell + combinedStats.userbuy : 0
 
   return (
     <Card sx={{ height: "100%" }}>
@@ -71,9 +75,9 @@ function OrdersOverview() {
         <MDBox mt={0} mb={1}>
           <MDTypography variant="button" color="text" fontWeight="regular">
             <MDTypography variant="button" color="text" fontWeight="medium">
-              + 24
+              {cardChange >= 0? "+" : ""}{cardChange}
             </MDTypography>{" "}
-            cards this month
+            last 7 days
           </MDTypography>
         </MDBox>
       </MDBox>
