@@ -8,7 +8,6 @@ import createEmotionCache from 'createEmotionCache';
 import { SessionProvider } from "next-auth/react"
 import { MaterialUIControllerProvider } from "context";
 import Sidenav from 'Sidenav';
-import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import routes from 'routes';
 
 // Material Dashboard 2 React themes

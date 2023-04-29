@@ -3,7 +3,7 @@ import DiscordProvider from "next-auth/providers/discord";
 
 const scopes = ['identify'].join(' ')
 
-export default NextAuth({
+export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     DiscordProvider({
@@ -29,4 +29,6 @@ export default NextAuth({
   session: {
     strategy: "jwt",
   },
-});
+}
+
+export default NextAuth(authOptions);

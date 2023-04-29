@@ -19,9 +19,6 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import NavLink from 'next/link'
 import { useRouter } from "next/router";
 
-// prop-types is a library for typechecking of props.
-import PropTypes from "prop-types";
-
 // @mui material components
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -207,14 +204,6 @@ function Sidenav({ color, brand, brandName, sessionRoutes, globalRoutes, ...rest
 Sidenav.defaultProps = {
   color: "info",
   brand: "",
-};
-
-// Typechecking props for the Sidenav
-Sidenav.propTypes = {
-  color: PropTypes.oneOf(["primary", "secondary", "info", "success", "warning", "error", "dark"]),
-  brand: PropTypes.string,
-  brandName: PropTypes.string.isRequired,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Sidenav;
