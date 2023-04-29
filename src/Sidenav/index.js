@@ -27,6 +27,7 @@ import Icon from "@mui/material/Icon";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -192,6 +193,14 @@ function Sidenav({ color, brand, brandName, sessionRoutes, globalRoutes, ...rest
             </MDTypography>
             <Button size="small" sx={{padding: 0}} variant="text" onClick={() => signOut()}> Sign out </Button>
           </MDBox>
+        </MDBox>
+      </>}
+      {!session && <>
+        <MDBox px={4} py={2} display="flex" flexDirection="column" justifyContent="center">
+          <MDTypography variant="h6" sx={{with: "100%", textAlign: "center"}}>
+            Sign In with Discord
+          </MDTypography>
+          <Button size="small" sx={{padding: 0}} variant="text" onClick={() => signIn()}> Sign in </Button>
         </MDBox>
       </>}
       {session && <List>{renderSessionRoutes}</List>}
