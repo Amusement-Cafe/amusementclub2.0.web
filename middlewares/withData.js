@@ -22,7 +22,10 @@ const fetchData = async () => {
 }
 
 const withData = handler => async (req, res) => {
-  
+  const id = setTimeout(() => res.json({
+    message: `Fetching data timed out. Using URL ${process.env.CARDS_URL} and ${process.env.COLLECTIONS_URL}`
+  }), 8000)
+
   try {
     await fetchData()
   } catch (error) {
@@ -34,6 +37,9 @@ const withData = handler => async (req, res) => {
   req.collections = collections
   req.items = items
   req.quests = quests
+
+  clearTimeout(id)
+
   return handler(req, res)
 }
 
