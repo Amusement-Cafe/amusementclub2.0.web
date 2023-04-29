@@ -3,17 +3,19 @@ import withMongo from '../../middlewares/withMongo';
 import withData from '../../middlewares/withData';
 
 const handler = async (req, res) => {
-    const userId = req.query.userId
-    const include = req.query.include?.split(',')
 
-    if (!userId) {
-      return res.status(400).json({ error: "Missing userId" })
-    }
+  const userId = req.query.userId
+  const include = req.query.include?.split(',')
 
-    if (!include) {
-      return res.status(400).json({ error: "Includes are empty" })
-    }
+  if (!userId) {
+    return res.status(400).json({ error: "Missing userId" })
+  }
 
+  if (!include) {
+    return res.status(400).json({ error: "Includes are empty" })
+  }
+  
+  try {
     const result = {}
 
     if (include.includes('transaction')) {
@@ -52,6 +54,11 @@ const handler = async (req, res) => {
     }
 
     return res.status(200).json(result)
+    
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ error })
+  }
 }
 
 export default withMongo(withData(handler))

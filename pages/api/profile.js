@@ -15,7 +15,7 @@ const handler = async (req, res) => {
     id = session.user.id
   }
 
-  //try {
+  try {
     
     const user = await req.db.collection('users').findOne({discord_id: id})
     const hero = await req.db.collection('heros').findOne({id: user.hero})
@@ -60,9 +60,10 @@ const handler = async (req, res) => {
     
     return res.status(200).json({ user, hero, favCards, clout })
     
-  // } catch (error) {
-
-  // }
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ error })
+  }
 }
 
 export default withSession(withMongo(withData(handler)))

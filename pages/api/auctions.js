@@ -4,9 +4,7 @@ import withMongo from '../../middlewares/withMongo';
 import _ from "lodash"
 
 const handler = async (req, res) => {
-//   const json = await req.headers.data
-//   const data = JSON.parse(json)
-
+  try {
     const now = new Date()
     let auctions = await req.db.collection('auctions')
         .find({
@@ -31,6 +29,10 @@ const handler = async (req, res) => {
     })
 
     return res.status(200).json(auctions)
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ error })
+  }
 }
 
 export default withMongo(withData(handler))

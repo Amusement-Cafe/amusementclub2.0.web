@@ -11,7 +11,7 @@ const handler = async (req, res) => {
   const json = await req.headers.data
   const data = JSON.parse(json)
 
-  //try {
+  try {
     let cards = []
     const sortType = data.sort.split('-')
     const sort = {obtained: -1}
@@ -63,10 +63,10 @@ const handler = async (req, res) => {
     const cols = req.collections
     return res.status(200).json({ cards })
     
-  // } catch (error) {
-  //   const cards = _.sampleSize(req.cards.filter(x => x.level < 4), 12)
-  //   return res.status(200).json({ cards, cols: req.collections })
-  // }
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ error })
+  }
 }
 
 export default withMongo(withData(handler))

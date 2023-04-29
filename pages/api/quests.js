@@ -7,6 +7,7 @@ const handler = async (req, res) => {
     const userId = req.session.user.id
     console.log(userId)
 
+  try {
     if (!userId) {
       return res.status(401).json({ error: "Unauthorized" })
     }
@@ -34,6 +35,11 @@ const handler = async (req, res) => {
       userQuests,
       completedCount,
     })
+    
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ error })
+  }
 }
 
 export default withSession(withMongo(withData(handler)))

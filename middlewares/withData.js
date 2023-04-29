@@ -22,7 +22,13 @@ const fetchData = async () => {
 }
 
 const withData = handler => async (req, res) => {
-  await fetchData()
+  
+  try {
+    await fetchData()
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ error })
+  }
 
   req.cards = cards
   req.collections = collections
