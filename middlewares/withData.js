@@ -1,8 +1,8 @@
 
 // import cards from '../../data/cards'
 // import collections from '../../data/collections'
-import items from '../../data/items'
-import quests from '../../data/quests'
+import items from 'data/items'
+import quests from 'data/quests'
 
 let cards, collections = []
 

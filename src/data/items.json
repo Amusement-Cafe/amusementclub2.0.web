@@ -1,0 +1,434 @@
+[
+    {
+        "id": "castle",
+        "price": 150,
+        "name": "Plot Castle",
+        "type": "blueprint",
+        "currency": "lemon",
+        "typedesc": "Blueprints are used to place buildings on your personal plots in guilds to help you gain the new currency based on the actions of other players! They all start as level 1 and are upgradable from there.",
+        "desc": "The first and required building for plots",
+        "fulldesc": "The castle is the protector of your lemons. Contributions are made to the castle daily even if no player has used the server. As it gets upgraded the castle allows your other buildings to store more lemon revenue before reaching their limit.",
+        "levels": [
+            {
+                "price": 0,
+                "level": 20,
+                "maintenance": 10,
+                "desc": "Generates 30 lemons every 24 hours, allows you to place other buildings on plots in the same server."
+            }, {
+                "price": 500,
+                "level": 40,
+                "maintenance": 15,
+                "desc": "Increases all buildings storage capacity in placed guild by 50%, increases daily generation to 40"
+            }, {
+                "price": 1000,
+                "level": 60,
+                "maintenance": 20,
+                "desc": "Increases all buildings storage capacity in placed guild by 75%, increases daily generation to 50"
+            }, {
+                "price": 2000,
+                "level": 80,
+                "maintenance": 25,
+                "desc": "Increases all buildings storage capacity in placed guild by 100%, increases daily generation to 60"
+            }, {
+                "price": 5000,
+                "level": 100,
+                "maintenance": 50,
+                "desc": "Increases all buildings storage capacity in placed guild by 125%, increases daily generation to 70"
+            }
+        ]
+    }, {
+        "id": "gbank",
+        "name": "Gacha Bank",
+        "price": 500,
+        "type": "blueprint",
+        "desc": "Provides lemons with daily + claim",
+        "fulldesc": "The Gacha Bank stores lemons from when users run daily or claim cards.",
+        "levels": [
+            {
+                "price": 0,
+                "level": 30,
+                "maintenance": 100,
+                "desc": "Gives lemons when a user does daily"
+            }, {
+                "price": 2000,
+                "level": 60,
+                "maintenance": 150,
+                "desc": "Gives lemons when a user claims cards or does daily"
+            }
+        ]
+    }, {
+        "id": "tavern",
+        "name": "Tavern",
+        "price": 750,
+        "type": "blueprint",
+        "desc": "Gives lemons with achievements and quests",
+        "levels": [
+            {
+                "price": 0,
+                "level": 40,
+                "maintenance": 50,
+                "desc": "Gives lemons when someone completes an achievement in the guild"
+            }, {
+                "price": 2000,
+                "level": 80,
+                "maintenance": 70,
+                "desc": "Gives lemons when someone completes a quest or achievement in the guild"
+            }
+        ]
+    }, {
+        "id": "smithhub",
+        "name": "Smithing Hub",
+        "price": 1000,
+        "type": "blueprint",
+        "desc": "Gives lemons with forge, liq, draw",
+        "fulldesc": "The smithing hub provides lemons when users run draw, liq, or forge. Payouts are determined based on building level",
+        "levels": [
+            {
+                "price": 0,
+                "level": 50,
+                "maintenance": 10,
+                "desc": "Gives lemons when people forge cards"
+            }, {
+                "price": 2500,
+                "level": 75,
+                "maintenance": 50,
+                "desc": "Gives lemons when people forge or liquefy cards"
+            }, {
+                "price": 5000,
+                "level": 100,
+                "maintenance": 100,
+                "desc": "Gives lemons when people forge, liquefy, or draw  cards"
+            }
+        ]
+    }, {
+        "id": "auchouse",
+        "name": "Auction House",
+        "price": 5000,
+        "type": "blueprint",
+        "desc": "Passive Auction Income",
+        "fulldesc": "Grants lemons for commands related to auctions",
+        "levels": [
+            {
+                "price": 0,
+                "level": 100,
+                "maintenance": 10,
+                "desc": "Gives lemons when someone successfully bids on an auction"
+            }, {
+                "price": 10000,
+                "level": 150,
+                "maintenance": 20,
+                "desc": "Gives 2x lemons when someone successfully bids on an auction"
+            }, {
+                "price": 20000,
+                "level": 200,
+                "maintenance": 50,
+                "desc": "Gives 3x lemons when someone successfully bids on an auction"
+            }
+        ]
+    }, {
+        "id": "tohrugift",
+        "effectid": "tohrugift",
+        "name": "Gift From Tohru",
+        "price": 1500,
+        "type": "recipe",
+        "currency": "tomato",
+        "desc": "3-star every day",
+        "typedesc": "Use Effect Card recipes to obtain usable or passive Effect Cards",
+        "fulldesc": "When used gives you **Gift From Tohru** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [2, 2, 2],
+        "lasts": 30
+    }, {
+        "id": "cakeday",
+        "effectid": "cakeday",
+        "name": "Cake Day",
+        "price": 4000,
+        "type": "recipe",
+        "desc": "bigger daily for claims",
+        "fulldesc": "When used gives you **Cake Day** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [2, 2, 2, 2, 2],
+        "lasts": 15
+    }, {
+        "id": "holygrail",
+        "effectid": "holygrail",
+        "name": "The Holy Grail",
+        "price": 7000,
+        "type": "recipe",
+        "desc": "get more vials",
+        "fulldesc": "When used gives you **The Holy Grail** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [3, 3, 3],
+        "lasts": 5
+    }, {
+        "id": "skyfriend",
+        "effectid": "skyfriend",
+        "name": "Skies Of Friendship",
+        "price": 5000,
+        "type": "recipe",
+        "desc": "auction cashback",
+        "fulldesc": "When used gives you **Skies Of Friendship** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [1, 2, 3, 3],
+        "lasts": 40
+    }, {
+        "id": "cherrybloss",
+        "effectid": "cherrybloss",
+        "name": "Cherry Blossoms",
+        "price": 2000,
+        "type": "recipe",
+        "desc": "cheaper forge",
+        "fulldesc": "When used gives you **Cherry Blossoms** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [1, 1, 3, 3],
+        "lasts": 15
+    }, {
+        "id": "onvictory",
+        "effectid": "onvictory",
+        "name": "Onwards To Victory",
+        "price": 600,
+        "type": "recipe",
+        "desc": "more rank points",
+        "fulldesc": "When used gives you **Onwards To Victory** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [2, 2, 2, 2, 2, 2],
+        "lasts": 10
+    }, {
+        "id": "rulerjeanne",
+        "effectid": "rulerjeanne",
+        "name": "The Ruler Jeanne",
+        "price": 5000,
+        "type": "recipe",
+        "desc": "faster daily",
+        "fulldesc": "When used gives you **The Ruler Jeanne** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [3, 3, 3],
+        "lasts": 24
+    }, {
+        "id": "spellcard",
+        "effectid": "spellcard",
+        "name": "Impossible Spell Card",
+        "price": 7500,
+        "type": "recipe",
+        "desc": "reduced cooldown",
+        "fulldesc": "When used gives you **Impossible Spell Card**. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [2, 2, 2, 3, 3, 3],
+        "lasts": 20
+    }, {
+        "id": "festivewish",
+        "effectid": "festivewish",
+        "name": "Festival of Wishes",
+        "price": 2500,
+        "type": "recipe",
+        "desc": "wishlist auc notifications",
+        "fulldesc": "When used gives you **Festival of Wishes** effect card. This is a passive item, so make sure you equip it into hero's effect card slot",
+        "recipe": [1, 1, 1, 1],
+        "lasts": 30
+    },
+
+    {
+        "id": "enayano",
+        "effectid": "enayano",
+        "name": "Enlightened Ayano",
+        "price": 5500,
+        "type": "recipe",
+        "desc": "completes quest",
+        "fulldesc": "When used gives you **Enlightened Ayano** effect card. This is a usable card",
+        "recipe": [1, 1, 1, 2, 2],
+        "lasts": 60
+    }, {
+        "id": "pbocchi",
+        "effectid": "pbocchi",
+        "name": "Powerful Bocchi",
+        "price": 7000,
+        "type": "recipe",
+        "desc": "get free t1 quest",
+        "fulldesc": "When used gives you **Powerful Bocchi** effect card. This is a usable card",
+        "recipe": [2, 2, 3, 3],
+        "lasts": 20
+    }, {
+        "id": "spaceunity",
+        "effectid": "spaceunity",
+        "name": "The Space Unity",
+        "price": 4000,
+        "type": "recipe",
+        "desc": "get free card",
+        "fulldesc": "When used gives you **The Space Unity** effect card. This is a usable card",
+        "recipe": [2, 2, 3, 3],
+        "lasts": 25
+    }, {
+        "id": "judgeday",
+        "effectid": "judgeday",
+        "name": "The Judgment Day",
+        "price": 3500,
+        "type": "recipe",
+        "desc": "get any effect",
+        "fulldesc": "When used gives you **The Judgment Day** effect card. This is a usable card",
+        "recipe": [2, 3, 3, 3],
+        "lasts": 12
+    }, {
+        "id": "claimrecall",
+        "effectid": "claimrecall",
+        "name": "Claim Recall",
+        "price": 6200,
+        "type": "recipe",
+        "desc": "recalls claims",
+        "fulldesc": "When used gives you **Claim Recall** effect card. This is a usable card",
+        "recipe": [1, 1, 1, 2, 2, 2],
+        "lasts": 28
+    }, {
+        "id": "memoryxmas",
+        "effectid": "memoryxmas",
+        "name": "Memories of Christmas Cheer",
+        "price": 8000,
+        "type": "recipe",
+        "desc": "gives free christmas card",
+        "fulldesc": "When used gives you **Memories of Christmas Cheer** effect card. Has a 1 in 12 chance to give a missing card, 1 missing is guaranteed per 12. This is a usable card",
+        "recipe": [3, 3, 3, 3],
+        "lasts": 12
+    }, {
+        "id": "memoryhall",
+        "effectid": "memoryhall",
+        "name": "Memories of Halloween Frights",
+        "price": 8000,
+        "type": "recipe",
+        "desc": "gives free halloween card",
+        "fulldesc": "When used gives you **Memories of Halloween Frights** effect card. Has a 1 in 12 chance to give a missing card, 1 missing is guaranteed per 12.  This is a usable card",
+        "recipe": [3, 3, 3, 3],
+        "lasts": 12
+    }, {
+        "id": "memorybday",
+        "effectid": "memorybday",
+        "name": "Memories of Birthdays Past",
+        "price": 8000,
+        "type": "recipe",
+        "desc": "gives free birthday card",
+        "fulldesc": "When used gives you **Memories of Birthdays Past** effect card. Has a 1 in 12 chance to give a missing card, 1 missing is guaranteed per 12.  This is a usable card",
+        "recipe": [3, 3, 3, 3],
+        "lasts": 12
+    }, {
+        "id": "memoryval",
+        "effectid": "memoryval",
+        "name": "Memories of Valentines Day",
+        "price": 8000,
+        "type": "recipe",
+        "desc": "gives free valentine card",
+        "fulldesc": "When used gives you **Memories of Valentines Day** effect card. Has a 1 in 12 chance to give a missing card, 1 missing is guaranteed per 12.  This is a usable card",
+        "recipe": [3, 3, 3, 3],
+        "lasts": 12
+    },
+
+    {
+        "id": "legendticket",
+        "name": "Legendary Card Claim Ticket",
+        "price": -1,
+        "type": "claim_ticket",
+        "currency": "lemon",
+        "desc": "gives legendary card",
+        "fulldesc": "When used gives you legendary card. The collection is determined when awarded",
+        "level": [5]
+    }, {
+        "id": "ticket1x1",
+        "name": "1 Star Claim Ticket",
+        "price": 150,
+        "type": "claim_ticket",
+        "currency": "lemon",
+        "desc": "gives a random 1 star card",
+        "typedesc": "Claim tickets are used to claim cards of certain rarity, collection, or both. They are gotten either by resetting collections or purchasing from the store.\n**Only 3 items in this store can be bought per day!**",
+        "fulldesc": "When used gives you a random 1 star card.",
+        "level": [1]
+    }, {
+        "id": "ticket1x2",
+        "name": "2 Star Claim Ticket",
+        "price": 300,
+        "type": "claim_ticket",
+        "currency": "lemon",
+        "desc": "gives a random 2 star card",
+        "fulldesc": "When used gives you a random 2 star card.",
+        "level": [2]
+    }, {
+        "id": "ticket1x3",
+        "name": "3 Star Claim Ticket",
+        "price": 450,
+        "type": "claim_ticket",
+        "currency": "lemon",
+        "desc": "gives a random 3 star card",
+        "fulldesc": "When used gives you a random 3 star card",
+        "level": [3]
+    },  {
+        "id": "ticket3x1s",
+        "name": "Triple 1 Star Claim Ticket",
+        "price": 500,
+        "type": "claim_ticket",
+        "desc": "gives 3 random, single collection, 1 star cards",
+        "fulldesc": "When used gives you 3 random 1 star cards from a single collection",
+        "level": [1, 1, 1]
+    },  {
+        "id": "ticket3x2s",
+        "name": "Triple 2 Star Claim Ticket",
+        "price": 950,
+        "type": "claim_ticket",
+        "desc": "gives 3 random, single collection, 2 star cards",
+        "fulldesc": "When used gives you 3 random 2 star cards from a single collection",
+        "level": [2, 2, 2]
+    },  {
+        "id": "ticket3x3s",
+        "name": "Triple 3 Star Claim Ticket",
+        "price": 1400,
+        "type": "claim_ticket",
+        "desc": "gives 3 random, single collection, 3 star cards",
+        "fulldesc": "When used gives you 3 random 3 star cards from a single collection",
+        "level": [3, 3, 3]
+    }, {
+        "id": "ticket3x1r",
+        "name": "Triple Random 1 Star Claim Ticket",
+        "price": 450,
+        "type": "claim_ticket",
+        "desc": "gives 3 random 1 star cards",
+        "fulldesc": "When used gives you 3 random 3 star cards from randomly chosen collections",
+        "level": [1, 1, 1],
+        "col": "random"
+    }, {
+        "id": "ticket3x2r",
+        "name": "Triple Random 2 Star Claim Ticket",
+        "price": 900,
+        "type": "claim_ticket",
+        "desc": "gives 3 random 2 star cards",
+        "fulldesc": "When used gives you 3 random 2 star cards from randomly chosen collections",
+        "level": [2, 2, 2],
+        "col": "random"
+    }, {
+        "id": "ticket3x3r",
+        "name": "Triple Random 3 Star Claim Ticket",
+        "price": 1350,
+        "type": "claim_ticket",
+        "desc": "gives 3 random 3 star cards",
+        "fulldesc": "When used gives you 3 random 3 star cards from randomly chosen collections",
+        "level": [3, 3, 3],
+        "col": "random"
+    },
+
+
+    {
+    "id": "slotupgrade",
+    "name": "Effect Slot Upgrade",
+    "price": 30000,
+    "type": "bonus",
+    "currency": "lemon",
+    "desc": "READ INFO BEFORE BUYING",
+    "typedesc": "Welcome to the bonus store! This store will hold items purchasable with lemons that don't quite fit into any other category. Be it upgrades or misc items, you can find them here!",
+    "fulldesc": "This item, when used, increases the amount of passive effect slots you have for 30 days. The ability to use one is unlocked every 100 levels.\nCheck your level with `/profile`",
+    "level": 100
+    }, {
+    "id": "effectincrease",
+    "name": "Effect Use Increase",
+    "price": 11000,
+    "type": "bonus",
+    "currency": "lemon",
+    "desc": "adds time/uses to an effect",
+    "fulldesc": "Each use of this item with a valid effect will increase it's use by 1 or expiry by 1 day.",
+    "level": 100
+    }, {
+    "id": "legendswapper",
+    "name": "Legendary Card Swapper",
+    "price": 15000,
+    "type": "bonus",
+    "currency": "lemon",
+    "desc": "swaps a legendary card",
+    "fulldesc": "When used on a legendary card, swaps it for another random legendary in the same collection.",
+    "level": 100
+}
+]

@@ -1,0 +1,317 @@
+{
+    "daily": [
+        {
+            "id": "claim4",
+            "name": "Claim 4 cards today",
+            "desc": "Claim cards using `->claim` command. Example: `->claim 4`",
+            "tier": 1,
+            "can_drop": true,
+            "min_level": 0,
+            "reward": "600 🍅 | 15 🍋 | 2 xp"
+        }, {
+            "id": "claim8",
+            "name": "Claim 8 cards today",
+            "desc": "Claim cards using `->claim` command. Example: `->claim 8`",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 10,
+            "reward": "1,400 🍅 | 30 🍋 | 5 xp"
+        }, {
+            "id": "bid2",
+            "name": "Bid on 2 auctions today",
+            "desc": "Use auction to complete this quest. Find an auction you like using `->auc`. Bid successfully on one of the auctions using auction ID and price with prefix `:`. Example: `->auc bid xhgr :100`. Try bidding higher if you get instantly outbid!",
+            "tier": 1,
+            "can_drop": true,
+            "min_level": 15,
+            "reward": "1,000 🍅 | 15 🍋 | 2 xp"
+        }, {
+            "id": "bid5",
+            "name": "Bid on 4 auctions today",
+            "desc": "Use auction to complete this quest. Find an auction you like using `->auc`. Bid successfully on one of the auctions using auction ID and price with prefix `:`. Example: `->auc bid xhgr :100`. Try bidding higher if you get instantly outbid!",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 50,
+            "reward": "2,000 🍅 | 30 🍋 | 8 xp"
+        }, {
+            "id": "forge1",
+            "name": "Forge 1-star card",
+            "desc": "Use forge to complete this quest. Forge allows you to merge two cards and get one. See list of your cards using `->cards` and find two 1-star cards that you don\"t need/like and then forge them together. Keep in mind that you can only forge cards with the same amount of stars. Example: `->forge eat them all, tsundere side`. If you have multiples of some card, you can also use `->forge -1 -multi` and let system choose cards for you (only multiples will be chosen).",
+            "tier": 1,
+            "can_drop": true,
+            "min_level": 0,
+            "building": "smithhub1",
+            "reward": "500 🍅 | 15 🍋 | 1 xp"
+        }, {
+            "id": "forge2",
+            "name": "Forge 2-star card",
+            "desc": "Use forge to complete this quest. Forge allows you to merge two cards and get one. See list of your cards using `->cards` and find two 2-star cards that you don\"t need/like and then forge them together. Keep in mind that you can only forge cards with the same amount of stars. Example: `->forge eat them all, tsundere side`. If you have multiples of some card, you can also use `->forge -2 -multi` and let system choose cards for you (only multiples will be chosen).",
+            "tier": 1,
+            "can_drop": true,
+            "min_level": 5,
+            "reward": "800 🍅 | 15 🍋 | 30 🍷 | 2 xp"
+        }, {
+            "id": "forge3",
+            "name": "Forge 3-star card",
+            "desc": "Use forge to complete this quest. Forge allows you to merge two cards and get one. See list of your cards using `->cards` and find two 3-star cards that you don\"t need/like and then forge them together. Keep in mind that you can only forge cards with the same amount of stars. Example: `->forge eat them all, tsundere side`. If you have multiples of some card, you can also use `->forge -3 -multi` and let system choose cards for you (only multiples will be chosen)",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 15,
+            "building": "smithhub1",
+            "reward": "1,000 🍅 | 30 🍋 | 40 🍷 | 5 xp"
+        }, {
+            "id": "tag2",
+            "name": "Tag 2 cards",
+            "desc": "",
+            "tier": 1,
+            "can_drop": false,
+            "min_level": 15,
+            "reward": "400 🍅 | 2 xp"
+        }, {
+            "id": "tag4",
+            "name": "Tag 4 cards",
+            "desc": "",
+            "tier": 2,
+            "can_drop": false,
+            "min_level": 25,
+            "reward": "800 🍅 | 4 xp"
+        }, {
+            "id": "liq2",
+            "name": "Liquefy 2 cards",
+            "desc": "Use liquefy to complete this quest. Liquefy allows you to convert cards into vials that are used to draw cards that you want. See list of your cards using `->cards` and find a card that you don\"t need/like and then liquefy it. Example: `->liq eat them all`. Do this 2 times for different cards.",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 10,
+            "building": "smithhub2",
+            "reward": "60 🍷 | 30 🍋 | 3 xp"
+        }, {
+            "id": "liq4",
+            "name": "Liquefy 4 cards",
+            "desc": "Use liquefy to complete this quest. Liquefy allows you to convert cards into vials that are used to draw cards that you want. See list of your cards using `->cards` and find a card that you don\"t need/like and then liquefy it. Example: `->liq eat them all`. Do this 4 times for different cards.",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 35,
+            "building": "smithhub2",
+            "reward": "120 🍷 | 30 🍋 | 6 xp"
+        }, {
+            "id": "draw2",
+            "name": "Draw 2 cards",
+            "desc": "Use draw to complete this quest. With draw you can get any card that you want as long as you know the name. Search for a card using `->search` (e.g. `->search tohru` or `->search -touhou` or `->search #keqing`) then draw any card from the list. Example: `->draw thundering might`. Do this 2 times.",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 20,
+            "building": "smithhub2",
+            "reward": "1,500 🍅 | 30 🍋 | 60 🍷 | 3 xp"
+        }, {
+            "id": "draw4",
+            "name": "Draw 4 cards",
+            "desc": "Use draw to complete this quest. With draw you can get any card that you want as long as you know the name. Search for a card using `->search` (e.g. `->search tohru` or `->search -touhou` or `->search #keqing`) then draw any card from the list. Example: `->draw thundering might`. Do this 4 times.",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 40,
+            "building": "smithhub2",
+            "reward": "3,000 🍅 | 30 🍋 | 120 🍷 | 6 xp"
+        }, {
+            "id": "draw1star",
+            "name": "Draw a 1 star card",
+            "desc": "Use draw to complete this quest. With draw you can get any card that you want as long as you know the name. This quest requires specific rarity of card (1). Search for a card using `->search` (e.g. `->search -1 tohru` or `->search -1 -touhou` or `->search -1 #keqing`) then draw any card from the list. Example: `->draw purple gold`.",
+            "tier": 1,
+            "can_drop": true,
+            "min_level": 5,
+            "building": "smithhub2",
+            "reward": "250 🍅 | 15 🍋 | 25 🍷 | 3 xp"
+        }, {
+            "id": "draw2star",
+            "name": "Draw a 2 star card",
+            "desc": "Use draw to complete this quest. With draw you can get any card that you want as long as you know the name. This quest requires specific rarity of card (2). Search for a card using `->search` (e.g. `->search -2 tohru` or `->search -2 -touhou` or `->search -2 #keqing`) then draw any card from the list. Example: `->draw sacrificial sword`.",
+            "tier": 1,
+            "can_drop": true,
+            "min_level": 15,
+            "building": "smithhub2",
+            "reward": "750 🍅 | 15 🍋 | 75 🍷 | 3 xp"
+        }, {
+            "id": "draw3star",
+            "name": "Draw a 3 star card",
+            "desc": "Use draw to complete this quest. With draw you can get any card that you want as long as you know the name. This quest requires specific rarity of card (3). Search for a card using `->search` (e.g. `->search -3 tohru` or `->search -3 -touhou` or `->search -3 #keqing`) then draw any card from the list. Example: `->draw icy harmony `.",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 25,
+            "reward": "900 🍅 | 30 🍋 | 200 🍷 | 4 xp"
+        }, {
+            "id": "rate2",
+            "name": "Rate 2 cards today",
+            "desc": "Use rating system to complete this quest. You can rate any card that you own. Rating is your personal, however average rating is calculated too. To see cards that you did not rate yer, use `->cards !rated`. Choose one card and rate it from 1 to 10 with prefix `:`. Example `->rate icy harmony :10`. Do this 2 times. Re-rating cards doesn\"t count.",
+            "tier": 1,
+            "can_drop": true,
+            "min_level": 0,
+            "reward": "250 🍅 | 15 🍋 | 2 xp"
+        }, {
+            "id": "rate5",
+            "name": "Rate 5 cards today",
+            "desc": "Use rating system to complete this quest. You can rate any card that you own. Rating is your personal, however average rating is calculated too. To see cards that you did not rate yer, use `->cards !rated`. Choose one card and rate it from 1 to 10 with prefix `:`. Example `->rate icy harmony :10`. Do this 5 times. Re-rating cards doesn\"t count.",
+            "tier": 2,
+            "can_drop": true,
+            "min_level": 10,
+            "reward": "1,000 🍅 | 30 🍋 | 5 xp"
+        }
+    ],
+    
+    "weekly": [
+        {
+            "id": "claim28",
+            "name": "Claim 28 Cards",
+            "desc": "Claim cards using the `/claim cards` command. As this is a weekly quest, you have 7 days to complete it. Example: `/claim cards count:10`",
+            "tier": 3,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["claim cards"],
+            "target":  28,
+            "reward": "750 🍅 | 60 🍋"
+        },
+        {
+            "id": "claim56",
+            "name": "Claim 56 cards",
+            "desc": "Claim cards using the `/claim cards` command. As this is a weekly quest, you have 7 days to complete it. Example: `/claim cards count:10`",
+            "tier": 4,
+            "can_drop": true,
+            "min_level": 20,
+            "actions": ["claim cards"],
+            "target":  56,
+            "reward": "1,000 🍅 | 120 🍋"
+        },
+        {
+            "id": "complete4",
+            "name": "Complete 4 quests",
+            "desc": "Complete quests during the week, any quest type counts toward your completion. Check your progress with the `stats` command. As this is a weekly quest, you have 7 days to complete it.",
+            "tier": 3,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["quest list"],
+            "target": 4,
+            "reward": "750 🍅 | 60 🍋"
+        },
+        {
+            "id": "complete7",
+            "name": "Complete 7 quests",
+            "desc": "Complete quests during the week, any quest type counts toward your completion. Check your progress with the `stats` command. As this is a weekly quest, you have 7 days to complete it.",
+            "tier": 4,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["quest list"],
+            "target": 7,
+            "reward": "1,000 🍅 | 120 🍋"
+        },
+        {
+            "id": "draw10",
+            "name": "Draw 10 cards",
+            "desc": "Use draw to complete this quest. With draw you can get any card that you want as long as you know the name. Search for a card using `->cards global:true` (e.g. `->cards global:true card_query:tohru` or `->cards global:true card_query:-touhou` or `->cards global:true card_query:#keqing`) then draw any card from the list. Example: `->draw thundering might`. Do this 10 times. As this is a weekly quest, you have 7 days to complete it.",
+            "tier": 3,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["draw"],
+            "target":  10,
+            "reward": "750 🍅 | 60 🍋"
+        },
+        {
+            "id": "draw12",
+            "name": "Draw 12 cards",
+            "desc": "Use draw to complete this quest. With draw you can get any card that you want as long as you know the name. Search for a card using `->cards global:true` (e.g. `->cards global:true card_query:tohru` or `->cards global:true card_query:-touhou` or `->cards global:true card_query:#keqing`) then draw any card from the list. Example: `->draw thundering might`. Do this 12 times. As this is a weekly quest, you have 7 days to complete it.",
+            "tier": 4,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": [],
+            "target":  12,
+            "reward": "1,000 🍅 | 120 🍋"
+        },
+        {
+            "id": "bid12",
+            "name": "Bid on 12 auctions",
+            "desc": "Use auction to complete this quest. Find an auction you like using `->auction list`. Example: `->auction bid`. Try bidding higher if you get instantly outbid! As this is a weekly quest, you have 7 days to complete it.",
+            "tier": 3,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": [],
+            "target":  12,
+            "reward": "750 🍅 | 60 🍋"
+        },
+        {
+            "id": "bid18",
+            "name": "Bid on 18 auctions",
+            "desc": "Use auction to complete this quest. Find an auction you like using `->auction list`. Example: `->auction bid`. Try bidding higher if you get instantly outbid! As this is a weekly quest, you have 7 days to complete it.",
+            "tier": 4,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": [],
+            "target":  18,
+            "reward": "1,000 🍅 | 120 🍋"
+        }
+    ],
+
+    "monthly": [
+        {
+            "id": "claim120",
+            "name": "Claim 120 Cards",
+            "desc": "Claim cards using the `/claim cards` command. As this is a monthly quest, you have 30 days to complete it. Example: `/claim cards count:10`",
+            "tier": 5,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["claim cards"],
+            "target": 120,
+            "reward": "3,000 🍅 | 240 🍋"
+        },
+        {
+            "id": "claim240",
+            "name": "Claim 240 cards",
+            "desc": "Claim cards using the `/claim cards` command. As this is a monthly quest, you have 30 days to complete it. Example: `/claim cards count:10`",
+            "tier": 6,
+            "can_drop": true,
+            "min_level": 10,
+            "actions": ["claim cards"],
+            "target": 240,
+            "reward": "6,000 🍅 | 480 🍋"
+        },
+        {
+            "id": "complete15",
+            "name": "Complete 15 quests",
+            "desc": "Complete quests during the month, any quest type counts toward your completion. Check your progress with the `stats` command. As this is a monthly quest, you have 30 days to complete it.",
+            "tier": 5,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["stats"],
+            "target":  15,
+            "reward": "1,250 🍅 | 240 🍋"
+        },
+        {
+            "id": "complete20",
+            "name": "Complete 20 quests",
+            "desc": "Complete quests during the month, any quest type counts toward your completion. Check your progress with the `stats` command. As this is a monthly quest, you have 30 days to complete it.",
+            "tier": 6,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["stats"],
+            "target":  20,
+            "reward": "1,500 🍅 | 480 🍋"
+        },
+        {
+            "id": "bid30",
+            "name": "Bid on 30 auctions",
+            "desc": "Use auction to complete this quest. Find an auction you like using `->auction list`. Example: `->auction bid`. Try bidding higher if you get instantly outbid! As this is a monthly quest, you have 30 days to complete it.",
+            "tier": 5,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["auction bid"],
+            "target":  30,
+            "reward": "7,500 🍅 | 240 🍋"
+        },
+        {
+            "id": "bid45",
+            "name": "Bid on 45 auctions",
+            "desc": "Use auction to complete this quest. Find an auction you like using `->auction list`. Example: `->auction bid`. Try bidding higher if you get instantly outbid! As this is a monthly quest, you have 30 days to complete it.",
+            "tier": 6,
+            "can_drop": true,
+            "min_level": 0,
+            "actions": ["auction bid"],
+            "target":  45,
+            "reward": "10,000 🍅 | 480 🍋"
+        }
+    ]
+}

@@ -1,5 +1,4 @@
 
-import withData from '../../middlewares/withData';
 import withMongo from '../../middlewares/withMongo';
 import _ from "lodash"
 
