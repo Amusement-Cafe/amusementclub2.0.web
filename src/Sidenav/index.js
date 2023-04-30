@@ -48,7 +48,8 @@ import {
   setTransparentSidenav,
   setWhiteSidenav,
 } from "context";
-import link from "assets/theme/components/link";
+
+import CloseIcon from "@mui/icons-material/Close";
 
 function Sidenav({ color, brand, brandName, sessionRoutes, globalRoutes, ...rest }) {
   const router = useRouter()
@@ -163,7 +164,7 @@ function Sidenav({ color, brand, brandName, sessionRoutes, globalRoutes, ...rest
           sx={{ cursor: "pointer" }}
         >
           <MDTypography variant="h6" color="secondary">
-            <Icon sx={{ fontWeight: "bold" }}>close</Icon>
+            <CloseIcon />
           </MDTypography>
         </MDBox>
         <MDBox component={NavLink} href="/" display="flex" alignItems="center">

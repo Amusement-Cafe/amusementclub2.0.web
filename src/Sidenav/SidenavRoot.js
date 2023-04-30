@@ -26,17 +26,13 @@ export default styled(Drawer)(({ theme, ownerState }) => {
   const { xxl } = boxShadows;
   const { pxToRem, linearGradient } = functions;
 
-  let backgroundValue = darkMode
-    ? background.sidenav
-    : linearGradient(gradients.dark.main, gradients.dark.state);
+  let backgroundValue = background.sidenav
 
   if (transparentSidenav) {
     backgroundValue = transparent.main;
   } else if (whiteSidenav) {
     backgroundValue = white.main;
   }
-
-  backgroundValue = transparent.main;
 
   // styles for the sidenav when miniSidenav={false}
   const drawerOpenStyles = () => ({

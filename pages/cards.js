@@ -5,14 +5,22 @@ import CardView from 'Views/CardView'
 
 import useSWR from 'swr';
 import { fetcher } from "utils";
+import { useRouter } from 'next/router';
 
 const Cards = () => {
-  const { data, error } = useSWR('/api/collections', fetcher);
+  const router = useRouter();
+  const { collection } = router.query;
+  const { data } = useSWR('/api/collections', fetcher);
+
+  const query = {
+    collection: collection,
+    keywords: ""
+  }
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <CardView collections={data} />
+      <CardView collections={data} startingQuery={query} />
     </DashboardLayout>
   )
 }

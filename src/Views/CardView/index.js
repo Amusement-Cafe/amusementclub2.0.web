@@ -13,7 +13,7 @@ import CardList from 'Lists/CardList';
 import CardForm from 'CardForm'
 
 
-function CardView({collections, userId, useWishlist}) {
+function CardView({collections, userId, useWishlist, startingQuery}) {
   const [cards, setCards] = React.useState([])
   const [page, setPage] = React.useState(1);
   const [query, setQuery] = React.useState({});
@@ -52,7 +52,7 @@ function CardView({collections, userId, useWishlist}) {
 
   return (
     <MDBox p={2}>
-      <CardForm cols={collections} onQueryChanged={onQueryChanged}/>
+      <CardForm cols={collections} onQueryChanged={onQueryChanged} startingQuery={startingQuery}/>
       <CardList cards={cards} cols={collections}/>
       <MDBox p={2}></MDBox>
       <MDBox m={2} textAlign='center'>

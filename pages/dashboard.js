@@ -114,7 +114,7 @@ function Profile() {
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <Card>
-                <MDBox display="flex" justifyContent="space-between" m={1} pt={1} px={2}>
+                {/* <MDBox display="flex" justifyContent="space-between" m={1} pt={1} px={2}>
                   <MDTypography variant="h5">
                     Daily status
                   </MDTypography>
@@ -123,7 +123,7 @@ function Profile() {
                   <CountdownItem date={Date.parse(user.lastdaily)} variant="h4">
                     <MDBadge badgeContent="Ready to claim!" color="success"/>
                   </CountdownItem>
-                </MDBox> 
+                </MDBox>  */}
               </Card>
             </MDBox>
           </Grid>

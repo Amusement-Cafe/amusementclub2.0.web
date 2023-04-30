@@ -13,10 +13,10 @@ import MDBox from "components/MDBox";
 import MDInput from 'components/MDInput';
 import MDTypography from "components/MDTypography";
 
-const CardForm = ({cols, onQueryChanged}) => {
-    const [collection, setCol] = React.useState('')
-    const [sort, setSort] = React.useState('obtained-desc')
-    const [keywords, setSearchKeywords] = React.useState('')
+const CardForm = ({cols, onQueryChanged, startingQuery}) => {
+    const [collection, setCol] = React.useState(startingQuery?.collection? startingQuery.collection : '')
+    const [keywords, setSearchKeywords] = React.useState(startingQuery?.keywords? startingQuery.keywords : '')
+    const [sort, setSort] = React.useState(startingQuery?.sort? startingQuery.sort : 'obtained-desc')
 
     React.useEffect(() => {
       onQueryChanged({collection, keywords, sort});
@@ -62,6 +62,7 @@ const CardForm = ({cols, onQueryChanged}) => {
                 label="Collection"
                 onChange={handleColChange}
               >
+                <MenuItem value="">Any</MenuItem>
                 {cols.sort((a, b) => a.id.localeCompare(b.id)).map(col => (<MenuItem value={col.id}>{col.name}</MenuItem>))}
               </Select>
             </FormControl>

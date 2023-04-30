@@ -75,7 +75,7 @@ function TodoList({ user, dailyStats }) {
 
   return (
     <Card sx={{ height: "100%" }}>
-      <MDBox pt={3} px={3}>
+      <MDBox pt={3} px={3} mb={4}>
         <MDTypography variant="h6" fontWeight="medium">
           Your Tasks today
         </MDTypography>
