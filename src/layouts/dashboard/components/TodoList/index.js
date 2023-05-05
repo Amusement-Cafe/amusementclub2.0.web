@@ -17,7 +17,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import InlineCopyItem from "Items/InlineCopyItem";
 
-function TodoList({ user, dailyStats }) {
+function TodoList({ user, dailyStats, quests }) {
   const { data: session } = useSession();
   const { data: plots } = useSWR(`/api/plots?userId=${session?.user.id}`, fetcher)
 
@@ -45,9 +45,9 @@ function TodoList({ user, dailyStats }) {
     return (
       <MDBox display="flex" alignItems="center" lineHeight={1}>
         <MDTypography display="block" variant="h4">
-          {getIcon(!condition)}
+          {getIcon(condition)}
         </MDTypography>
-        <MDBox ml={2} lineHeight={1} opacity={condition? 1 : 0.5} >
+        <MDBox ml={2} lineHeight={1} opacity={condition? 0.5 : 1} >
           <MDTypography 
             display="block" 
             variant="button" 
@@ -64,14 +64,17 @@ function TodoList({ user, dailyStats }) {
   const now = new Date()
   const lastDaily = new Date(user.lastdaily)
   const lastVote = new Date(user.lastvote)
-
   const futureDaily = add(lastDaily, 20, 'hours')
   const futureVote = add(lastVote, 12, 'hours')
-  const daily = futureDaily < now
-  const vote = futureVote < now
-  const claim = dailyStats.claims === 0
-  const quest = user.dailyquests.length > 0
-  const plot = plots.some(x=> x.building?.stored_lemons > 0)
+
+  const daily = futureDaily > now
+  const vote = futureVote > now
+  const claim = dailyStats?.claims > 0
+  const quest = !quests?.some(x=> x.type === 'daily')
+  const plot = !plots.some(x=> x.building?.stored_lemons > 0)
+
+  console.log(dailyStats)
+  console.log(quests)
 
   return (
     <Card sx={{ height: "100%" }}>
@@ -97,21 +100,21 @@ function TodoList({ user, dailyStats }) {
           <TaskItem
             condition={claim}
             task="Claim your cards"
-            command="claim"
+            command="claim cards"
             description="Claim a card from the bot. Recommended to claim 4-6 cards per day."
           />
 
           <TaskItem
             condition={quest}
-            task="Complete your quests"
-            command="quest"
+            task="Complete your daily quests"
+            command="quest list"
             description="Complete your daily quests to get rewards. Quests reset every daily."
           />
 
           <TaskItem
             condition={plot}
             task="Collect plot oncome"
-            command="plot"
+            command="plot collect"
             description="Collect your 🍋 from your plots. You must have built at least one plot."
           />
         </Stack>

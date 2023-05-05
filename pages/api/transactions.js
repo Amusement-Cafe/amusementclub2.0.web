@@ -18,15 +18,18 @@ const handler = async (req, res) => {
   try {
     const result = {}
 
+    const date = new Date()
+    date.setDate(date.getDate() - 7)
+
     if (include.includes('transaction')) {
       result.transactions = (await req.db.collection('transactions')
         .find({
           $or: [
             { from_id: userId },
             { to_id: userId },
-          ]
-        }, { projection: { _id:0 }})
-        .limit(50)
+          ],
+          time: { $gte: date },
+        }, { projection: { _id: 0 }})
         .toArray())
         .map(doc => {
           doc.type = 'transaction'
@@ -44,14 +47,16 @@ const handler = async (req, res) => {
       result.claims = (await req.db.collection('claims')
         .find({
           user: userId,
-        }, { projection: { _id:0, lock: 0, user: 0 }})
-        .limit(50)
+          date: { $gte: date },
+        }, { projection: { _id: 0, lock: 0, user: 0 }})
         .toArray())
         .map(doc => {
           doc.type = 'claim'
           return doc
         })
     }
+
+    // TODO add forge type
 
     return res.status(200).json(result)
     

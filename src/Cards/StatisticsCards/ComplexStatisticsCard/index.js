@@ -49,7 +49,7 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
           <MDTypography variant="button" fontWeight="light" color="text">
             {title}
           </MDTypography>
-          <MDTypography variant="h4">{count}</MDTypography>
+          <MDTypography variant="h4">{count.toLocaleString()}</MDTypography>
         </MDBox>
       </MDBox>
       <Divider />

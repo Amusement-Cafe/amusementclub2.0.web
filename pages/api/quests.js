@@ -16,19 +16,22 @@ const handler = async (req, res) => {
       .find({
         userid: userId,
         completed: false,
-      })
+      }, { projection: { _id:0, userid: 0, completed: 0 }})
       .sort({id: -1})
       .toArray()
+
+    const date = new Date()
+    date.setDate(date.getDate() - 30)
 
     const completedCount = await req.db.collection('userquests')
       .countDocuments({
         userid: userId,
         completed: true,
-        // TODO limit to last 30 days
+        created: { $gte: date }
       })
 
     userQuests.map(x => {
-      x.data = req.quests[x.type].find(y => y.questid == x.id)
+      x.data = req.quests[x.type].find(y => y.id == x.questid)
     })
 
     return res.status(200).json({

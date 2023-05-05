@@ -39,6 +39,7 @@ function Profile() {
 
   const { data: user, error } = useSWR(`/api/users?userId=${session?.user.id}`, fetcher)
   const { data: stats } = useSWR(`/api/stats?userId=${session?.user.id}&include=combined,latest&range=7`, fetcher)
+  const { data: questData } = useSWR(`/api/quests`, fetcher)
 
   if (!user || !session || !stats) return <div>Loading...</div>
 
@@ -172,7 +173,7 @@ function Profile() {
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={4}>
-              <TodoList user={user} dailyStats={latest} />
+              <TodoList user={user} dailyStats={latest} quests={questData?.userQuests}/>
             </Grid>
             <Grid item xs={12} md={6} lg={8}>
               <Projects />

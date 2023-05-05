@@ -19,8 +19,11 @@ const handler = async (req, res) => {
     const result = {}
 
     if (include.includes('latest')) {
-      result.latest = await req.db.collection('userstats')
-        .findOne({ discord_id: userId })
+      result.latest = (await req.db.collection('userstats')
+        .find({ discord_id: userId }, { projection: { _id:0, username: 0, discord_id: 0 }})
+        .limit(1)
+        .sort({$natural:-1})
+        .toArray())[0]
     }
 
     if (include.includes('combined') && range) {
@@ -30,7 +33,7 @@ const handler = async (req, res) => {
       const selected = await req.db.collection('userstats')
         .find({
           discord_id: userId,
-          //daily: { $gte: date }
+          daily: { $gte: date }
         }, { projection: { _id:0, username: 0, discord_id: 0, daily: 0 }})
         .toArray()
       
