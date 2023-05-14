@@ -126,6 +126,10 @@ const Header = (props) => {
 
           <div className={classes.grow} />
 
+          <a href="/vote" style={{color: '#fff'}}>
+            <Button color="inherit">:･ﾟ⭐Specials contest 2023⭐ﾟ.*･｡ﾟ </Button>
+          </a>
+
           {/*<IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">
               <NotificationsIcon />
