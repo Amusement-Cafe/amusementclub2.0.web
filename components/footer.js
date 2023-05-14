@@ -11,12 +11,12 @@ export default class Footer extends React.Component {
       <div className="content">
         <div className="block">
           <a href="https://discord.com/">
-            <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/discord_logo_2021.svg"/>
+            <img src="https://cdn.amusement.cafe/web/discord_logo_2021.svg"/>
           </a>
-          <img src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/amusement-cafe-smalltext.png"/>
+          <img src="https://cdn.amusement.cafe/web/amusement-cafe-smalltext.png"/>
           <span><b>support@amusement.cafe</b></span>
           <span><b>Website <a href="https://twitter.com/madebynoxc">@madebynoxc</a></b></span>
-          <span><b>Bort art by <a href="https://twitter.com/NAMIORII">@NAMIORII</a></b></span>
+          <span><b>Cinnabar art by <a href="https://www.artstation.com/elisandra">Alexandra Li</a></b></span>
         </div>
         <div className="block">
           <span className="title">Get Started</span>

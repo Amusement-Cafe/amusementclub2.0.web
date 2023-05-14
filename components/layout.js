@@ -40,8 +40,6 @@ const Layout = props => (
       .container {
         max-width: 63rem;
         margin: auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
       }
 
       pre code {
@@ -66,7 +64,7 @@ const Layout = props => (
         display: block;
         font-size: 10em;
         font-weight: 700;
-        color: #79F2DF;
+        color: #c14c2c;
         margin: 30px 0;
       }
 
@@ -75,17 +73,16 @@ const Layout = props => (
         display: block;
         font-size: 30px;
         font-weight: 600;
-        color: #79F2DF;
+        color: #c14c2c;
       }
 
       a {
         text-decoration: none;
-        color: #eb2196;
+        color: #c14c2c;
         font-weight: 500;
       }
 
     `}</style>
-    <Header />
     <main>
       <div className="container">{props.children}</div>
     </main>

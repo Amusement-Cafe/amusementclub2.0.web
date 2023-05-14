@@ -3,6 +3,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { makeStyles } from '@material-ui/core/styles'
+import { Parallax, Background } from 'react-parallax'
 import getHost from '../utils/get-host'
 import Footer from '../components/footer'
 
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     flexWrap: 'nowrap',
     justifyContent: 'space-between',
-    margin: '0 15%',
+    margin: '0 4em',
   },
 
   card: {
@@ -55,13 +56,13 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     width: '100%',
-    backgroundImage: 'url("https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/bort_crop-min.png")',
+    backgroundImage: 'url("https://amuse.fra1.digitaloceanspaces.com/web/Cinnabar_final_crop.png")',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100%',
   },
 
   titleContainer: {
-    marginTop: '55%',
+    marginTop: '60%',
   },
 
   title: {
@@ -69,9 +70,9 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     textAlign: 'center',
-    fontSize: '75px',
+    fontSize: '4em',
     backgroundColor: '#222',
-    padding: '5px',
+    padding: '0.1em',
   },
 
   textWithBack: {
@@ -97,20 +98,27 @@ const Home = props => {
 
   return (
     <Layout>
-      <div className={classes.background}>
-        <div style={{height: '50px'}}></div>
+      <Parallax strength={500}>
+        <Background style={{width: '100px'}} bgImageAlt="cinnabar">
+          <img src="https://amuse.fra1.digitaloceanspaces.com/web/cinnabar_BG.png" />
+        </Background>
+
+        <Parallax strength={300}>
+        <Background bgImageAlt="cinnabar">
+          <img src="https://amuse.fra1.digitaloceanspaces.com/web/cinnabar_FG.png" />
+        </Background>
         <div className={classes.titleContainer}>
 
-          <h1 className={classes.title}>/amusement</h1>
-          <h2 className={classes.textWithBack}>Global card trading bot for Discord</h2>
+          <h1 className={classes.title}>Amusement Club</h1>
+          <h2 className={classes.textWithBack}>Discord trading card bot with over 20,000 cards.</h2>
           <h3 className={classes.desc}>Claim and create cards, choose your hero character, craft various effects and trade on auctions. 
           All of your cards are persistent across all Discord servers.</h3>
           
           <Button color="secondary" variant="contained" size="large" className={classes.button} startIcon={
-              <img style={{height: '30px'}} src="https://amusementclub.nyc3.cdn.digitaloceanspaces.com/web/Discord-Logo-White.svg"/>
+              <img style={{height: '30px'}} src="https://cdn.amusement.cafe/web/Discord-Logo-White.svg"/>
             }>
-            <a href="https://discord.com/api/oauth2/authorize?client_id=340988108222758934&permissions=0&scope=bot%20applications.commands">
-              <span className={classes.buttonspan}>Add to Discord</span>
+            <a href="https://docs.amusement.cafe/en/getting-started/howto-play">
+              <span className={classes.buttonspan}>get started</span>
             </a>
           </Button>
 
@@ -121,11 +129,16 @@ const Home = props => {
             <img src={cards[1].url} className={classes.card}/>
             <img src={cards[2].url} className={classes.card}/>
           </div>
-          
-          <div style={{height: '50px'}}></div>
+
+          <Button color="secondary" variant="text" size="medium" className={classes.button}>
+            <a href="/cards">
+              <span>view more cards...</span>
+            </a>
+          </Button>
 
         </div>
-      </div>
+        </Parallax>
+      </Parallax>
 
       <Footer/>
     </Layout>

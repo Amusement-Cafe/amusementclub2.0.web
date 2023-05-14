@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/theme';
@@ -26,9 +26,9 @@ export default function MyApp(props) {
   }, []);
 
   const palletType = "dark";
-  const mainPrimaryColor = '#2b9ab5';
-  const mainSecondaryColor = '#eb2196';
-  const darkTheme = createMuiTheme({
+  const mainPrimaryColor = '#c14c2c';
+  const mainSecondaryColor = '#73393c';
+  const darkTheme = createTheme({
     palette: {
       type: palletType,
       primary: {
