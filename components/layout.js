@@ -78,7 +78,7 @@ const Layout = props => (
 
       a {
         text-decoration: none;
-        color: #c14c2c;
+        color: #e5cd8f;
         font-weight: 500;
       }
 

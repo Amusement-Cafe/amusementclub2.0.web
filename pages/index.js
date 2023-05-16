@@ -114,7 +114,7 @@ const Home = props => {
           <h3 className={classes.desc}>Claim and create cards, choose your hero character, craft various effects and trade on auctions. 
           All of your cards are persistent across all Discord servers.</h3>
           
-          <Button color="secondary" variant="contained" size="large" className={classes.button} startIcon={
+          <Button color="primary" variant="contained" size="large" className={classes.button} startIcon={
               <img style={{height: '30px'}} src="https://cdn.amusement.cafe/web/Discord-Logo-White.svg"/>
             }>
             <a href="https://docs.amusement.cafe/en/getting-started/howto-play">

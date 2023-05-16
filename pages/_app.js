@@ -27,7 +27,7 @@ export default function MyApp(props) {
 
   const palletType = "dark";
   const mainPrimaryColor = '#c14c2c';
-  const mainSecondaryColor = '#73393c';
+  const mainSecondaryColor = '#e5cd8f';
   const darkTheme = createTheme({
     palette: {
       type: palletType,
