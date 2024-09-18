@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     width: '100%',
-    backgroundImage: 'url("https://amuse.fra1.digitaloceanspaces.com/web/Cinnabar_final_crop.png")',
+    backgroundImage: 'url("https://cdn.amusement.cafe/web/Cinnabar_final_crop.png")',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100%',
   },
@@ -100,12 +100,12 @@ const Home = props => {
     <Layout>
       <Parallax strength={500}>
         <Background style={{width: '100px'}} bgImageAlt="cinnabar">
-          <img src="https://amuse.fra1.digitaloceanspaces.com/web/cinnabar_BG.png" />
+          <img src="https://cdn.amusement.cafe/web/cinnabar_BG.png" />
         </Background>
 
         <Parallax strength={300}>
         <Background bgImageAlt="cinnabar">
-          <img src="https://amuse.fra1.digitaloceanspaces.com/web/cinnabar_FG.png" />
+          <img src="https://cdn.amusement.cafe/web/cinnabar_FG.png" />
         </Background>
         <div className={classes.titleContainer}>
 
