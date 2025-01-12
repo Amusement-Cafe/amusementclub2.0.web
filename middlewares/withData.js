@@ -3,7 +3,7 @@ import cards from '../test/data/cards'
 import collections from '../test/data/collections'
 import specials23 from '../test/data/specials23'
 
-const baseURL = `https://cdn.amusement.cafe`
+const baseURL = `https://a.amu.cards`
 const specialsURL = `${baseURL}/web/votes/special23`
 
 cards.map(x => {

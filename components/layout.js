@@ -11,8 +11,8 @@ const Layout = props => (
       <meta name="description" content="Claim and create cards, choose your hero character, craft various effects and trade on auctions." />
       <meta property="og:title" content="Amusement Club - Discord bot" />
       <meta property="og:type" content="discord bot" />
-      <meta property="og:url" content="https://club.amusement.cafe" />
-      <meta property="og:image" content="https://amusementclub.nyc3.digitaloceanspaces.com/web/amusement-logo-small.png" />
+      <meta property="og:url" content="https://amu.cards" />
+      <meta property="og:image" content="https://a.amu.cards/web/amusement-logo-small.png" />
       <meta property="og:description" content="Claim and create cards, choose your hero character, craft various effects and trade on auctions." />
     </Head>
     <style jsx global>{`

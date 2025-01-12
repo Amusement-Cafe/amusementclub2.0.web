@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     width: '100%',
-    backgroundImage: 'url("https://cdn.amusement.cafe/web/Cinnabar_final_crop.png")',
+    backgroundImage: 'url("https://a.amu.cards/web/Cinnabar_final_crop.png")',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100%',
   },
@@ -100,12 +100,12 @@ const Home = props => {
     <Layout>
       <Parallax strength={500}>
         <Background style={{width: '100px'}} bgImageAlt="cinnabar">
-          <img src="https://cdn.amusement.cafe/web/cinnabar_BG.png" />
+          <img src="https://a.amu.cards/web/cinnabar_BG.png" />
         </Background>
 
         <Parallax strength={300}>
         <Background bgImageAlt="cinnabar">
-          <img src="https://cdn.amusement.cafe/web/cinnabar_FG.png" />
+          <img src="https://a.amu.cards/web/cinnabar_FG.png" />
         </Background>
         <div className={classes.titleContainer}>
 
@@ -115,9 +115,9 @@ const Home = props => {
           All of your cards are persistent across all Discord servers.</h3>
           
           <Button color="primary" variant="contained" size="large" className={classes.button} startIcon={
-              <img style={{height: '30px'}} src="https://cdn.amusement.cafe/web/Discord-Logo-White.svg"/>
+              <img style={{height: '30px'}} src="https://a.amu.cards/web/Discord-Logo-White.svg"/>
             }>
-            <a href="https://docs.amusement.cafe/en/getting-started/howto-play">
+            <a href="https://docs.amu.cards/en/getting-started/howto-play">
               <span className={classes.buttonspan}>get started</span>
             </a>
           </Button>

@@ -7,7 +7,7 @@ const Upgrade = () => (
     <div>
       <br/>
       {/*<Paper style={{padding: "2em", backgroundColor: "#222", color: "#fff"}}>
-        <p>Please visit our <a href="https://docs.amusement.cafe/en/upgrade">updated documentation website</a> for better version of this guide</p>
+        <p>Please visit our <a href="https://docs.amu.cards/en/upgrade">updated documentation website</a> for better version of this guide</p>
       </Paper>*/}
       <h1>Amusement Club Alexandrite upgrade guide</h1>
       <p>

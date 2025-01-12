@@ -89,7 +89,7 @@ const Header = (props) => {
           </IconButton>):
           (<IconButton color="inherit">
             <Link href="/">
-              <img src={'https://cdn.amusement.cafe/web/buns_logo_white.png'} className={classes.avatar} />
+              <img src={'https://a.amu.cards/web/buns_logo_white.png'} className={classes.avatar} />
             </Link>
           </IconButton>
           )}
@@ -112,7 +112,7 @@ const Header = (props) => {
             <Button color="inherit">Sample Cards</Button>
           </Link>
 
-          <a href="https://docs.amusement.cafe/en/latest-changelog" style={{color: '#fff'}}>
+          <a href="https://docs.amu.cards/en/latest-changelog" style={{color: '#fff'}}>
             <Button color="inherit">Latest Changelog</Button>
           </a>
 
@@ -120,7 +120,7 @@ const Header = (props) => {
             <Button color="inherit">Store</Button>
           </Link>*/}
 
-          <a href="https://docs.amusement.cafe/" style={{color: '#fff'}}>
+          <a href="https://docs.amu.cards/" style={{color: '#fff'}}>
             <Button color="inherit">Documentation</Button>
           </a>
 

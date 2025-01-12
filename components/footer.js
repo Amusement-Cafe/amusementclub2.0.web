@@ -11,10 +11,10 @@ export default class Footer extends React.Component {
       <div className="content">
         <div className="block">
           <a href="https://discord.com/">
-            <img src="https://cdn.amusement.cafe/web/discord_logo_2021.svg"/>
+            <img src="https://a.amu.cards/web/discord_logo_2021.svg"/>
           </a>
-          <img src="https://cdn.amusement.cafe/web/amusement-cafe-smalltext.png"/>
-          <span><b>support@amusement.cafe</b></span>
+          <img src="https://a.amu.cards/web/amusement-cafe-smalltext.png"/>
+          <span><b>support@amu.cards</b></span>
           <span><b>Website <a href="https://twitter.com/madebynoxc">@madebynoxc</a></b></span>
           <span><b>Cinnabar art by <a href="https://www.artstation.com/elisandra">Alexandra Li</a></b></span>
         </div>
@@ -22,7 +22,7 @@ export default class Footer extends React.Component {
           <span className="title">Get Started</span>
           <ul>
             <li><a href="https://discord.com/api/oauth2/authorize?client_id=340988108222758934&permissions=0&scope=bot%20applications.commands">Invite</a></li>
-            <li><a href="https://docs.amusement.cafe/">Documentation</a></li>
+            <li><a href="https://docs.amu.cards/">Documentation</a></li>
             <li><a href="https://discord.gg/kqgAvdX">Bot Discord</a></li>
           </ul>
         </div>
