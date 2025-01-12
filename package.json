@@ -1,7 +1,7 @@
 {
   "name": "amusement-portal",
-  "version": "1.1.0",
-  "description": "Website for amusement club gacha",
+  "version": "2.1.0",
+  "description": "Website for amusement club Discord bot",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -9,9 +9,9 @@
     "start": "next start"
   },
   "keywords": [],
-  "author": "NoxCaos",
+  "author": "noxc",
   "license": "ISC",
-  "repository": "https://github.com/NoxCaos/amusement-portal",
+  "repository": "https://github.com/amusement-cafe/amusementclub2.0.web",
   "engines": {
     "node": ">=16.0.0"
   },
